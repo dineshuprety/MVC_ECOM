@@ -1,22 +1,9 @@
     <?php
+    //    Load init file 
+    require_once __DIR__.'/../bootstraps/init.php';
 
-    // echo "Hello world";
+        $app_name = getenv('APP_NAME');
+        // echo $app_name;
 
-    $a = 10;
-    $b = 10;
-
-    echo "the sum is ". $a + $b."<br>";
-    echo "the multiple is ". $a * $b;
-
-
-    ?>
-
-    <?php 
-        // print_r($_ENV);
-    ?>
-
-    <?php
-
-        
-
+        // var_dump(in_array('mod_rewrite', apache_get_modules()));
     ?>
