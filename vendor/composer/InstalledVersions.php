@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'ea28a095fddb1facbc2e9999cbb71fb34f6b9f83',
+    'reference' => '44f79cfa331b0ddb8fa76dfe3a94fb70e562f949',
     'name' => '__root__',
   ),
   'versions' => 
@@ -44,7 +44,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'ea28a095fddb1facbc2e9999cbb71fb34f6b9f83',
+      'reference' => '44f79cfa331b0ddb8fa76dfe3a94fb70e562f949',
     ),
     'altorouter/altorouter' => 
     array (
@@ -75,57 +75,66 @@ private static $installed = array (
     ),
     'illuminate/container' => 
     array (
-      'pretty_version' => 'v5.5.44',
-      'version' => '5.5.44.0',
+      'pretty_version' => 'v5.4.36',
+      'version' => '5.4.36.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7917f4c86ecf7f4d0efcfd83248ad3e301e08858',
+      'reference' => 'c5b8a02a34a52c307f16922334c355c5eef725a6',
     ),
     'illuminate/contracts' => 
     array (
-      'pretty_version' => 'v5.5.44',
-      'version' => '5.5.44.0',
+      'pretty_version' => 'v5.4.36',
+      'version' => '5.4.36.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b2a62b4a85485fca9cf5fa61a933ad64006ff528',
+      'reference' => '67f642e018f3e95fb0b2ebffc206c3200391b1ab',
+    ),
+    'illuminate/database' => 
+    array (
+      'pretty_version' => 'v5.4.0',
+      'version' => '5.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '19abe553a49e2355bfc7a414ddbbc74439e07c58',
     ),
     'illuminate/events' => 
     array (
-      'pretty_version' => 'v5.5.44',
-      'version' => '5.5.44.0',
+      'pretty_version' => 'v5.4.36',
+      'version' => '5.4.36.0',
       'aliases' => 
       array (
       ),
-      'reference' => '11b4b917c3f02140b528e849f883a4a9e7ff8af7',
+      'reference' => 'ebdca3b0305e9fc954afb9e422c4559482cd11e6',
     ),
     'illuminate/filesystem' => 
     array (
-      'pretty_version' => 'v5.5.44',
-      'version' => '5.5.44.0',
+      'pretty_version' => 'v5.4.36',
+      'version' => '5.4.36.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b8c0e36d47cfde3a0727bc6e2057775ff98a1bcd',
+      'reference' => 'b800a1423d06869ee5c2768eee123917f12b693e',
     ),
     'illuminate/support' => 
     array (
-      'pretty_version' => 'v5.5.44',
-      'version' => '5.5.44.0',
+      'pretty_version' => 'v5.4.36',
+      'version' => '5.4.36.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5c405512d75dcaf5d37791badce02d86ed8e4bc4',
+      'reference' => 'feab1d1495fd6d38970bd6c83586ba2ace8f299a',
     ),
     'illuminate/view' => 
     array (
-      'pretty_version' => 'v5.5.44',
-      'version' => '5.5.44.0',
+      'pretty_version' => 'v5.4.36',
+      'version' => '5.4.36.0',
       'aliases' => 
       array (
       ),
-      'reference' => '892aa32a1b496cbafa5125bcc3f97ff795265f95',
+      'reference' => '785f41f8f01653dc830c5c89eb0f25c311af7615',
     ),
     'kylekatarnls/update-helper' => 
     array (
@@ -145,6 +154,15 @@ private static $installed = array (
       ),
       'reference' => '4be0c005164249208ce1b5ca633cd57bdd42ff33',
     ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v2.0.20',
+      'version' => '2.0.20.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0f1f60250fccffeaf5dda91eea1c018aed1adc2a',
+    ),
     'philo/laravel-blade' => 
     array (
       'pretty_version' => 'v3.1',
@@ -163,15 +181,6 @@ private static $installed = array (
       ),
       'reference' => '994ecccd8f3283ecf5ac33254543eb0ac946d525',
     ),
-    'psr/container' => 
-    array (
-      'pretty_version' => '1.1.1',
-      'version' => '1.1.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
-    ),
     'psr/log' => 
     array (
       'pretty_version' => '1.1.4',
@@ -180,15 +189,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
-    ),
-    'psr/simple-cache' => 
-    array (
-      'pretty_version' => '1.0.1',
-      'version' => '1.0.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
     ),
     'symfony/debug' => 
     array (
@@ -264,7 +264,7 @@ private static $installed = array (
     array (
       'replaced' => 
       array (
-        0 => '<5.5.33',
+        0 => 'v5.4.36',
       ),
     ),
     'vlucas/phpdotenv' => 

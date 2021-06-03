@@ -1,16 +1,15 @@
 {
     "autoload":{
-        "psr-4":{
-            "App\\": "app"
-        },
+        "classmap":["App\\","app"],
         "files": ["app/functions/helper.php"]
     },
     "require": {
         "vlucas/phpdotenv": "^5.3",
         "altorouter/altorouter": "^2.0",
+        "illuminate/database": "5.4.0",
         "philo/laravel-blade": "^3.1"
     },
     "config":{
         "optimize-autoloader":true
     }
-}
+   }

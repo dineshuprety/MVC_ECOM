@@ -8,7 +8,7 @@ require_once __DIR__.'/../../vendor/autoload.php';
 
 //createing new instance of env package to access the .env file
 // I have used cretaeUnsafeImmutable to access the getenv() function
-$dotEnv =  Dotenv\Dotenv::createUnsafeImmutable(BASE_PATH);
+$dotEnv = Dotenv\Dotenv::createUnsafeImmutable(BASE_PATH);
 
 //load function use to load the .env file
 $dotEnv->load();
