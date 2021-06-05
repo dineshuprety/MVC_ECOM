@@ -27,24 +27,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-MVCecommerce',
-    'version' => 'dev-MVCecommerce',
+    'pretty_version' => 'dev-MVCSendMail',
+    'version' => 'dev-MVCSendMail',
     'aliases' => 
     array (
     ),
-    'reference' => '44f79cfa331b0ddb8fa76dfe3a94fb70e562f949',
+    'reference' => '30ac1d8910945eec3a70aacfcec810253c35364e',
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => 'dev-MVCecommerce',
-      'version' => 'dev-MVCecommerce',
+      'pretty_version' => 'dev-MVCSendMail',
+      'version' => 'dev-MVCSendMail',
       'aliases' => 
       array (
       ),
-      'reference' => '44f79cfa331b0ddb8fa76dfe3a94fb70e562f949',
+      'reference' => '30ac1d8910945eec3a70aacfcec810253c35364e',
     ),
     'altorouter/altorouter' => 
     array (
@@ -63,6 +63,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '4bd5c1cdfcd00e9e2d8c484f79150f67e5d355d9',
+    ),
+    'filp/whoops' => 
+    array (
+      'pretty_version' => '2.13.0',
+      'version' => '2.13.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2edbc73a4687d9085c8f20f398eebade844e8424',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -171,6 +180,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '3f0ce2ee198604c53c25188110e6d7b5e887527a',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.4.1',
+      'version' => '6.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9256f12d8fb0cd0500f93b19e18c356906cbed3d',
     ),
     'phpoption/phpoption' => 
     array (

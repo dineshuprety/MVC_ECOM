@@ -7,7 +7,11 @@
         "vlucas/phpdotenv": "^5.3",
         "altorouter/altorouter": "^2.0",
         "illuminate/database": "5.4.0",
-        "philo/laravel-blade": "^3.1"
+        "philo/laravel-blade": "^3.1",
+        "phpmailer/phpmailer": "^6.4"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.1"
     },
     "config":{
         "optimize-autoloader":true
