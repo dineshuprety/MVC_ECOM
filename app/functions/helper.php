@@ -3,6 +3,7 @@ use Philo\Blade\Blade;
 
 function view($path, array $data = [])
 {
+    //includeing requriment file to active blade template
     $view = __DIR__ .'/../../resources/views';
     $cache = __DIR__ .'/../../bootstrap/cache';
     

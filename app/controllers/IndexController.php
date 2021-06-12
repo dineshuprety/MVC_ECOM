@@ -10,8 +10,8 @@ class IndexController extends BaseController
         echo "Inside Homepage from controller class<br>";
         //creating object to call MAil class
         $mail = new Mail();
-        $datas = [
-            'to' => 'dineshuprety500@gmail.com',
+        $data = [
+            'to' => '',
             'subject' => 'welcome to 40plus Template',
             'view' => 'Welcome',
             'name' => 'Dinesh Uprety',
