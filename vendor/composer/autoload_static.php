@@ -16,6 +16,10 @@ class ComposerStaticInit7a572da555a41ac965d95d49e6027bf2
     );
 
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'voku\\helper\\' => 12,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -60,6 +64,10 @@ class ComposerStaticInit7a572da555a41ac965d95d49e6027bf2
     );
 
     public static $prefixDirsPsr4 = array (
+        'voku\\helper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/pagination/src/voku/helper',
+        ),
         'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
@@ -178,9 +186,14 @@ class ComposerStaticInit7a572da555a41ac965d95d49e6027bf2
         'App\\Classes\\Request' => __DIR__ . '/../..' . '/App/classes/Request.php',
         'App\\Classes\\Session' => __DIR__ . '/../..' . '/App/classes/Session.php',
         'App\\Classes\\UploadFile' => __DIR__ . '/../..' . '/App/classes/UploadFile.php',
+        'App\\Classes\\ValidateRequest' => __DIR__ . '/../..' . '/App/classes/ValidateRequest.php',
         'App\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/App/controllers/admin/DashboardController.php',
+        'App\\Controllers\\Admin\\ProductCategoryController' => __DIR__ . '/../..' . '/App/controllers/admin/ProductCategoryController.php',
+        'App\\Controllers\\Admin\\SubCategoryController' => __DIR__ . '/../..' . '/App/controllers/admin/SubCategoryController.php',
         'App\\Controllers\\BaseController' => __DIR__ . '/../..' . '/App/controllers/BaseController.php',
         'App\\Controllers\\IndexController' => __DIR__ . '/../..' . '/App/controllers/IndexController.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/App/models/Category.php',
+        'App\\Models\\SubCategory' => __DIR__ . '/../..' . '/App/models/SubCategory.php',
         'App\\RouteDispatcher' => __DIR__ . '/../..' . '/App/routing/RouteDispatcher.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
@@ -731,6 +744,8 @@ class ComposerStaticInit7a572da555a41ac965d95d49e6027bf2
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'voku\\helper\\Paginator' => __DIR__ . '/..' . '/voku/pagination/src/voku/helper/Paginator.php',
+        'voku\\helper\\PaginatorHelper' => __DIR__ . '/..' . '/voku/pagination/src/voku/helper/PaginatorHelper.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

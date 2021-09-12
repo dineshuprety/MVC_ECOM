@@ -7,12 +7,12 @@
         <title>Admin Panel - @yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- compress css -->
-        <link href="./css/plugin/plugins.css" rel="stylesheet" type="text/css">
-        <link href="./css/plugin/_style.css" rel="stylesheet" type="text/css">
+        <link href="/css/all.css" rel="stylesheet" type="text/css">
+        
 </head>
-<body class="fixed-left">
+<body data-page-id="@yield('data-page-id')" class="fixed-left">
 
-        <!-- Loader -->
+        <!-- Loader --> 
             <div id="preloader">
                 <div id="status">
                     <div class="spinner"></div>
@@ -51,11 +51,8 @@
 </div>
 <!-- END wrapper -->
     <!-- jQuery  -->
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <!-- compress script -->
-    <script src="js/plugins/plugins.min.js"></script>
-    <!-- Main _script js -->
-    <script src="js/_script.js"></script>
+    <script src="/js/all.js"></script>
+    
     <script>
         /* 
          *  Window On Load Functions Active

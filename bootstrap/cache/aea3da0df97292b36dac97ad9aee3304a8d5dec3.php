@@ -46,7 +46,7 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-exchange-vertical"></i> <span> Category </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="#"><i class="ti-plus"></i>Add Category</a></li>
+                                <li></i><a href="/admin/product/categories"><i class="ti-plus"></i>Add Category</a></li>
                                 <li><a href="#"><i class="ti-link"></i>Add Subcategory</a></li>
                             </ul>
                         </li>

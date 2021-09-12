@@ -1,9 +1,13 @@
 {
     "author": "Dinesh Uprety",
-    "description": "40plus Template",
+    "description": "Shopify Nepal",
     "private": true,
     "dependencies": {
-        "gulp": "~3.9",
-        "laravel-elixir": "~5.0.0"
+        "gulp-minify-css": "^1.2.4",
+        "gulp-uglify": "^3.0.2"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.1"
     }
 }
