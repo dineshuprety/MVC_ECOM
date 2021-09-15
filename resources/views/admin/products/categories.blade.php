@@ -42,10 +42,10 @@
                <div class="table-responsive">
                 <h4 class="mt-0 header-title">Category Tables</h4>
                 @if(count($categories))
-                <table class="table table-hover">
+                <table class="table table-hover" data-form="deleteForm">
                     <thead>
                         <tr class="titles">
-                            <th>Id</th>
+                            <!-- <th>Id</th> -->
                             <th>Name</th>
                             <th>Slug</th>
                             <th>Created</th>
@@ -54,36 +54,46 @@
 
                     </thead>
                     <tbody>
-                        <?php $i =1; ?>
                         @foreach($categories as $category)
                         <tr>
-                            <td class="c-table__cell"><?php echo $i; ?></td>
+                            
                             <td class="c-table__cell">{{ $category['name'] }}</td>
                             <td class="c-table__cell">{{ $category['slug'] }}</td>
                             <td class="c-table__cell">{{ $category['added'] }}</td>
                             <td class="c-table__cell">
-                                <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal-{{$category['id']}}">
+                                <!-- add sub category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Add SubCategory">
+                                <button type="button"  class="btn-sm btn-primary" data-toggle="modal" data-target="#add-subcategory-{{$category['id']}}">
                                 <i class="mdi mdi-plus"></i></button>
+                                </span>
+                                <!-- Edit category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Edit Category">
                                 <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#exampleModal-{{$category['id']}}">
                                 <i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                </span>
+                                <!-- deleted category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Delete Category"style="display:inline-block">
+                                <form method="POST" action="/admin/product/categories/{{$category['id']}}/delete" class="delete-item">
+                                <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                                <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa fa-trash"></i></button>
+                                </from>
+                            </span> 
                             </td>
                         </tr>
-                        <?php $i++; ?>
-
-                        <!-- Modal -->
+                        <!-- Modal category -->
                             <div class="modal fade" id="exampleModal-{{$category['id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
                                 <div class="modal-dialog ">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <a href="/admin/product/categories" class="close">
                                         <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    </a>
+                                   
                                     </div>
                                     <div class="modal-body">
-                                        <div class="notification"></div>
+                                        <div class="notification alert alert-success"></div>
                                         <form>
                                             <div class="form-group">
                                             <input type="text" id="item-name-{{$category['id']}}" name="name"  value="{{$category['name']}}"class="form-control">
@@ -98,6 +108,36 @@
                                 </div>
                                 </div>
                             </div>
+                            <!-- end of category -->
+
+                            <!-- add sub category -->
+                            <div class="modal fade" id="add-subcategory-{{$category['id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+                                <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add SubCategory</h5>
+                                    <a href="/admin/product/categories" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                   
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="notification alert"></div>
+                                        <form>
+                                            <div class="form-group">
+                                            <input type="text" id="subcategory-name-{{$category['id']}}"class="form-control">
+                                            
+                                            <small id="emailHelp" class="form-text text-muted">Here Add Subcategory for your product.</small>
+                                            </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <input type="submit" value="create" data-token="{{ \App\Classes\CSRFToken::_token() }}" class="btn btn-success add-subcategorybtn" id="{{$category['id']}}">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- end of subcategory -->
                         @endforeach
  
                     </tbody>
@@ -121,48 +161,109 @@
 
 </div>
 
-<div class="row">
-<div class="col-md-12">
+<!-- sub category table -->
+    <div class="row">
+
+    <div class="col-xl-12">
+    
     <div class="card m-b-30">
+        
+
         <div class="card-body">
-            <h4 class="mt-0 header-title">Sub Category Tables</h4>
-            <div class="table-responsive">
             
-                <table class="table table-hover">
+               <div class="table-responsive">
+                <h4 class="mt-0 header-title">Sub Category Tables</h4>
+                @if(count($subcategories))
+                <table class="table table-hover" data-form="deleteForm">
                     <thead>
                         <tr class="titles">
-                            <th>Id</th>
+                            <!-- <th>Id</th> -->
                             <th>Name</th>
                             <th>Slug</th>
                             <th>Created</th>
                             <th>Action</th>
-                            
                         </tr>
 
                     </thead>
                     <tbody>
+                        @foreach($subcategories as $subcategory)
                         <tr>
-                            <td class="c-table__cell">1</td>
-                            <td class="c-table__cell">Dell Laptop</td>
-                            <td class="c-table__cell">dell</td>
-                            <td class="c-table__cell">2011/04/25</td>
+                            
+                            <td class="c-table__cell">{{ $subcategory['name'] }}</td>
+                            <td class="c-table__cell">{{ $subcategory['slug'] }}</td>
+                            <td class="c-table__cell">{{ $subcategory['added'] }}</td>
                             <td class="c-table__cell">
-                                <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">
+                               
+                                <!-- Edit category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Edit SubCategory">
+                                <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#item-subcategory-{{$subcategory['id']}}">
                                 <i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                </span>
+                                <!-- deleted subcategory button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Delete SubCategory"style="display:inline-block">
+                                <form method="POST" action="/admin/product/subcategory/{{$subcategory['id']}}/delete" class="delete-item">
+                                <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                                <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa fa-trash"></i></button>
+                                </from>
+                            </span> 
                             </td>
                         </tr>
-                       
+                        <!-- Modal edit subcategory -->
+                            <div class="modal fade" id="item-subcategory-{{$subcategory['id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+                                <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit SubCategory</h5>
+                                    <a href="/admin/product/categories" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                   
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="notification alert alert-success"></div>
+                                        <form>
+                                            <div class="form-group">
+                                            <input type="text" id="item-subcategory-name-{{$subcategory['id']}}"
+                                                   value="{{ $subcategory['name'] }}"class="form-control">
+                                            
+                                            <small id="emailHelp" class="form-text text-muted">Here edit category for your product.</small>
+                                            </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <input type="submit" value="update" data-token="{{ \App\Classes\CSRFToken::_token() }}" class="btn btn-success update-category" id="{{$subcategory['id']}}">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- end of category -->
+                        @endforeach
+ 
                     </tbody>
                 </table>
+        <!-- table end -->
+        <!-- pagination start -->
                 <hr>
+                <ul class="pagination justify-content-end">
+                {!! $subcategories_links !!}
+                </ul>
+                
+                @else
+                <p> You have not created any Subcategories </p>
+                @endif
             </div>
+            
         </div>
+  </div>
+</div>
         
+
     </div>
-</div>
-</div>
+<!-- End sub category table -->
+
  <!-- container -->
+ @include('includes.delete-model')
+ 
 
 @endsection

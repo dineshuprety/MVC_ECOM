@@ -1,12 +1,9 @@
 <?php
 $router = new AltoRouter;
-$router->map('GET', '/', 'App\Controllers\IndexController@show', 'home');
+// include admin router
+include 'adminrouter.php';
 
-//for admin routes
-$router->map('GET', '/admin', 'App\Controllers\Admin\DashboardController@show', 'admin_dashboard');
-
-
-// product management
+// category management
 
 $router->map('GET', '/admin/product/categories',
     'App\Controllers\Admin\ProductCategoryController@show', 'product_category');
@@ -18,3 +15,8 @@ $router->map('POST', '/admin/product/categories/[i:id]/edit',
     
 $router->map('POST', '/admin/product/categories/[i:id]/delete',
     'App\Controllers\Admin\ProductCategoryController@delete', 'delete_product_category');
+
+// sub category management
+
+$router->map('POST', '/admin/product/subcategory/create',
+    'App\Controllers\Admin\SubCategoryController@store', 'create_subcategory');

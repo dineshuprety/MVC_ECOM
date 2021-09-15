@@ -10,13 +10,20 @@
 </div>
 <?php endif; ?>
 
-<?php if(isset($success)): ?>
+<?php if(isset($success) || \App\Classes\Session::has('success')): ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 <span aria-hidden="true">×</span>
 </button>
+<?php if(isset($success)): ?>
 <strong>Well done!</strong> <?php echo e($success); ?>
 
+<?php elseif(\App\Classes\Session::has('success')): ?>
+<?php echo e(\App\Classes\Session::flash('success')); ?>
+
+<?php endif; ?>
 </div>
 <?php endif; ?>
+
+
 

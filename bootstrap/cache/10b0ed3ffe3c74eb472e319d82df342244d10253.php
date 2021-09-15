@@ -41,10 +41,10 @@
                <div class="table-responsive">
                 <h4 class="mt-0 header-title">Category Tables</h4>
                 <?php if(count($categories)): ?>
-                <table class="table table-hover">
+                <table class="table table-hover" data-form="deleteForm">
                     <thead>
                         <tr class="titles">
-                            <th>Id</th>
+                            <!-- <th>Id</th> -->
                             <th>Name</th>
                             <th>Slug</th>
                             <th>Created</th>
@@ -53,36 +53,46 @@
 
                     </thead>
                     <tbody>
-                        <?php $i =1; ?>
                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td class="c-table__cell"><?php echo $i; ?></td>
+                            
                             <td class="c-table__cell"><?php echo e($category['name']); ?></td>
                             <td class="c-table__cell"><?php echo e($category['slug']); ?></td>
                             <td class="c-table__cell"><?php echo e($category['added']); ?></td>
                             <td class="c-table__cell">
-                                <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal-<?php echo e($category['id']); ?>">
+                                <!-- add sub category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Add SubCategory">
+                                <button type="button"  class="btn-sm btn-primary" data-toggle="modal" data-target="#add-subcategory-<?php echo e($category['id']); ?>">
                                 <i class="mdi mdi-plus"></i></button>
+                                </span>
+                                <!-- Edit category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Edit Category">
                                 <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#exampleModal-<?php echo e($category['id']); ?>">
                                 <i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                </span>
+                                <!-- deleted category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Delete Category"style="display:inline-block">
+                                <form method="POST" action="/admin/product/categories/<?php echo e($category['id']); ?>/delete" class="delete-item">
+                                <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::_token()); ?>">
+                                <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa fa-trash"></i></button>
+                                </from>
+                            </span> 
                             </td>
                         </tr>
-                        <?php $i++; ?>
-
-                        <!-- Modal -->
+                        <!-- Modal category -->
                             <div class="modal fade" id="exampleModal-<?php echo e($category['id']); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
                                 <div class="modal-dialog ">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <a href="/admin/product/categories" class="close">
                                         <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    </a>
+                                   
                                     </div>
                                     <div class="modal-body">
-                                        <div class="notification"></div>
+                                        <div class="notification alert alert-success"></div>
                                         <form>
                                             <div class="form-group">
                                             <input type="text" id="item-name-<?php echo e($category['id']); ?>" name="name"  value="<?php echo e($category['name']); ?>"class="form-control">
@@ -97,6 +107,36 @@
                                 </div>
                                 </div>
                             </div>
+                            <!-- end of category -->
+
+                            <!-- add sub category -->
+                            <div class="modal fade" id="add-subcategory-<?php echo e($category['id']); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+                                <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add SubCategory</h5>
+                                    <a href="/admin/product/categories" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                   
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="notification alert"></div>
+                                        <form>
+                                            <div class="form-group">
+                                            <input type="text" id="subcategory-name-<?php echo e($category['id']); ?>"class="form-control">
+                                            
+                                            <small id="emailHelp" class="form-text text-muted">Here Add Subcategory for your product.</small>
+                                            </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <input type="submit" value="create" data-token="<?php echo e(\App\Classes\CSRFToken::_token()); ?>" class="btn btn-success add-subcategorybtn" id="<?php echo e($category['id']); ?>">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- end of subcategory -->
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
  
                     </tbody>
@@ -121,49 +161,111 @@
 
 </div>
 
-<div class="row">
-<div class="col-md-12">
+<!-- sub category table -->
+    <div class="row">
+
+    <div class="col-xl-12">
+    
     <div class="card m-b-30">
+        
+
         <div class="card-body">
-            <h4 class="mt-0 header-title">Sub Category Tables</h4>
-            <div class="table-responsive">
             
-                <table class="table table-hover">
+               <div class="table-responsive">
+                <h4 class="mt-0 header-title">Sub Category Tables</h4>
+                <?php if(count($subcategories)): ?>
+                <table class="table table-hover" data-form="deleteForm">
                     <thead>
                         <tr class="titles">
-                            <th>Id</th>
+                            <!-- <th>Id</th> -->
                             <th>Name</th>
                             <th>Slug</th>
                             <th>Created</th>
                             <th>Action</th>
-                            
                         </tr>
 
                     </thead>
                     <tbody>
+                        <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td class="c-table__cell">1</td>
-                            <td class="c-table__cell">Dell Laptop</td>
-                            <td class="c-table__cell">dell</td>
-                            <td class="c-table__cell">2011/04/25</td>
+                            
+                            <td class="c-table__cell"><?php echo e($subcategory['name']); ?></td>
+                            <td class="c-table__cell"><?php echo e($subcategory['slug']); ?></td>
+                            <td class="c-table__cell"><?php echo e($subcategory['added']); ?></td>
                             <td class="c-table__cell">
-                                <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">
+                               
+                                <!-- Edit category button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Edit SubCategory">
+                                <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#item-subcategory-<?php echo e($subcategory['id']); ?>">
                                 <i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                </span>
+                                <!-- deleted subcategory button -->
+                                <span data-toggle="tooltip" data-placement="top" title="Delete SubCategory"style="display:inline-block">
+                                <form method="POST" action="/admin/product/subcategory/<?php echo e($subcategory['id']); ?>/delete" class="delete-item">
+                                <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::_token()); ?>">
+                                <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa fa-trash"></i></button>
+                                </from>
+                            </span> 
                             </td>
                         </tr>
-                       
+                        <!-- Modal edit subcategory -->
+                            <div class="modal fade" id="item-subcategory-<?php echo e($subcategory['id']); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+                                <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit SubCategory</h5>
+                                    <a href="/admin/product/categories" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                   
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="notification alert alert-success"></div>
+                                        <form>
+                                            <div class="form-group">
+                                            <input type="text" id="item-subcategory-name-<?php echo e($subcategory['id']); ?>"
+                                                   value="<?php echo e($subcategory['name']); ?>"class="form-control">
+                                            
+                                            <small id="emailHelp" class="form-text text-muted">Here edit category for your product.</small>
+                                            </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <input type="submit" value="update" data-token="<?php echo e(\App\Classes\CSRFToken::_token()); ?>" class="btn btn-success update-category" id="<?php echo e($subcategory['id']); ?>">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- end of category -->
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+ 
                     </tbody>
                 </table>
+        <!-- table end -->
+        <!-- pagination start -->
                 <hr>
+                <ul class="pagination justify-content-end">
+                <?php echo $subcategories_links; ?>
+
+                </ul>
+                
+                <?php else: ?>
+                <p> You have not created any Subcategories </p>
+                <?php endif; ?>
             </div>
+            
         </div>
+  </div>
+</div>
         
+
     </div>
-</div>
-</div>
+<!-- End sub category table -->
+
  <!-- container -->
+ <?php echo $__env->make('includes.delete-model', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+ 
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layout.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

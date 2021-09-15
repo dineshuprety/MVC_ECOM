@@ -7,8 +7,8 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="index.html" class="logo" >Admin</a>
-                    <!-- <a href="index.html" class="logo"><img src="../images/logo/logo-4.jpg" height="33" alt="logo"></a> -->
+                    <a href="/admin" class="logo" >Admin</a>
+                    <!-- <a href="/admin" class="logo"><img src="../images/logo/logo-4.jpg" height="33" alt="logo"></a> -->
                 </div>
             </div>
 
@@ -29,12 +29,28 @@
                         <li class="menu-title text-white">Menus</li>
 
                         <li>
-                            <a href="index.html" class="waves-effect">
+                            <a href="/admin" class="waves-effect">
                                 <i class="ti-home"></i>
                                 <span> Dashboard </span>
                             </a>
                         </li>
 
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-exchange-vertical"></i> <span> Category </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li></i><a href="/admin/product/categories"><i class="ti-plus"></i>Add Category</a></li>
+                                
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-exchange-vertical"></i> <span> Size </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li></i><a href="/admin/product/categories"><i class="ti-plus"></i>Add Size</a></li>
+                                
+                            </ul>
+                        </li>
+                        
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart-full"></i> <span> Product </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
@@ -42,15 +58,6 @@
                                 <li><a href="#"><i class="ti-pencil-alt"></i>Manage Product</a></li>
                             </ul>
                         </li>
-
-                        <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-exchange-vertical"></i> <span> Category </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="list-unstyled">
-                                <li></i><a href="/admin/product/categories"><i class="ti-plus"></i>Add Category</a></li>
-                                <li><a href="#"><i class="ti-link"></i>Add Subcategory</a></li>
-                            </ul>
-                        </li>
-
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Order </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
@@ -69,7 +76,7 @@
                         </li>
 
                         <li>
-                            <a href="index.html" class="waves-effect">
+                            <a href="/admin" class="waves-effect">
                                 <i class="ti-image"></i>
                                 <span> Media </span>
                             </a>
@@ -91,13 +98,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="index.html" class="waves-effect">
+                            <a href="/admin" class="waves-effect">
                                 <i class="ti-star"></i>
                                 <span> Reviews </span>
                             </a>
                         </li>
                         <li>
-                            <a href="index.html" class="waves-effect">
+                            <a href="/admin" class="waves-effect">
                                 <i class="mdi mdi-logout"></i>
                                 <span> logout </span>
                             </a>

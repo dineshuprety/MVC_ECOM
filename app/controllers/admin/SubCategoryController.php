@@ -4,7 +4,6 @@ namespace App\Controllers\Admin;
 use App\Classes\CSRFToken;
 use App\Classes\Redirect;
 use App\Classes\Request;
-use App\Classes\Role;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
 use App\Controllers\BaseController;
@@ -13,7 +12,6 @@ use App\Models\SubCategory;
 
 class SubCategoryController extends BaseController
 {
-   
     public function store()
     {
         if(Request::has('post')){
@@ -22,7 +20,7 @@ class SubCategoryController extends BaseController
             
             if(CSRFToken::verifyCSRFToken($request->token, false)){
                 $rules = [
-                  'name' => ['required' => true, 'minLength' => 3, 'mixed' => true],
+                  'name' => ['required' => true, 'minLength' => 3, 'string' => true],
                   'category_id' => ['required' => true]
                 ];
                 
@@ -71,7 +69,7 @@ class SubCategoryController extends BaseController
             
             if(CSRFToken::verifyCSRFToken($request->token, false)){
                 $rules = [
-                    'name' => ['required' => true, 'minLength' => 3, 'mixed' => true],
+                    'name' => ['required' => true, 'minLength' => 3, 'string' => true],
                     'category_id' => ['required' => true]
                 ];
     

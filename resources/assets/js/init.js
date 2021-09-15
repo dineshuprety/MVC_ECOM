@@ -1,12 +1,20 @@
-(function (){
+
+(function () {
     'use strict';
+    $(document).ready(function () {
 
-    $(document).ready(function(){
-        // switch page
-
-        switch($("body").data("page-id")){
-
+        //SWITCH PAGES
+        switch ($("body").data("page-id")){
+            case 'home':
+                break;
+            case 'adminCategories':
+                SHOPIFYNEPAL.admin.update();
+                SHOPIFYNEPAL.admin.delete();
+                SHOPIFYNEPAL.admin.create();
+                break;
+            default:
+                //do nothing
         }
-
     })
+
 })();

@@ -6,26 +6,33 @@ use App\Classes\Redirect;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
+use App\Controllers\BaseController;
 use App\Models\Category;
+use App\Models\SubCategory;
 
-class ProductCategoryController
+class ProductCategoryController extends BaseController
 {
     public $table_name = 'categories';
     public $categories;
+    public $subcategories;
+    public $subcategories_links;
     public $links;
     
     public function __construct()
     {
         $total = Category::all()->count();
+        $subTotal = SubCategory::all()->count();
         $object = new Category;
     
         list($this->categories, $this->links) = paginate(3, $total, $this->table_name, $object);
+        list($this->subcategories, $this->subcategories_links) = paginate(3, $subTotal, 'sub_categories', new SubCategory);
     }
     
     public function show()
     {
         return view('admin/products/categories', [
-            'categories' => $this->categories, 'links' => $this->links
+            'categories' => $this->categories, 'links' => $this->links,
+            'subcategories' => $this->subcategories, 'subcategories_links' => $this->subcategories_links,
         ]);
     }
     
@@ -45,7 +52,8 @@ class ProductCategoryController
                 if($validate->hasError()){
                     $errors = $validate->getErrorMessages();
                     return view('admin/products/categories', [
-                        'categories' => $this->categories,'links' => $this->links, 'errors' => $errors
+                        'categories' => $this->categories, 'links' => $this->links, 'errors' => $errors,
+                        'subcategories' => $this->subcategories, 'subcategories_links' => $this->subcategories_links,
                     ]);
                 }
                 //process form data
@@ -55,9 +63,12 @@ class ProductCategoryController
                 ]);
                 
                 $total = Category::all()->count();
+                $subTotal = SubCategory::all()->count();
                 list($this->categories, $this->links) = paginate(3, $total, $this->table_name, new Category);
+                list($this->subcategories, $this->subcategories_links) = paginate(3, $subTotal, 'sub_categories', new SubCategory);
                 return view('admin/products/categories', [
-                    'categories' => $this->categories, 'links' => $this->links, 'success' => 'Category Created'
+                    'categories' => $this->categories, 'links' => $this->links, 'success' => 'Category Created',
+                    'subcategories' => $this->subcategories, 'subcategories_links' => $this->subcategories_links,
                 ]);
             }
             throw new \Exception('Token mismatch');
@@ -94,19 +105,26 @@ class ProductCategoryController
         return null;
     }
     
-   //  public function delete($id)
-   //  {
-   //      if(Request::has('post')){
-   //          $request = Request::get('post');
+    public function delete($id)
+    {
+        if(Request::has('post')){
+            $request = Request::get('post');
             
-   //          if(CSRFToken::verifyCSRFToken($request->token)){
-   //              Category::destroy($id);
-   //              Session::add('success', 'Category Deleted');
-   //              Redirect::to('/admin/product/categories');
-   //          }
-   //          throw new \Exception('Token mismatch');
-   //      }
+            if(CSRFToken::verifyCSRFToken($request->token)){
+                Category::destroy($id);
+                
+                $subcategories = SubCategory::where('category_id', $id)->get();
+                if(count($subcategories)){
+                    foreach ($subcategories as $subcategory){
+                        $subcategory->delete();
+                    }
+                }
+                Session::add('success', 'Category Deleted');
+                Redirect::to('/admin/product/categories');
+            }
+            throw new \Exception('Token mismatch');
+        }
         
-   //      return null;
-   //  }
+        return null;
+    }
 }
