@@ -16,7 +16,7 @@
 
                 <div class="user-details">
                     <div class="text-center">
-                        <img src="./images/avatars/avatar1.jpg" alt="" class="rounded-circle">
+                        <img src="/images/avatars/avatar1.jpg" alt="" class="rounded-circle">
                     </div>
                     <div class="user-info">
                             <h4 class="font-16 text-white">Elena Retson</h4>
@@ -44,17 +44,19 @@
                         </li>
 
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-exchange-vertical"></i> <span> Size </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart-full"></i> <span> Size </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="/admin/product/categories"><i class="ti-plus"></i>Add Size</a></li>
-                                
+                                <li></i><a href="/admin/product/size"><i class="ti-plus"></i>Add Size</a></li>
+                                <!-- <li><a href="#"><i class="ti-pencil-alt"></i>Manage Product</a></li> -->
                             </ul>
                         </li>
+
+                        
                         
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart-full"></i> <span> Product </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="#"><i class="ti-plus"></i>Add Product</a></li>
+                                <li></i><a href="/admin/product/product"><i class="ti-plus"></i>Add Product</a></li>
                                 <li><a href="#"><i class="ti-pencil-alt"></i>Manage Product</a></li>
                             </ul>
                         </li>
@@ -75,18 +77,18 @@
                             </ul>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a href="/admin" class="waves-effect">
                                 <i class="ti-image"></i>
                                 <span> Media </span>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-layout-media-overlay"></i> <span> Frontend Managed </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="#"><i class="ti-layout-slider"></i>Add Slider</a></li>
-                                <li><a href="#"><i class="ti-layout-list-thumb-alt"></i>Add Banner</a></li>
+                                <li></i><a href="/admin/product/slider"><i class="ti-layout-slider"></i>Add Slider</a></li>
+                                <li><a href="/admin/product/manageslider"><i class="ti-layout-list-thumb-alt"></i>Manage Slider</a></li>
                             </ul>
                         </li>
 

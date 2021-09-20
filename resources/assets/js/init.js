@@ -12,6 +12,9 @@
                 SHOPIFYNEPAL.admin.delete();
                 SHOPIFYNEPAL.admin.create();
                 break;
+                case 'adminSizes':
+                    SHOPIFYNEPAL.admin.delete();
+                    break;
             default:
                 //do nothing
         }

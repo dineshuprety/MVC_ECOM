@@ -118,7 +118,7 @@ class SubCategoryController extends BaseController
                 Session::add('success', 'Subcategory Deleted');
                 Redirect::to('/admin/product/categories');
             }
-            throw new \Exception('Token mismatch');
+            Redirect::to('/admin/product/categories');
         }
         
         return null;

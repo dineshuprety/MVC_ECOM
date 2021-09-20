@@ -13,11 +13,11 @@
 <body data-page-id="@yield('data-page-id')" class="fixed-left">
 
         <!-- Loader --> 
-            <div id="preloader">
+            <!-- <div id="preloader">
                 <div id="status">
                     <div class="spinner"></div>
                 </div>
-            </div>
+            </div> -->
         <!-- Begin page -->
         <div id="wrapper">
 

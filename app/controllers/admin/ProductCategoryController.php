@@ -24,8 +24,8 @@ class ProductCategoryController extends BaseController
         $subTotal = SubCategory::all()->count();
         $object = new Category;
     
-        list($this->categories, $this->links) = paginate(3, $total, $this->table_name, $object);
-        list($this->subcategories, $this->subcategories_links) = paginate(3, $subTotal, 'sub_categories', new SubCategory);
+        list($this->categories, $this->links) = paginate(6, $total, $this->table_name, $object);
+        list($this->subcategories, $this->subcategories_links) = paginate(6,$subTotal, 'sub_categories', new SubCategory);
     }
     
     public function show()
@@ -122,7 +122,7 @@ class ProductCategoryController extends BaseController
                 Session::add('success', 'Category Deleted');
                 Redirect::to('/admin/product/categories');
             }
-            throw new \Exception('Token mismatch');
+            die('token mismatch');
         }
         
         return null;
