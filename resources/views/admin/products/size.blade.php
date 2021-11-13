@@ -1,6 +1,6 @@
 @extends('admin.layout.base')
 @section('title', 'Product size')
-@section('data-page-id', 'adminSizes')
+@section('data-page-id', 'adminCategories')
 @section('content')
 <div class="container-fluid">
 @include('includes.message')
@@ -42,22 +42,22 @@
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach($sizes as $size)
+                  @foreach($sizes as $size)
                      <tr>
                         <td class="c-table__cell">{{ $size['name'] }}</td>
                         <td class="c-table__cell">{{ $size['added'] }}</td>
                         <td class="c-table__cell">
                            <!-- deleted size button -->
-                           <span data-toggle="tooltip" data-placement="top" title="Delete Category"style="display:inline-block">
-                              <form method="POST" action="/admin/product/size/{{$size['id']}}/delete" class="delete-item">
+                           <span data-toggle="tooltip" data-placement="top" title="Delete size"style="display:inline-block">
+                              <form  action="/admin/product/size/{{$size['id']}}/delete" method="POST" class="delete-item">
                                  <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                  <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                                  <i class="fa fa-trash"></i></button>
-                                 </from>
+                              </from>
                            </span>
                         </td>
                      </tr>
-                     @endforeach
+                  @endforeach
                   </tbody>
                </table>
                <!-- table end -->

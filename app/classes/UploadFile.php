@@ -91,26 +91,25 @@ class UploadFile
      * @param $new_filename
      * @return null|static
      */
-    // public static function move($temp_path, $folder, $file, $new_filename = '')
-    // {
-    //     $fileObj = new static;
-    //     $ds = DIRECTORY_SEPARATOR;
+    public static function move($temp_path, $folder, $file, $new_filename = '')
+    {
+        $fileObj = new static;
+        $ds = DIRECTORY_SEPARATOR;
         
-    //     $fileObj->setName($file, $new_filename);
-    //     $file_name = $fileObj->getName();
+        $fileObj->setName($file, $new_filename);
+        $file_name = $fileObj->getName();
         
-    //     if(!is_dir($folder)){
-    //         mkdir($folder, 0777, true);
-    //     }
+        if(!is_dir($folder)){
+            mkdir($folder, 0777, true);
+        }
         
-    //     $fileObj->path = "{$folder}{$ds}{$file_name}";
-    //     $absolute_path = BASE_PATH."{$ds}public{$ds}$fileObj->path";
+        $fileObj->path = "{$folder}{$ds}{$file_name}";
+        $absolute_path = BASE_PATH."{$ds}public{$ds}$fileObj->path";
         
-    //     if(move_uploaded_file($temp_path, $absolute_path)){
-    //         return $fileObj;
-    //     }
+        if(move_uploaded_file($temp_path, $absolute_path)){
+            return $fileObj;
+        }
         
-    //     return null;
-    // }
-    
+        return null;
+    }
 }

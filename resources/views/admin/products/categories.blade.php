@@ -172,9 +172,9 @@
                            <!-- deleted subcategory button -->
                            <span data-toggle="tooltip" data-placement="top" title="Delete SubCategory"style="display:inline-block">
                               <form method="POST" action="/admin/product/subcategory/{{$subcategory['id']}}/delete" class="delete-item">
-                                 <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
-                                 <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
-                                 <i class="fa fa-trash"></i></button>
+                                    <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                                    <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fa fa-trash"></i></button>
                                  </from>
                            </span>
                         </td>

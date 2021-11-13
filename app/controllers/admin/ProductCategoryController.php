@@ -40,7 +40,6 @@ class ProductCategoryController extends BaseController
     {
         if(Request::has('post')){
             $request = Request::get('post');
-            
             if(CSRFToken::verifyCSRFToken($request->token)){
                 $rules = [
                   'name' => ['required' => true, 'minLength' => 3, 'string' => true, 'unique' => 'categories']
@@ -122,7 +121,7 @@ class ProductCategoryController extends BaseController
                 Session::add('success', 'Category Deleted');
                 Redirect::to('/admin/product/categories');
             }
-            die('token mismatch');
+            Redirect::to('/admin/product/categories');
         }
         
         return null;

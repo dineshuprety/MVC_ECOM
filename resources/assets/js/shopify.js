@@ -3,6 +3,8 @@
 
     window.SHOPIFYNEPAL = {
       global: {},
-      admin: {}
+      admin: {},
+      homeslider: {},
+      product: {}
     };
 })();
