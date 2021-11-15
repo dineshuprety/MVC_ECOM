@@ -1,5 +1,5 @@
  <!-- Header Area Start  -->
- <header class="main-header @yield('headerclass')">
+ <header class="main-header <?php echo $__env->yieldContent('headerclass'); ?>">
                 <!-- Header top Area Start  -->
                 <div class="header-top-nav">
                     <div class="container-fluid">
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <!-- mobile menu -->
-                        @include('includes.mobilenav')
+                        <?php echo $__env->make('includes.mobilenav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         <!-- mobile menu end-->
                     </div>
                 </div>

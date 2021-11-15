@@ -1,26 +1,26 @@
-@extends('layouts.app') 
-@section('title', 'Homepage')
-@section('data-page-id', 'home') 
-@section('headerclass', 'home-2')
-@section('content')
+ 
+<?php $__env->startSection('title', 'Homepage'); ?>
+<?php $__env->startSection('data-page-id', 'home'); ?> 
+<?php $__env->startSection('headerclass', 'home-2'); ?>
+<?php $__env->startSection('content'); ?>
 <!-- Slider Arae Start -->
 
 <div class="slider-area">
    <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
-      @if(count($slider)) @foreach($slider as $sliders)
+      <?php if(count($slider)): ?> <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sliders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <!-- Slider Single Item Start -->
-      <div class="slider-height-13 d-flex align-items-start justify-content-start bg-img" style="background-image:url(/{{str_replace('\\','/',$sliders->image_path)}}">
+      <div class="slider-height-13 d-flex align-items-start justify-content-start bg-img" style="background-image:url(/<?php echo e(str_replace('\\','/',$sliders->image_path)); ?>">
          <div class="container">
             <div class="slider-content-15 slider-content-13 slider-animated-1 text-left">
                <h1 class="animated">
-                  <strong>{{$sliders['title']}}</strong>
+                  <strong><?php echo e($sliders['title']); ?></strong>
                </h1>
-               <p class="animated">{{$sliders['description']}}</p>
-               <a href="{{$sliders['url']}}" class="shop-btn animated">SHOP NOW</a>
+               <p class="animated"><?php echo e($sliders['description']); ?></p>
+               <a href="<?php echo e($sliders['url']); ?>" class="shop-btn animated">SHOP NOW</a>
             </div>
          </div>
       </div>
-      <!-- Slider Single Item End --> @endforeach @else
+      <!-- Slider Single Item End --> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php else: ?>
       <!-- Slider Single Item Start -->
       <div class="slider-height-13 d-flex align-items-start justify-content-start bg-img" style="background-image: url('https://estore.dineshuprety.com.np/ecom/assets/images/slider-image/sample-29.jpg');">
          <div class="container">
@@ -33,7 +33,7 @@
             </div>
          </div>
       </div>
-      <!-- Slider Single Item End --> @endif
+      <!-- Slider Single Item End --> <?php endif; ?>
    </div>
 </div>
 <!-- Slider Arae End -->
@@ -85,13 +85,13 @@
       <div class="tab-pane active">
          <!-- Best Sell Slider Carousel Start -->
          <div class="best-sell-slider owl-carousel owl-nav-style-3">
-            <!-- Product Single Item --> @if(count($featureproducts)) @foreach($featureproducts as $featureproduct) 
+            <!-- Product Single Item --> <?php if(count($featureproducts)): ?> <?php $__currentLoopData = $featureproducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $featureproduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
             <div class="product-inner-item">
                <article class="list-product mb-30px">
                   <div class="img-block">
-                     <a href="/product/{{$featureproduct['id']}}" class="thumbnail">
-                     <img class="first-img" src="/{{$featureproduct['product_image_path']}}" alt="{{$featureproduct['title']}}" />
-                     <img class="second-img" src="/{{$featureproduct['hover_image_path']}}" alt="{{$featureproduct['title']}}" />
+                     <a href="/product/<?php echo e($featureproduct['id']); ?>" class="thumbnail">
+                     <img class="first-img" src="/<?php echo e($featureproduct['product_image_path']); ?>" alt="<?php echo e($featureproduct['title']); ?>" />
+                     <img class="second-img" src="/<?php echo e($featureproduct['hover_image_path']); ?>" alt="<?php echo e($featureproduct['title']); ?>" />
                      </a>
                      <div class="add-to-link">
                         <ul>
@@ -108,24 +108,24 @@
                      <li class="new">Feature</li>
                   </ul>
                   <div class="product-decs text-center">
-                     <a class="inner-link" href="/product/{{$featureproduct['id']}}">
+                     <a class="inner-link" href="/product/<?php echo e($featureproduct['id']); ?>">
                      <span>Shopify Nepal</span>
                      </a>
                      <h2>
-                        <a href="/product/{{$featureproduct['id']}}" class="product-link">{{$featureproduct['title']}}</a>
+                        <a href="/product/<?php echo e($featureproduct['id']); ?>" class="product-link"><?php echo e($featureproduct['title']); ?></a>
                      </h2>
                      <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                      <div class="pricing-meta">
                         <ul>
-                           <li class="old-price not-cut">Rs {{$featureproduct['price']}}</li>
+                           <li class="old-price not-cut">Rs <?php echo e($featureproduct['price']); ?></li>
                         </ul>
                      </div>
                   </div>
                </article>
             </div>
-            @endforeach @else 
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php else: ?> 
             <p> NO DATA FOUND</p>
-            @endif
+            <?php endif; ?>
             <!-- Best Sell Slider Carousel End -->
          </div>
       </div>
@@ -170,14 +170,14 @@
       <div class="tab-pane active">
          <!-- Best Sell Slider Carousel Start -->
          <div class="best-sell-slider owl-carousel owl-nav-style-3">
-            @if(count($hotproducts))
-            <!-- Product Single Item --> @foreach($hotproducts as $hotproduct) 
+            <?php if(count($hotproducts)): ?>
+            <!-- Product Single Item --> <?php $__currentLoopData = $hotproducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hotproduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
             <div class="product-inner-item">
                <article class="list-product mb-30px">
                   <div class="img-block">
-                     <a href="/product/{{$hotproduct['id']}}" class="thumbnail">
-                     <img class="first-img" src="/{{$hotproduct['product_image_path']}}" alt="{{$hotproduct['title']}}" />
-                     <img class="second-img" src="/{{$hotproduct['hover_image_path']}}" alt="{{$hotproduct['title']}}" />
+                     <a href="/product/<?php echo e($hotproduct['id']); ?>" class="thumbnail">
+                     <img class="first-img" src="/<?php echo e($hotproduct['product_image_path']); ?>" alt="<?php echo e($hotproduct['title']); ?>" />
+                     <img class="second-img" src="/<?php echo e($hotproduct['hover_image_path']); ?>" alt="<?php echo e($hotproduct['title']); ?>" />
                      </a>
                      <div class="add-to-link">
                         <ul>
@@ -194,31 +194,31 @@
                      <li class="new">Sales</li>
                   </ul>
                   <div class="product-decs text-center">
-                     <a class="inner-link" href="/product/{{$hotproduct['id']}}">
+                     <a class="inner-link" href="/product/<?php echo e($hotproduct['id']); ?>">
                      <span>Shopify Nepal</span>
                      </a>
                      <h2>
-                        <a href="/product/{{$hotproduct['id']}}" class="product-link">{{$hotproduct['title']}}</a>
+                        <a href="/product/<?php echo e($hotproduct['id']); ?>" class="product-link"><?php echo e($hotproduct['title']); ?></a>
                      </h2>
                      <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                      <div class="pricing-meta">
-                        @if($hotproduct['product_on'] == 1) 
+                        <?php if($hotproduct['product_on'] == 1): ?> 
                         <ul>
-                           <li class="old-price">Rs {{$hotproduct['price']}}</li>
-                           <li class="current-price">Rs {{$hotproduct['sales_price']}}</li>
-                           @php
+                           <li class="old-price">Rs <?php echo e($hotproduct['price']); ?></li>
+                           <li class="current-price">Rs <?php echo e($hotproduct['sales_price']); ?></li>
+                           <?php 
                            $discount_per = (($hotproduct['price'] - $hotproduct['sales_price']) * 100) / $hotproduct['price'];
-                           @endphp
-                           <li class="discount-price">-{{$discount_per}}%</li>
+                            ?>
+                           <li class="discount-price">-<?php echo e($discount_per); ?>%</li>
                         </ul>
-                        @endif 
+                        <?php endif; ?> 
                      </div>
                   </div>
                </article>
             </div>
-            @endforeach @else 
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php else: ?> 
             <p> NO DATA FOUND</p>
-            @endif
+            <?php endif; ?>
          </div>
       </div>
    </div>
@@ -394,7 +394,7 @@
       </div>
    </div>
    <!-- Tab panes -->
-   <div class="row display-products" data-token="{{ $token }}" id="root">
+   <div class="row display-products" data-token="<?php echo e($token); ?>" id="root">
       <div class="col-xl-3 col-md-4 col-sm-6" v-cloak v-for="product in products">
          <article class="list-product mb-30px">
             <div class="img-block">
@@ -423,17 +423,17 @@
                <span>Shopify Nepal</span>
                </a>
                <h2>
-                  <a :href="'/product/'+ product.id" class="product-link">@{{ stringLimit(product.title, 18) }}</a>
+                  <a :href="'/product/'+ product.id" class="product-link">{{ stringLimit(product.title, 18) }}</a>
                </h2>
                <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                <div class="pricing-meta">
                   <ul v-if="product.product_on == 1">
-                     <li class="old-price">Rs @{{product.price}}</li>
-                     <li class="current-price">Rs @{{product.sales_price}}</li>
-                     <li class="discount-price">-@{{ discountedPrice(product) }}%</li>
+                     <li class="old-price">Rs {{product.price}}</li>
+                     <li class="current-price">Rs {{product.sales_price}}</li>
+                     <li class="discount-price">-{{ discountedPrice(product) }}%</li>
                   </ul>
                   <ul v-else>
-                     <li class="old-price not-cut">Rs @{{product.price}}</li>
+                     <li class="old-price not-cut">Rs {{product.price}}</li>
                   </ul>
                </div>
             </div>
@@ -446,4 +446,5 @@
     
    </div>
 </section>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

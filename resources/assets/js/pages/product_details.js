@@ -8,8 +8,7 @@
                 product: [],
                 category: [],
                 subCategory: [],
-                // productSize: [],
-                // similarProducts: [],
+                similarProducts: [],
                 productId: $('#product').data('id'),
                 loading: false
             },
@@ -21,9 +20,7 @@
                             app.product = response.data.product;
                             app.category = response.data.category;
                             app.subCategory = response.data.subCategory;
-                            // app.productSize = response.data.productSize;
-
-                            // app.similarProducts = response.data.similarProducts;
+                            app.similarProducts = response.data.similarProducts;
                             app.loading = false;
                         });
                     }, 1000);

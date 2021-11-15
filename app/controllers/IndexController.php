@@ -34,6 +34,7 @@ class IndexController extends BaseController
             $item_per_page = $count + $request->next;
             $products = Product::skip(0)->take($item_per_page)->get();
             echo json_encode(['products' => $products, 'count' => count($products)]);
+            exit;
         }
     }
 

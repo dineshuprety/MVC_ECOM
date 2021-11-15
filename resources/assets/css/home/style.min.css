@@ -64,6 +64,8 @@
 
 /*common css*/ 
 
+
+
 body{
     font-family: "Open Sans",sans-serif;
     font-size: 14px;
@@ -224,6 +226,15 @@ button{
 /*  2. Element Style Css
 /*----------------------------------------*/
 
+[v-cloak] .v-cloak--hidden{
+    display: none;
+  }
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+  }
 
 /*----------------------------------------*/
 /*  2.1. Owl Dot Style

@@ -7,6 +7,7 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
         el: '#root',
         data:{
             products: [],
+            count: 0,
             loading: false
         },
 
@@ -14,8 +15,9 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
             getProducts: function () {
                 this.loading = true;
                 axios.get('/get-products').then(function(response){
-                    console.log(response.data);
+                    // console.log(response.data);
                     app.products = response.data.products;
+                    app.count = response.data.count;
                     app.loading = false;
                 
                 });
@@ -38,13 +40,14 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
             loadMoreProducts: function () {
                 var token = $('.display-products').data('token');
                 this.loading = true;
-                var data = $.param({next: 4, token: token, count: app.count});
-                axios.post('/load-more', data)
-                    .then(function (response) {
-                        app.products = response.data.products;
-                        app.count = response.data.count;
-                        app.loading = false;
-                    });
+                    var data = $.param({next: 4, token: token, count: app.count});
+                    axios.post('/load-more', data)
+                        .then(function (response) {
+                            app.products = response.data.products;
+                            app.count = response.data.count;
+                            app.loading = false;
+                        });
+                
             }
             
         },
@@ -57,6 +60,8 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
             $(window).scroll(function () {
                 if($(window).scrollTop() + $(window).height() == $(document).height()){
                     app.loadMoreProducts();
+                }else{
+                    app.loading = false;
                 }
             })
         }
