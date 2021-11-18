@@ -26,11 +26,16 @@
                     }, 1000);
                 },
                 stringLimit: function (string, value) {
-                    if(string.length > value){
-                        return string.substring(0, value) + '...';
-                    }else{
-                        return string;
-                    }
+                    return SHOPIFYNEPAL.module.truncateString(string, value);
+                },
+
+                addToCart: function (id) {
+                    SHOPIFYNEPAL.module.addItemToCart(id, function (message) {
+                        
+                        $(".notify").css("display", 'block').delay(4000).slideUp(300)
+                            .html(message);
+                        
+                    });
                 }
             },
             created: function () {

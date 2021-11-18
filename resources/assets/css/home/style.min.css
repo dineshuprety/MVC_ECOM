@@ -226,14 +226,39 @@ button{
 /*  2. Element Style Css
 /*----------------------------------------*/
 
-[v-cloak] .v-cloak--hidden{
-    display: none;
-  }
+[v-cloak] {display: none}
+
   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50px;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    right: 50%;
+    bottom: 5%;
+    background-color: transparent;
+    z-index: 999999;
+  }
+
+  .notify{
+    display: none;
+    position: fixed;
+    padding: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: 300px;
+    border-radius: 0.5rem;
+    background-color: #00AA00;
+    color: #ffffff;
+    z-index: 999999;
+    
+  }
+
+  .product-center{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    background-color: transparent;
   }
 
 /*----------------------------------------*/
@@ -6730,9 +6755,9 @@ h3.cart-page-title {
     padding: 30px 0px 60px;
 }
 .cart-shiping-update-wrapper .cart-shiping-update > a, .cart-shiping-update-wrapper .cart-clear > button, .cart-shiping-update-wrapper .cart-clear > a {
-    background-color: #f2f2f2;
+    background-color: #ef1e1e;
     border-radius: 50px;
-    color: #253237;
+    color: #f2f2f2;
     display: inline-block;
     font-size: 14px;
     font-weight: 600;
@@ -6750,8 +6775,8 @@ h3.cart-page-title {
     transition: all 0.3s ease 0s;
 }
 .cart-shiping-update-wrapper .cart-shiping-update > a:hover, .cart-shiping-update-wrapper .cart-clear > button:hover, .cart-shiping-update-wrapper .cart-clear > a:hover {
-    background-color: #4fb68d;
-    color: #fff;
+    background-color: #000000;
+    color: #f2f2f2;
 }
 
 .cart-tax, .discount-code-wrapper, .grand-totall {

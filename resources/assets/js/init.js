@@ -16,6 +16,10 @@
             case 'search':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 break;
+            case 'cart':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.product.cart();
+                break;
             case 'adminProduct':
                 SHOPIFYNEPAL.admin.changeEvent();
                 break;

@@ -1,1 +1,0 @@
-<h1 style="float: center;">Page not found</h1>

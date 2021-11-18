@@ -5,4 +5,5 @@
           <!--Navigation -->
             @include('includes.nav')
         @yield('content')
+        <div class="notify text-center" ></div> 
 @stop

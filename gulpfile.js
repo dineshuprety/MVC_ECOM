@@ -44,16 +44,16 @@ gulp.task('js', function(){
    .pipe(gulp.dest('public/css/'));
 });
 
-gulp.task('admin', function(){
-   gulp.src([
-      'resources/assets/css/admin/*.css'
+// gulp.task('admin', function(){
+//    gulp.src([
+//       'resources/assets/css/admin/*.css'
       
-     ])
+//      ])
 
-   .pipe(concat('admin.css'))
-   .pipe(minify())
-   .pipe(gulp.dest('public/css/'));
-});
+//    .pipe(concat('admin.css'))
+//    .pipe(minify())
+//    .pipe(gulp.dest('public/css/'));
+// });
  
- gulp.task('default',['js','home', 'admin'],function(){
+ gulp.task('default',['js','home'],function(){
  });

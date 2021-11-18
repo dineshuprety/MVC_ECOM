@@ -122,7 +122,18 @@
         ]
     });
 
-   
+    
+    
+
+   /*--------------------------
+        ScrollUp
+    ---------------------------- */
+    $.scrollUp({
+        scrollText: '<i class="fa fa-arrow-up"></i>',
+        easingType: 'linear',
+        scrollSpeed: 900,
+        animation: 'fade'
+    });
     /*--------------------------
             Product Zoom
     ---------------------------- */
@@ -146,6 +157,17 @@
         });
     });
 
+ /*---------------------------
+       Menu Fixed On Scroll Active
+    ------------------------------ */
+    $(window).scroll(function () {
+        var window_top = $(window).scrollTop() + 1;
+        if (window_top > 50) {
+          $('.sticky-nav').addClass('menu_fixed animated fadeInDown');
+        } else {
+          $('.sticky-nav').removeClass('menu_fixed animated fadeInDown');
+        }
+      });
 
     /*---------------------------
        Window On Load Functions Active
