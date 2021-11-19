@@ -14,11 +14,11 @@ $router->map('POST' , '/search' ,
 'App\Controllers\IndexController@search' ,'search_product');
 
 // cart routeing
-$router->map('POST', '/cart', 'App\Controllers\CartController@addItem', 'add_cart_item');
-$router->map('GET', '/cart', 'App\Controllers\CartController@show', 'show_cart_item');
-$router->map('GET', '/cart/items', 'App\Controllers\CartController@getCartItems', 'get_cart_items');
-
+include 'cart.php';
 
 // include admin router
 include 'admin_routes.php';
+
+// include auth router
+include 'auth.php';
 

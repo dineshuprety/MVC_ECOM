@@ -21,20 +21,23 @@ class Cart
                 foreach ($_SESSION['user_cart'] as $cart_items){
                     $index++;
                     foreach ($cart_items as $key => $value){
-                        if($key == 'product_id' && $value == $request->product_id){
-                            
+                            // $productId = ($key=='product_id' && $value == $request->product_id );
+                            // $sizeId = ($key=='size_id' && $value == $request->size_id );
+                        if($key=='product_id' && $value == $request->product_id){
+                           
                                 array_splice($_SESSION['user_cart'], $index-1, 1,
                                 array(
                                     [
                                         'product_id' => $request->product_id,
                                         'quantity' => $cart_items['quantity'] + 1,
-                                        // 'size_id' => $request->size_id
+                                       
                                     ]
                                 ));
                                 self::$isItemInCart = true;
+                                
+                               
 
                         }
-                       
                         
                     }
                     
@@ -49,6 +52,7 @@ class Cart
                         'size_id' => $request->size_id
                         
                     ]);
+                    self::$isItemInCart = false;
                 }
                
             }

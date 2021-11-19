@@ -10,8 +10,6 @@ use App\Models\Size;
 use App\Models\Productattribute;
 
 
-
-
 class CartController extends BaseController
 {
     public function show()

@@ -51,3 +51,14 @@ function paginate($num_of_records, $total_record, $table_name, $object)
     
     return [$categories, $pages->page_links()];
 }
+
+function isAuthenticated(){
+    return Session::has(SESSION_USER_NAME)? true : false;
+}
+
+function user(){
+    if(isAuthenticated()){
+        return user::findorFail(Session::get(SESSION_USER_ID));
+    }
+    return false;
+}
