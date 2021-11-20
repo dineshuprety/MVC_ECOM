@@ -69,8 +69,8 @@
                                                     </td>
                                                     <td class="product-subtotal">Rs @{{ item.total }}</td>
                                                     <td class="product-remove">
-                                                        <a href="#"><i class="fa fa-pencil-alt"></i></a>
-                                                        <a href="#"><i class="fa fa-times"></i></a>
+                                                        <a href="#"><i class="ionicons ion-edit"></i></a>
+                                                        <a href="#"><i class="ionicons ion-android-delete"></i></a>
                                                     </td>
                                                 </tr>
                                                 

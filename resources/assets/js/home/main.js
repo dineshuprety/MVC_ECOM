@@ -129,7 +129,7 @@
         ScrollUp
     ---------------------------- */
     $.scrollUp({
-        scrollText: '<i class="fa fa-arrow-up"></i>',
+        scrollText: '<i class="ionicons ion-android-arrow-up"></i>',
         easingType: 'linear',
         scrollSpeed: 900,
         animation: 'fade'

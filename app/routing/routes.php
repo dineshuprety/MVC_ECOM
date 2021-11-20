@@ -13,12 +13,8 @@ $router->map('GET', '/product-details/[i:id]', 'App\Controllers\ProductControlle
 $router->map('POST' , '/search' , 
 'App\Controllers\IndexController@search' ,'search_product');
 
-// cart routeing
-include 'cart.php';
+require_once  __DIR__ . '/cart.php';
 
-// include admin router
-include 'admin_routes.php';
+require_once __DIR__ . '/auth.php';
 
-// include auth router
-include 'auth.php';
-
+require_once __DIR__ . '/admin_routes.php';

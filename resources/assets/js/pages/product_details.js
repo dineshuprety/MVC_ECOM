@@ -28,15 +28,17 @@
                 stringLimit: function (string, value) {
                     return SHOPIFYNEPAL.module.truncateString(string, value);
                 },
-
                 addToCart: function (id) {
                     SHOPIFYNEPAL.module.addItemToCart(id, function (message) {
-                        
                         $(".notify").css("display", 'block').delay(4000).slideUp(300)
                             .html(message);
-                        
                     });
-                }
+                },
+                discountedPrice: function (product_price) {
+
+                    return ((product_price.price - product_price.sales_price) * 100) / product_price.price;
+    
+                },
             },
             created: function () {
                 this.getProductDetails();

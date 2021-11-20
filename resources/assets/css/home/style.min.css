@@ -2632,7 +2632,7 @@ ul.dropdown-nav>li>a {
     right: auto;
     width: 18px;
     height: 18px;
-    content: "2";
+    /* content: "2"; */
     background: #4fb68d;
     color: #fff;
     line-height: 18px;

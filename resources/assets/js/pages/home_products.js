@@ -27,9 +27,9 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
              return SHOPIFYNEPAL.module.truncateString(string, value);
             },
 
-            discountedPrice: function (product) {
+            discountedPrice: function (product_price) {
 
-                return ((product.price - product.sales_price) * 100) / product.price;
+                return ((product_price.price - product_price.sales_price) * 100) / product_price.price;
 
             },
 

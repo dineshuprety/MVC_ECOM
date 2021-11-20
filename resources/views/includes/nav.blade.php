@@ -1,3 +1,4 @@
+<?php $categories = \App\Models\Category::with('subCategories')->get(); ?>
  <!-- Header Area Start  -->
  <header class="main-header @yield('headerclass')">
                 <!-- Header top Area Start  -->
@@ -17,21 +18,37 @@
                                     <div class="dropdown-navs">
                                         <ul>
                                             <!-- Settings Start  -->
+                                            @if(isAuthenticated())
                                             <li class="dropdown after-n">
-                                                <a class="angle-icon" href="#">Settings</a>
+                                                <a class="angle-icon" href="#">{{user()->username}}</a>
                                                 <ul class="dropdown-nav">
-                                                    <li><a href="my-account.html">My Account</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="login.html">Login</a></li>
+                                                    <li><a href="/cart">Cart</a><li>
+                                                    <li><a href="#">Checkout</a></li>
+                                                    <li><a href="/logout">Logout</a></li>
+                                                    <!-- <li><a href="my-account.html">My Account</a></li> -->
+                                                    
+                                                    <!-- <li><a href="login.html">Login</a></li> -->
+                                                   
                                                 </ul>
                                             </li>
+                                            @else
+                                            <li class="dropdown after-n">
+                                                <a class="angle-icon" href="/login">login</a>
+                                                <ul class="dropdown-nav">
+                                                    <li><a href="/register">Register</a><li>
+                                                    <li><a href="/cart">Cart</a><li>
+                                                   
+                                                </ul>
+                                            </li>
+                                            @endif
+
                                             <!-- Settings end  -->
                                         
                                             <!-- Language Start -->
                                             <li class="top-10px mr-15px">
                                                 <select>
-                                                    <option value="1">English</option>
-                                                    <option value="2">France</option>
+                                                    
+                                                    <option value="2">comming soon</option>
                                                 </select>
                                             </li>
                                             <!-- Language End -->
@@ -59,20 +76,41 @@
                                 <!--Main Navigation Start -->
                                 <div class="main-navigation d-none d-lg-block" >
                                     <ul>
+                                    @if(count($categories))
+                                    <li class="menu-dropdown">
+                                            <a href="#"><i class="ionicons ion-android-menu"></i> All Categories <i class="ion-ios-arrow-down"></i></a>
+                                            <ul class="sub-menu">
+                                            @foreach($categories as $category)
+                                                <li class="menu-dropdown position-static">
+                                                    <a href="#">{{ $category->name }}<i class="ion-ios-arrow-down"></i></a>
+                                                    @if(count($category->subCategories))
+                                                    <ul class="sub-menu sub-menu-2">
+                                                    @foreach($category->subCategories as $subCategory)
+                                                        <li><a href="#">
+                                                                {{ $subCategory->name }}
+                                                            </a></li>
+                                                         @endforeach
+                                                    </ul>
+                                                    @endif
+                                                </li>
+                                                @endforeach 
+                                            </ul>
+                                        </li>
+                                        @endif
                                         <li class="menu-dropdown">
-                                            <a href="#">Home </a>
+                                            <a href="/">Home </a>
                                            
                                         </li>
                                         <li class="menu-dropdown">
-                                            <a href="#">Shop </a>
+                                            <a href="/shop">Shop </a>
                                             
                                         </li>
                                         
                                         <li class="menu-dropdown">
-                                            <a href="#">About Me </a>
+                                            <a href="about">About Me </a>
                                             
                                         </li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="/contact">Contact Us</a></li>
                                     </ul>
                                 </div>
                                 <!--Main Navigation End -->

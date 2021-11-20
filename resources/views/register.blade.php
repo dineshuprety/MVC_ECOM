@@ -39,18 +39,23 @@
                                             @include('includes.message')
                                                 <form action="/register" method="POST">
                                                 <input type="text" name="fullname" placeholder="Your name"
-                                                    value="{{ \App\Classes\Request::old('post', 'fullname') }}">
+                                                    value="{{ \App\Classes\Request::old('post', 'fullname') }}" >
                                                     
                                                     <input type="text" name="email" placeholder="Your Email Address"
                                                         value="{{ \App\Classes\Request::old('post', 'email') }}">
                                                     
                                                     <input type="text" name="username" placeholder="Your Username"
                                                         value="{{ \App\Classes\Request::old('post', 'username') }}">
+                                                        <input type="text" name="phonenumber" placeholder="Your Phone Number"
+                                                        value="{{ \App\Classes\Request::old('post', 'phonenumber') }}">
                                 
                                                     <input type="password" name="password" placeholder="Your Password">
                                                     <textarea class="form-control"  name="address" placeholder="Your Address" rows="3">{{\App\Classes\Request::old('post', 'address')}}</textarea><br>
                                                     <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                                     <div class="button-box">
+                                                            <div class="login-toggle-btn">
+                                                                <p>You have a account <a href="/login">Login Here</a> </p>
+                                                            </div>
                                                         <button type="submit"><span>Register</span></button>
                                                     </div>
                                                 </form>

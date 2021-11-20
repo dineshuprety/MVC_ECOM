@@ -3,6 +3,8 @@ use Philo\Blade\Blade;
 use voku\helper\Paginator;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Carbon\Carbon;
+use App\Classes\Session;
+use App\Models\User;
 
 function view($path, array $data = [])
 {
@@ -52,13 +54,15 @@ function paginate($num_of_records, $total_record, $table_name, $object)
     return [$categories, $pages->page_links()];
 }
 
-function isAuthenticated(){
-    return Session::has(SESSION_USER_NAME)? true : false;
+function isAuthenticated()
+{
+    return Session::has('SESSION_USER_NAME') ? true : false;
 }
 
-function user(){
+function user()
+{
     if(isAuthenticated()){
-        return user::findorFail(Session::get(SESSION_USER_ID));
+        return User::findOrFail(Session::get('SESSION_USER_ID'));
     }
     return false;
 }

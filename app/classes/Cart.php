@@ -23,8 +23,10 @@ class Cart
                     $index++;
                     foreach ($cart_items as $key => $value){
                        
-                        if($key=='product_id' && $request->product_id){
-                           
+                        if($key=='product_id' && $value == $request->product_id){
+								//$key=='size_id' && $value == $request->size_id 
+								//	self::$isItemInCart = false;
+								
                                 array_splice($_SESSION['user_cart'], $index-1, 1,
                                 array(
                                     [
@@ -34,10 +36,9 @@ class Cart
                                     ]
                                 ));
                                 self::$isItemInCart = true;
-                                
-                               
-
+						
                         }
+						
                         
                     }
                     
@@ -52,7 +53,7 @@ class Cart
                         'size_id' => $request->size_id
                         
                     ]);
-                    self::$isItemInCart = false;
+                  
                 }
                
             }

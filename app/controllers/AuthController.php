@@ -45,6 +45,7 @@ class AuthController extends BaseController
                   'email' => ['required' => true, 'email' => true, 'unique' => 'users'],
                   'password' => ['required' => true, 'minLength' => 6],
                   'fullname' => ['required' => true, 'minLength' => 6, 'maxLength' => 50],
+                  'phone_number' => ['required' => true, 'minLength' => 10, 'maxLength' => 10],
                   'address' => ['required' => true, 'minLength' => 4, 'maxLength' => 500, 'mixed' => true]
                 ];
                 
@@ -66,7 +67,7 @@ class AuthController extends BaseController
                     'pan_number' => NULL,       
                     'address' => $request->address,
                     'pan_image' => NULL,
-                    'role' => 'retailer'
+                    'role' => 'user'
                 ]);
                 
                 Request::refresh();
@@ -126,8 +127,9 @@ class AuthController extends BaseController
               ]);
               Request::refresh();
               return view('register/Wholesaler' , ['success' => 'WholeSaler Account created , Please login']);
+              die();
            }
-           // throw new \Exception('Token mismatch');     
+           throw new \Exception('Token mismatch');     
         }
         return null;
     }
@@ -167,16 +169,20 @@ class AuthController extends BaseController
                         
                         if($user->role == 'admin'){
                             Redirect::to('/admin');
+                            die();
                         }else if($user->role == 'user' && Session::has('user_cart')){
                             Redirect::to('/cart');
+                            die();
                         }else{
                             Redirect::to('/');
+                            die();
                         }
                     }
                 }else{
                     Session::add('error', 'User not found, please try again');
                     return view('login');
                 }
+                exit;
             }
             throw new \Exception('Token Mismatch');
         }

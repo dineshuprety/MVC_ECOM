@@ -37,15 +37,15 @@
                                     <div  class="tab-pane active">
                                         <div class="login-form-container">
                                             <div class="login-register-form">
-                                                <form action="/login" method="POST">
+                                                <form action="/login" method="post">
                                                     <input type="text" name="username" value="{{ \App\Classes\Request::old('post', 'username') }}" placeholder="Your Username or Email" />
                                                     <input type="password" name="password" placeholder="Password" />
+                                                    <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                                     <div class="button-box">
                                                         <div class="login-toggle-btn">
                                                             
                                                         <p>Not yet a member? <a href="/register">Register Here</a> </p>
                                                         </div>
-                                                        <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                                         <button type="submit"><span>Login</span></button>
                                                     </div>
                                                 </form>
