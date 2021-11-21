@@ -78,15 +78,15 @@
                                     <ul>
                                     @if(count($categories))
                                     <li class="menu-dropdown">
-                                            <a href="#"><i class="ionicons ion-android-menu"></i> All Categories <i class="ion-ios-arrow-down"></i></a>
+                                            <a href="/products/category"><i class="ionicons ion-android-menu"></i> All Categories <i class="ion-ios-arrow-down"></i></a>
                                             <ul class="sub-menu">
                                             @foreach($categories as $category)
                                                 <li class="menu-dropdown position-static">
-                                                    <a href="#">{{ $category->name }}<i class="ion-ios-arrow-down"></i></a>
+                                                    <a href="/products/category/{{ $category->slug }}">{{ $category->name }}<i class="ion-ios-arrow-down"></i></a>
                                                     @if(count($category->subCategories))
                                                     <ul class="sub-menu sub-menu-2">
                                                     @foreach($category->subCategories as $subCategory)
-                                                        <li><a href="#">
+                                                        <li><a href="/products/category/{{ $category->slug }}/{{ $subCategory->slug }}">
                                                                 {{ $subCategory->name }}
                                                             </a></li>
                                                          @endforeach
@@ -102,7 +102,7 @@
                                            
                                         </li>
                                         <li class="menu-dropdown">
-                                            <a href="/shop">Shop </a>
+                                            <a href="/products">Shop </a>
                                             
                                         </li>
                                         

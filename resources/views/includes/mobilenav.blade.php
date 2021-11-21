@@ -3,22 +3,18 @@
                                 <nav id="mobile-menu-active">
                                     <ul class="menu-overflow">
                                         <li>
-                                            <a href="index.html">HOME</a>
+                                            <a href="/">HOME</a>
                                             
                                         </li>
                                         <li>
-                                            <a href="#">Shop</a>
+                                            <a href="/products">Shop</a>
                                            
                                         </li>
                                         <li>
-                                            <a href="#">Pages</a>
+                                            <a href="/about">About Me</a>
                                             
                                         </li>
-                                        <li>
-                                            <a href="#">Blog</a>
-                                            
-                                        </li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="/contact">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>

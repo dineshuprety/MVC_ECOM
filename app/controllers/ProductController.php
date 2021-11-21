@@ -38,5 +38,10 @@ class ProductController extends BaseController
         echo 'Product not found';
         exit;
     }
+    public function showAll()
+    {
+        $token = CSRFToken::_token();
+        return view('products', compact('token'));
+    }
     
 }
