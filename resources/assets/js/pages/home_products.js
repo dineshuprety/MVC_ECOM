@@ -45,13 +45,12 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
             loadMoreProducts: function () {
                 var token = $('.display-products').data('token');
                 this.loading = true;
-                    var data = $.param({next: 4, token: token, count: app.count});
-                    axios.post('/load-more', data)
-                        .then(function (response) {
-                            app.products = response.data.products;
-                            app.count = response.data.count;
-                            app.loading = false;
-                        });
+                var postdata = { next: 4, token: token, count: this.count };
+                SHOPIFYNEPAL.module.loadMore('/load-more', postdata, function (response) {
+                    app.products = response.products;
+                    app.count = response.count;
+                    app.loading = false;
+                });
             }
             
         },

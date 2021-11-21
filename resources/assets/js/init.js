@@ -19,6 +19,11 @@
             case 'auth':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 break;
+            case 'products':
+            case 'categories':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.products.display();
+                break;
             case 'cart':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.product.cart();

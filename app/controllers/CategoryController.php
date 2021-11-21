@@ -41,33 +41,33 @@ class CategoryController extends BaseController
         return view('categories', compact('token', 'category', 'subcategory', 'showBreadCrumbs', 'urlParams'));
     }
 
-    // public function loadMoreProducts()
-    // {
-    //     $request = Request::get('post');
-    //     if (CSRFToken::verifyCSRFToken($request->token, false)) {
-    //         $count = $request->count;
+    public function loadMoreProducts()
+    {
+        $request = Request::get('post');
+        if (CSRFToken::verifyCSRFToken($request->token, false)) {
+            $count = $request->count;
 
-    //         $subcategory = null;
-    //         if(isset($request->subcategory)){
-    //             $subcategory = SubCategory::findBySlug($request->subcategory);
-    //         }
-    //         $category = null;
-    //         if(isset($request->slug)){
-    //             $category = Category::findBySlug($request->slug);
-    //         }
+            $subcategory = null;
+            if(isset($request->subcategory)){
+                $subcategory = SubCategory::findBySlug($request->subcategory);
+            }
+            $category = null;
+            if(isset($request->slug)){
+                $category = Category::findBySlug($request->slug);
+            }
 
-    //         $item_per_page = $count + $request->next;
-    //         if($subcategory && $category){
-    //             $products = Product::where('category_id', $category->id)
-    //                 ->where('sub_category_id', $subcategory->id)
-    //                 ->skip(0)->take($item_per_page)->get();
-    //         }else if ($category) {
-    //             $products = Product::where('category_id', $category->id)
-    //                 ->skip(0)->take($item_per_page)->get();
-    //         }else {
-    //             $products = Product::skip(0)->take($item_per_page)->get();
-    //         }
-    //         echo json_encode(['products' => $products, 'count' => count($products)]);
-    //     }
-    // }
+            $item_per_page = $count + $request->next;
+            if($subcategory && $category){
+                $products = Product::where('category_id', $category->id)
+                    ->where('sub_category_id', $subcategory->id)
+                    ->skip(0)->take($item_per_page)->get();
+            }else if ($category) {
+                $products = Product::where('category_id', $category->id)
+                    ->skip(0)->take($item_per_page)->get();
+            }else {
+                $products = Product::skip(0)->take($item_per_page)->get();
+            }
+            echo json_encode(['products' => $products, 'count' => count($products)]);
+        }
+    }
 }

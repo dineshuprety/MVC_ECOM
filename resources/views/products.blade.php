@@ -1,17 +1,21 @@
-@extends('layouts.app') @section('title', 'Products') @section('data-page-id', 'products') @section('content') <div class="home">
+@extends('layouts.app') 
+@section('title', 'Products') 
+@section('data-page-id', 'products') 
+@section('content') 
+<div class="home">
   <section class="display-products" data-token="{{ $token }}" id="root">
     <!-- Breadcrumb Area start -->
-    <section class="breadcrumb-area">
+    <section class="breadcrumb-area"  v-cloak>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="breadcrumb-content">
-              <h1 class="breadcrumb-hrading">Search Page</h1>
+              <h1 class="breadcrumb-hrading">Shop Page</h1>
               <ul class="breadcrumb-links">
                 <li>
                   <a href="/">Home</a>
                 </li>
-                <li>{{$searchTerm}}</li>
+                <li>shop</li>
               </ul>
             </div>
           </div>
@@ -20,7 +24,7 @@
     </section>
     <!-- Breadcrumb Area End -->
     <!-- Shop Category Area End -->
-    <div class="shop-category-area">
+    <div class="shop-category-area"  v-cloak>
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12">
@@ -31,7 +35,7 @@
                 <a>
                   <i class="ionicons ion-ios-search-strong"></i>
                 </a>
-                <p>There Are {{}} Products.</p>
+                <p>There Are Products.</p>
               </div>
               <!-- Left Side End -->
             </div>
@@ -40,7 +44,7 @@
             <div class="shop-bottom-area mt-35">
               <div class="row">
                 <!-- Product Single Item -->
-                <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-md-4 col-sm-6"  v-cloak v-for="product in products">
                   <div class="product-inner-item">
                     <article class="list-product mb-30px">
                       <div class="img-block">
@@ -88,10 +92,14 @@
                  </div>
                  <div class="center">
                     <img v-show="loading" src="/images/icons/frontloading.gif" alt="frontloading.gif" width="60px">
-                 </div>
+                </div>
               </div>
             </div>
+            
           </div>
+          <div class="center">
+               <img v-show="loading" src="/images/icons/frontloading.gif" alt="frontloading.gif" width="60px">
+            </div>
           <!-- Shop Bottom Area End -->
         </div>
       </div>

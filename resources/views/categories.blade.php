@@ -51,7 +51,7 @@
             <div class="shop-bottom-area mt-35">
               <div class="row">
                 <!-- Product Single Item -->
-                <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-md-4 col-sm-6"  v-cloak v-for="product in products">
                   <div class="product-inner-item">
                     <article class="list-product mb-30px">
                       <div class="img-block">
