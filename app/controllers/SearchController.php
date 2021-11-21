@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Slider;
+
 use App\Models\Product;
 use App\Classes\CSRFToken;
 use App\Classes\Request;
@@ -10,14 +10,9 @@ use App\Classes\ValidateRequest;
 
 class SearchController extends BaseController
 {
-    public function show()
-    {
-        $token = CSRFToken::_token();
-        return view('search', compact('token'));
-        exit;
-    }
-
+   
     public function search(){
+
         if(Request::has('post')){
             $request = Request::get('post');   
             $rules = ['search'=>['required' => true]];
@@ -29,9 +24,10 @@ class SearchController extends BaseController
             }
             $searchTerm = $request->search;
             $searchResults = Product::where('title', 'LIKE', "%{$searchTerm}%")->get();
-            return view('search', compact('searchResults','searchTerm'));
-            exit;
+            
+            return view('search', compact('searchResults', 'searchTerm'));
         }
+       
     }
 
 

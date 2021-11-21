@@ -1,9 +1,11 @@
 <?php
 
 // search routeing
-$router->map('GET', '/search', 'App\Controllers\SearchController@show', 'search');
+// $router->map('GET', '/search', 'App\Controllers\SearchController@search', 'search');
 
-$router->map('POST' , '/search-product' , 
+$router->map('POST' , '/search' , 
 'App\Controllers\SearchController@search' ,'search_product');
+
+
 
 ?>

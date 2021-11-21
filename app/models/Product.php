@@ -39,6 +39,9 @@ class Product extends Model{
             'sub_category_id' => $item->sub_category_id,
             'sub_category_name' => SubCategory::where('id', $item->sub_category_id)->first()->name,
             'product_image_path' => $item->product_image_path,
+            'hover_image_path' => $item->hover_image_path,
+            'product_on' => $item->product_on,
+            
             'added' => $added->toFormattedDateString()
         ]);
     }
