@@ -26,7 +26,7 @@
                     </nav>
                 </div>
                 @else
-                    <h2>Categories</h2>
+                   
             @endif
 
             <!-- Shop Category Area End -->

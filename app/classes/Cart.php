@@ -10,7 +10,7 @@ class Cart
     public static function add($request)
     {
         $product_id = $request->product_id;
-        $size_id = 2;
+        $size_id = $request->size_id;
         try{
             $index = 0;
             if(!Session::has('user_cart') || count(Session::get('user_cart')) < 1){
@@ -24,7 +24,7 @@ class Cart
                             $productId = ($key=='product_id' && $value == $product_id);
                             $sizeId = ($key=='size_id' && $value == $size_id );
 
-                        if($productId === isset($sizeId)){
+                        if(isset($productId) && isset($sizeId) == true){
                             array_splice($_SESSION['user_cart'], $index-1, 1,
                                 array([
                                         'product_id' => $product_id,
