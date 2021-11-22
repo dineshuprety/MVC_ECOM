@@ -141,13 +141,13 @@
             <div class="row">
                <div class="col-md-5 d-flex align-self-center">
                   <div class="static-countdown-content">
-                     <h2>The Richmond Sofa</h2>
-                     <p class="countdown-price">$69.00</p>
-                     <p>Available in 3 shapes and 19 fabrics</p>
+                     <h2>HOT DEALS PRODUCTS</h2>
+                     <p class="countdown-price">Rs 100 - Rs 2k</p>
+                     <p>Available in Shopifynepal </p>
                      <div class="clockdiv">
                         <div data-countdown="2021/11/01"></div>
                      </div>
-                     <a class="shop_now" href="/hotseles">Shop Now</a>
+                     <a class="shop_now" href="/hotsales">Shop Now</a>
                   </div>
                </div>
             </div>

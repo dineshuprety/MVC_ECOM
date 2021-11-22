@@ -38,6 +38,18 @@ class IndexController extends BaseController
         }
     }
 
+    public function aboutMe()
+    {
+        return view('about');
+        exit;
+    }
+
+    public function contactMe()
+    {
+        return view('contact');
+        exit;
+    }
+
    
 
    

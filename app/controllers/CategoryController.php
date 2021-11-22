@@ -38,7 +38,7 @@ class CategoryController extends BaseController
             $showBreadCrumbs = false;
         }
         $token = CSRFToken::_token();
-        return view('categories', compact('token', 'category', 'subcategory', 'showBreadCrumbs', 'urlParams'));
+        return view('categories', compact('token', 'category', 'subcategory', 'showBreadCrumbs'));
     }
 
     public function loadMoreProducts()

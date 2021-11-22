@@ -18,6 +18,7 @@
                 if(token == null || !token){
                     token = $('#product').data('token');
                     var size = $('#size' + 'option:selected').data('id');
+                    alert(size);
                     
                 }
     

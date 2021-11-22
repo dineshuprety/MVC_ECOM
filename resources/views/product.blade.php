@@ -51,16 +51,7 @@
                   <div class="product-details-content">
                      <h2>@{{ product.title }}</h2>
                      <p class="reference">Shopifynepal</p>
-                     <!-- <div class="pro-details-rating-wrap">
-                        <div class="rating-product">
-                           <i class="ion-android-star"></i>
-                           <i class="ion-android-star"></i>
-                           <i class="ion-android-star"></i>
-                           <i class="ion-android-star"></i>
-                           <i class="ion-android-star"></i>
-                        </div>
-                        <span class="read-review"><a class="reviews" href="#">Read reviews (1)</a></span>
-                        </div> -->
+                    
                      <div class="pricing-meta">
                         <ul>
                            <li class="old-price not-cut">Rs @{{ product.price }}</li>

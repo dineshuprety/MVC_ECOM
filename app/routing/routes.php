@@ -9,7 +9,13 @@ $router->map('POST', '/load-more', 'App\Controllers\IndexController@loadMoreProd
 $router->map('GET', '/product/[i:id]', 'App\Controllers\ProductController@show', 'product');
 $router->map('GET', '/product-details/[i:id]', 'App\Controllers\ProductController@get', 'product_details');
 
+$router->map('GET', '/about', 'App\Controllers\IndexController@aboutMe', 'about_me');
+$router->map('GET', '/contact', 'App\Controllers\IndexController@contactMe', 'contact_me');
 
+// hot products page
+$router->map('GET', '/hotsales', 'App\Controllers\HotsalesController@show', 'hot_products');
+$router->map('GET', '/hot-get-products', 'App\Controllers\HotsalesController@gethotProducts', 'hot_get_product');
+$router->map('POST', '/hot-load-more', 'App\Controllers\HotsalesController@hotloadMoreProducts', 'hot_load_more_product');
 
 require_once  __DIR__ . '/cart.php';
 

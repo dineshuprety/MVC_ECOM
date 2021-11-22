@@ -1,35 +1,29 @@
-@extends('layouts.app')
-@section('title')
-    Categories
-    @if(isset($category) && $showBreadCrumbs) - {{ $category->name }} @endif
-    @if(isset($subcategory)) - {{ $subcategory->name }} @endif
-@endsection
-@section('data-page-id', 'categories')
-
-@section('content')
-    <div class="home">
-
-        <section class="display-products" data-token="{{ $token }}" data-urlParams="" id="root">
-            @if(isset($category) && $showBreadCrumbs)
-                <div class="grid-x cell">
-                    <nav aria-label="You are here:" role="navigation">
-                        <ul class="breadcrumbs">
-                            <li><a href="/products/category/{{ $category->slug }}">
-                                    {{ $category->name }}</a>
-                            </li>
-                           @if(isset($subcategory))
-                                <li><a href="/products/category/ {{ $category->slug }} /  {{ $subcategory->slug }}">
-                                        {{ $subcategory->name }}</a>
-                                </li>
-                           @endif
-                        </ul>
-                    </nav>
-                </div>
-                @else
-                    <h2>Categories</h2>
-            @endif
-
-            <!-- Shop Category Area End -->
+@extends('layouts.app') 
+@section('title', 'Hot Sales') 
+@section('data-page-id', 'hotsales') 
+@section('content') 
+<div class="home">
+  <section class="display-products" data-token="{{ $token }}" id="root">
+    <!-- Breadcrumb Area start -->
+    <section class="breadcrumb-area"  v-cloak>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="breadcrumb-content">
+              <h1 class="breadcrumb-hrading">Hot Sales Page</h1>
+              <ul class="breadcrumb-links">
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>shop</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+    <!-- Shop Category Area End -->
     <div class="shop-category-area"  v-cloak>
       <div class="container">
         <div class="row">
@@ -70,9 +64,7 @@
                         </div>
                       </div>
                       <ul class="product-flag">
-                        <li class="new" v-if='product.product_on == 1'>hot deals</li>
-                        <li class="new" v-else-if='product.product_on == 2'>feature</li>
-                        <li class="new" v-else>new</li>
+                        <li class="new">hot</li>
                       </ul>
                       <div class="product-decs text-center">
                         <a class="inner-link" :href="'/product/'+ product.id">
@@ -87,9 +79,6 @@
                             <li class="old-price">Rs @{{product.price}}</li>
                             <li class="current-price">Rs @{{product.sales_price}}</li>
                             <li class="discount-price">-@{{ discountedPrice(product) }}%</li>
-                          </ul>
-                          <ul v-else>
-                            <li class="old-price not-cut">Rs @{{product.price}}</li>
                           </ul>
                         </div>
                       </div>
@@ -111,6 +100,5 @@
       </div>
     </div>
     <!-- Shop Category Area End -->
-        </section>
-    </div>
-@stop
+  </section>
+</div> @stop
