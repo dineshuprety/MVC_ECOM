@@ -17,21 +17,21 @@ class HotsalesController extends BaseController
         exit;
     }
 
-    public function gethotProducts()
+    public function getProducts()
     {
         $hotproducts = Product::where('product_on', 1)->skip(0)->take(8)->get();
-        echo json_encode(['hotproducts' => $hotproducts, 'count' => count($hotproducts)]);
+        echo json_encode(['products' => $hotproducts, 'count' => count($hotproducts)]);
         exit;
     }
 
-    public function hotloadMoreProducts()
+    public function loadMoreProducts()
     {
         $request = Request::get('post');
         if(CSRFToken::verifyCSRFToken($request->token, false)){
             $count = $request->count;
             $item_per_page = $count + $request->next;
-            $products = Product::skip(0)->take($item_per_page)->get();
-            echo json_encode(['products' => $products, 'count' => count($products)]);
+            $hotproducts = Product::where('product_on', 1)->skip(0)->take(8)->get();;
+            echo json_encode(['products' => $hotproducts, 'count' => count($hotproducts)]);
             exit;
         }
     }

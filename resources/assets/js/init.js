@@ -13,6 +13,10 @@
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.product.details();
                 break;
+            case 'hotsales':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.homeslider.hotPageProducts();
+                break;
             case 'search':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 break;

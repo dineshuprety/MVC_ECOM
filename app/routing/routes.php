@@ -14,8 +14,8 @@ $router->map('GET', '/contact', 'App\Controllers\IndexController@contactMe', 'co
 
 // hot products page
 $router->map('GET', '/hotsales', 'App\Controllers\HotsalesController@show', 'hot_products');
-$router->map('GET', '/hot-get-products', 'App\Controllers\HotsalesController@gethotProducts', 'hot_get_product');
-$router->map('POST', '/hot-load-more', 'App\Controllers\HotsalesController@hotloadMoreProducts', 'hot_load_more_product');
+$router->map('GET', '/hot-get-products', 'App\Controllers\HotsalesController@getProducts', 'hot_get_product');
+$router->map('POST', '/hot-load-more', 'App\Controllers\HotsalesController@loadMoreProducts', 'hot_load_more_product');
 
 require_once  __DIR__ . '/cart.php';
 

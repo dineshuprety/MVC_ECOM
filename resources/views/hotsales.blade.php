@@ -35,7 +35,7 @@
                 <a>
                   <i class="ionicons ion-ios-search-strong"></i>
                 </a>
-                <p>There Are Products.</p>
+                <p>There Are @{{products.length}} Products.</p>
               </div>
               <!-- Left Side End -->
             </div>
