@@ -62,7 +62,9 @@
                                                     </td>
                                                     <td class="product-price-cart"><span class="amount">Rs @{{ item.price }}</span></td>
                                                     <td class="product-quantity">
-                                                    @{{ item.quantity }}
+                                                    <div class="cart-plus-minus">
+                                                        <input class="cart-plus-minus-box" type="number" name="qtybutton" v-bind:value="item.quantity" min="1" max="20">
+                                                    </div>
                                                     </td>
                                                     <td class="product-quantity">
                                                     @{{ item.size }}
