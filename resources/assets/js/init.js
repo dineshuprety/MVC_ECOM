@@ -8,6 +8,7 @@
             case 'home':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.homeslider.homePageProducts();
+                // SHOPIFYNEPAL.product.product_view();
                 break;
             case 'product':
                 SHOPIFYNEPAL.homeslider.mainjs();

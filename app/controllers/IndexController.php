@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Classes\CSRFToken;
 use App\Classes\Request;
 use App\Classes\ValidateRequest;
+use App\Models\Productattribute;
 
 
 class IndexController extends BaseController
@@ -36,6 +37,26 @@ class IndexController extends BaseController
             echo json_encode(['products' => $products, 'count' => count($products)]);
             exit;
         }
+    }
+
+    public function viewProduct($id)
+    {
+        $result = array();
+                if(!$id){
+                    throw new \Exception('Malicious Activity');
+                }
+                   
+                    $item = Product::where('id', $id)->first();
+                    $stock = Productattribute::where('product_id', $id)->sum('quntity');
+                    $productSize = Productattribute::where('product_id', $id)->get();
+
+                   echo json_encode([
+                        'item' => $item,
+                        'size' => $productSize,
+                        'stock' => $stock
+                    ]);
+                    exit;
+           
     }
 
     public function aboutMe()

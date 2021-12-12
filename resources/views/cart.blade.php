@@ -33,7 +33,7 @@
                     <h3 class="cart-page-title">Your Cart Items</h3>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                <form action="#">
+                                <!-- <form action="#"> -->
                                     <div class="table-content table-responsive cart-table-content">
                                         <table>
                                             <thead>
@@ -62,17 +62,21 @@
                                                     </td>
                                                     <td class="product-price-cart"><span class="amount">Rs @{{ item.price }}</span></td>
                                                     <td class="product-quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" type="number" name="qtybutton" v-bind:value="item.quantity" min="1" max="20">
-                                                    </div>
+                                                    @{{ item.quantity }}
+                                                    <button v-if="item.stock > item.quantity" @click="updateQuantity(item.id, '+',item.size,item.quantity)" class="btn-success">
+                                                            <i class="ionicons ion-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button v-if="item.quantity > 1" @click="updateQuantity(item.id, '-',item.size,item.quantity)"
+                                                    class="btn-danger">
+                                                            <i class="ionicons ion-android-remove" aria-hidden="true"></i>
+                                                    </button>
                                                     </td>
                                                     <td class="product-quantity">
                                                     @{{ item.size }}
                                                     </td>
                                                     <td class="product-subtotal">Rs @{{ item.total }}</td>
                                                     <td class="product-remove">
-                                                        <a href="#"><i class="ionicons ion-edit"></i></a>
-                                                        <a href="#"><i class="ionicons ion-android-delete"></i></a>
+                                                        <button @click="removeItem(item.id,item.size)" class="btn btn-danger" title="Delete Cart"><i class="ionicons ion-android-delete"></i></button>
                                                     </td>
                                                 </tr>
                                                 
@@ -83,20 +87,21 @@
                                         <div class="col-lg-12">
                                             <div class="cart-shiping-update-wrapper">
                                                 <div class="cart-shiping-update">
-                                                    <a href="#">Continue Shopping</a>
+                                                    <!-- <button>Clear Shopping Cart</button> -->
                                                 </div>
                                                 <div class="cart-clear">
-                                                    <button>Update Shopping Cart</button>
-                                                    <a href="#">Clear Shopping Cart</a>
+                                                    <a href="/products">Continue Shopping</a>
+                                                    <button>Clear Shopping Cart</button>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                <!-- </form> -->
                                 <div class="row">
                                     
                                     <div class="col-lg-5 col-md-12">
-                                        <div class="discount-code-wrapper">
+                                        <!-- <div class="discount-code-wrapper">
                                             <div class="title-wrap">
                                                 <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
                                             </div>
@@ -107,22 +112,15 @@
                                                     <button class="cart-btn-2" type="submit">Apply Coupon</button>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-lg-7 col-md-12">
                                         <div class="grand-totall">
                                             <div class="title-wrap">
                                                 <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                                             </div>
-                                            <h5>Total products <span>$260.00</span></h5>
-                                            <div class="total-shipping">
-                                                <h5>Total shipping</h5>
-                                                <ul>
-                                                    <li><input type="checkbox" /> Standard <span>$20.00</span></li>
-                                                    <li><input type="checkbox" /> Express <span>$30.00</span></li>
-                                                </ul>
-                                            </div>
-                                            <h4 class="grand-totall-title">Grand Total <span>$260.00</span></h4>
+                                            <h5>Total products <span>Rs @{{ cartTotal }}</span></h5>
+                                            <h4 class="grand-totall-title">Grand Total <span>Rs @{{ cartTotal }}</span></h4>
                                             <a href="#">Proceed to Checkout</a>
                                         </div>
                                     </div>

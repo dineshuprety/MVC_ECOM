@@ -7,6 +7,8 @@ SHOPIFYNEPAL.homeslider.hotPageProducts = function (){
         el: '#root',
         data:{
             products: [],
+            item: [],
+            size: [],
             count: 0,
             loading: false
         },
@@ -20,6 +22,13 @@ SHOPIFYNEPAL.homeslider.hotPageProducts = function (){
                     app.count = response.data.count;
                     app.loading = false;
                 
+                });
+            },
+
+            productView: function (id) {
+                SHOPIFYNEPAL.module.productModule(id, function (response) {
+                    app.item = response.item;
+                    app.size = response.size;
                 });
             },
 

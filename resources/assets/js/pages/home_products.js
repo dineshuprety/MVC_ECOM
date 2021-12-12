@@ -7,6 +7,7 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
         el: '#root',
         data:{
             products: [],
+            item: [],
             count: 0,
             loading: false
         },
@@ -42,6 +43,13 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
                 });
             },
 
+            productView: function (id) {
+                SHOPIFYNEPAL.module.productModule(id, function (response) {
+                    app.item = response.item;
+                    app.size = response.size;
+                });
+            },
+
             loadMoreProducts: function () {
                 var token = $('.display-products').data('token');
                 this.loading = true;
@@ -57,6 +65,7 @@ SHOPIFYNEPAL.homeslider.homePageProducts = function (){
        
         created: function (){
            this.getProducts();
+           this.productView();
         },
 
         mounted: function () {

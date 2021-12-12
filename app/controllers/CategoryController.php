@@ -29,6 +29,7 @@ class CategoryController extends BaseController
                     )
                 );
             }
+            // dd($subcategory);
             $urlParams = json_encode(['slug' => $category->slug, 'subcategory' => $subcategory->slug]);
         } else if (isset($params['slug']) && $params['slug'] !== null) {
             $category = Category::findBySlug($params['slug']);
@@ -37,8 +38,10 @@ class CategoryController extends BaseController
             $category = Category::all();
             $showBreadCrumbs = false;
         }
+        //  echo json_encode($category); exit;
         $token = CSRFToken::_token();
-        return view('categories', compact('token', 'category', 'subcategory', 'showBreadCrumbs'));
+        return view('categories', compact('token', 'category', 'subcategory', 'showBreadCrumbs', 'urlParams'));
+       
     }
 
     public function loadMoreProducts()

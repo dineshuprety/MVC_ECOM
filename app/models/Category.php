@@ -40,6 +40,7 @@ class Category extends Model
 
     public function scopeFindBySlug($queryBuilder, $slug)
     {
+        // dd($queryBuilder);
         return $queryBuilder->where('slug', $slug)->first();
     }
 }

@@ -27,6 +27,14 @@
                     callback(response.data.success);
                 })
         },
+
+        productModule: function (id, callback) {
+
+                axios.get('/viewproduct/'+ id).then(function (response) {
+                    callback(response.data);
+                })
+        },
+        
         loadMore: function (endpoint, $postData, callback) {
             var postdata = $.param($postData);
             axios.post(endpoint, postdata).then(function (response) {

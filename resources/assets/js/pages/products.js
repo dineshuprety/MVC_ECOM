@@ -6,6 +6,8 @@
             el:'#root',
             data: {
                 products: [],
+                item: [],
+                size: [],
                 count: 0,
                 loading: false,
                 next: 8,
@@ -26,6 +28,12 @@
 
                     return ((product_price.price - product_price.sales_price) * 100) / product_price.price;
     
+                },
+                productView: function (id) {
+                    SHOPIFYNEPAL.module.productModule(id, function (response) {
+                        app.item = response.item;
+                        app.size = response.size;
+                    });
                 },
                 loadMoreProducts: function () {
                     var token = this.targetElement.data('token');

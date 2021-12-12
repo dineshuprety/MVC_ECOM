@@ -17,6 +17,9 @@ $router->map('GET', '/hotsales', 'App\Controllers\HotsalesController@show', 'hot
 $router->map('GET', '/hot-get-products', 'App\Controllers\HotsalesController@getProducts', 'hot_get_product');
 $router->map('POST', '/hot-load-more', 'App\Controllers\HotsalesController@loadMoreProducts', 'hot_load_more_product');
 
+// viewproduct
+$router->map('GET', '/viewproduct/[i:id]', 'App\Controllers\IndexController@viewProduct', 'view_products');
+
 require_once  __DIR__ . '/cart.php';
 
 require_once __DIR__ . '/auth.php';

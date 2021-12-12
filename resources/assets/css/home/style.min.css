@@ -6850,7 +6850,7 @@ h3.cart-page-title {
     transition: all 0.3s ease 0s;
 }
 .grand-totall a {
-    background-color: #4fb68b;
+    background-color: #ef1e1e;
     border-radius: 50px;
     color: #fff;
     display: block;
@@ -6923,7 +6923,7 @@ h3.cart-page-title {
     float: right;
 }
 .grand-totall h4.grand-totall-title {
-    color: #4fb68b;
+    color: #000000;
     font-size: 20px;
     font-weight: 700;
     margin: 0 0 25px;

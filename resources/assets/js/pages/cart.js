@@ -27,6 +27,22 @@
                             }
                         });
                     }, 2000);
+                },
+
+                updateQuantity: function (product_id,operator,size,qty) {
+
+                    var postData = $.param({product_id:product_id, operator:operator, size:size, qty:qty});
+                    axios.post('/cart/update-qty', postData).then(function (response) {
+                        app.displayItems(200);
+                    })
+                },
+                removeItem: function (product_id, size) {
+                    var postData = $.param({product_id:product_id, size:size});
+                    axios.post('/cart/remove-item', postData).then(function (response) {
+                        $(".notify").css("display", 'block').delay(4000).slideUp(300)
+                            .html(response.data.success);
+                        app.displayItems(200);
+                    })
                 }
             },
 
@@ -36,4 +52,4 @@
         });
       
     }
-})();
+})();  

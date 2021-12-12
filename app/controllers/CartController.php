@@ -113,10 +113,65 @@ class CartController extends BaseController
             echo $ex->getMessage() .' '.$ex->getLine();
             //log this in database or email admin
         }
-         
-        // echo "<pre>";
-        //  print_r($_SESSION['user_cart']);
+        
         
     }
+
+    public function updateQuantity()
+    {
+        if(Request::has('post')){
+            $request = Request::get('post');
+            if(!$request->product_id){
+                throw new \Exception('Malicious Activity');
+            }
+
+            $size = $request->size;
+            
+            $sizeId = Size::where('name', $size)->first();
+
+            switch ($request->operator){
+                case '+':
+                   // Set quantity for item #id to +1
+                   if($this->cart->update($request->product_id,$request->qty + 1,[
+                    'size' => strval($sizeId->id),
+                    ])){
+                        echo json_encode(['success' => 'Product updated to Cart Successfully']);
+                    }
+                    break;
+                case '-':
+                     // Set quantity for item #id to -1
+                   if($this->cart->update($request->product_id,$request->qty - 1,[
+                    'size' => strval($sizeId->id),
+                    ])){
+                        echo json_encode(['success' => 'Product updated to Cart Successfully']);
+                    }
+                    break;
+            }
+           
+           
+            
+        }
+    }
+
+    public function removeItem()
+    {
+        if(Request::has('post')){
+            $request = Request::get('post');
+    
+            if(!$request->product_id){
+                throw new \Exception('Malicious Activity');
+            }
+
+            $size = $request->size;
+            $sizeId = Size::where('name', $size)->first();
+            //remove item
+           $this->cart->remove($request->product_id,[
+               'size' => strval($sizeId->id)
+           ]);
+            echo json_encode(['success' => "Product Removed From Cart!"]);
+            exit;
+        }
+    }
+
     
 }

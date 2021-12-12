@@ -55,7 +55,7 @@
                         <div class="add-to-link">
                           <ul>
                             <li>
-                              <a @click.prevent="addToCart(product.id)" title="Add to Cart">
+                              <a @click="productView(product.id)" data-toggle="modal" data-target="#exampleModal" title="Add to Cart">
                                 <i class="ion-bag"></i>
                               </a>
                             </li>
@@ -100,5 +100,7 @@
       </div>
     </div>
     <!-- Shop Category Area End -->
+    @include('includes.product_model')
   </section>
+ 
 </div> @stop
