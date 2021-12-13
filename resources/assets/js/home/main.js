@@ -6,7 +6,7 @@
         /*---------------------
         Nice Select
          --------------------- */
-         $('select').niceSelect(); 
+         $('.working').niceSelect(); 
 
          /*---------------------
         Toggle Search Bar

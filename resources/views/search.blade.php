@@ -76,8 +76,8 @@
                               <div class="pricing-meta">
                                  @if($searchResult['product_on'] == 1) 
                                  <ul>
-                                    <li class="old-price">Rs {{$searchResult['price']}}</li>
-                                    <li class="current-price">Rs {{$searchResult['sales_price']}}</li>
+                                    <li class="old-price">रु {{$searchResult['price']}}</li>
+                                    <li class="current-price">रु {{$searchResult['sales_price']}}</li>
                                     @php
                                     $discount_per = (($searchResult['price'] - $searchResult['sales_price']) * 100) / $searchResult['price'];
                                     @endphp

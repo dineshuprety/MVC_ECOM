@@ -261,6 +261,14 @@ button{
     background-color: transparent;
   }
 
+  .substring
+  {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
 /*----------------------------------------*/
 /*  2.1. Owl Dot Style
 /*----------------------------------------*/

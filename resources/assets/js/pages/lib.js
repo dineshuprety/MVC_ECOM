@@ -6,14 +6,16 @@
     
         truncateString: function limit(string, value) {
 
-            if(string.length > value){
+            if(string.length >= value){
                 return string.substring(0, value) + '...';
             }else{
-                return string;
+                return string + "...";
             }
         },
         addItemToCart: function (id, callback) {
+            
             var token = $('.display-products').data('token');
+            var size = $('.size option:selected').val();
                    
                 if(token == null || !token){
                     token = $('#product').data('token');

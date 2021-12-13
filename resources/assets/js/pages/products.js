@@ -7,6 +7,7 @@
             data: {
                 products: [],
                 item: [],
+                stock: [],
                 size: [],
                 count: 0,
                 loading: false,
@@ -32,7 +33,9 @@
                 productView: function (id) {
                     SHOPIFYNEPAL.module.productModule(id, function (response) {
                         app.item = response.item;
-                        app.size = response.size;
+                        app.size = response.sizes;
+                        app.stock = response.stock;
+                        // console.log(app.size);
                     });
                 },
                 loadMoreProducts: function () {

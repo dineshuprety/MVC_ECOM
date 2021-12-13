@@ -23,7 +23,7 @@ class SearchController extends BaseController
                 exit;
             }
             $searchTerm = $request->search;
-            $searchResults = Product::where('title', 'LIKE', "%{$searchTerm}%")->get();
+            $searchResults = Product::where('title', 'LIKE', "%{$searchTerm}%")->inRandomOrder()->get();
             
             return view('search', compact('searchResults', 'searchTerm'));
         }

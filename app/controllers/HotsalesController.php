@@ -19,7 +19,7 @@ class HotsalesController extends BaseController
 
     public function getProducts()
     {
-        $hotproducts = Product::where('product_on', 1)->skip(0)->take(8)->get();
+        $hotproducts = Product::orderBy('id', 'DESC')->where('product_on', 1)->skip(0)->take(8)->get();
         echo json_encode(['products' => $hotproducts, 'count' => count($hotproducts)]);
         exit;
     }
@@ -30,7 +30,7 @@ class HotsalesController extends BaseController
         if(CSRFToken::verifyCSRFToken($request->token, false)){
             $count = $request->count;
             $item_per_page = $count + $request->next;
-            $hotproducts = Product::where('product_on', 1)->skip(0)->take(8)->get();;
+            $hotproducts = Product::orderBy('id', 'DESC')->where('product_on', 1)->skip(0)->take(8)->get();;
             echo json_encode(['products' => $hotproducts, 'count' => count($hotproducts)]);
             exit;
         }

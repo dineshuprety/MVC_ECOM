@@ -4,7 +4,9 @@ namespace App\Controllers;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Classes\CSRFToken;
+use App\Classes\Session;
 use App\Classes\Request;
+use App\Models\Size;
 use App\Classes\ValidateRequest;
 use App\Models\Productattribute;
 
@@ -23,7 +25,7 @@ class IndexController extends BaseController
 
     public function getProducts()
     {
-        $products = Product::skip(0)->take(8)->get();
+        $products = Product::orderBy('id', 'DESC')->skip(0)->take(8)->get();
         echo json_encode(['products' => $products, 'count' => count($products)]);
     }
 
@@ -33,7 +35,7 @@ class IndexController extends BaseController
         if(CSRFToken::verifyCSRFToken($request->token, false)){
             $count = $request->count;
             $item_per_page = $count + $request->next;
-            $products = Product::skip(0)->take($item_per_page)->get();
+            $products = Product::orderBy('id', 'DESC')->skip(0)->take($item_per_page)->get();
             echo json_encode(['products' => $products, 'count' => count($products)]);
             exit;
         }
@@ -41,22 +43,29 @@ class IndexController extends BaseController
 
     public function viewProduct($id)
     {
-        $result = array();
+               
                 if(!$id){
                     throw new \Exception('Malicious Activity');
-                }
-                   
+                }else{
+                    $size = array();
                     $item = Product::where('id', $id)->first();
                     $stock = Productattribute::where('product_id', $id)->sum('quntity');
-                    $productSize = Productattribute::where('product_id', $id)->get();
-
+                    $productSizes = Productattribute::where('product_id', $id)->get();
+                    if(count($productSizes)){
+                        foreach($productSizes as $productSize){
+                           $size[] = Size::where('id',$productSize->size_id)->get();
+                        }
+                    }
+                    
                    echo json_encode([
                         'item' => $item,
-                        'size' => $productSize,
+                        'sizes' => $size,
                         'stock' => $stock
                     ]);
                     exit;
-           
+                }
+                // return view('includes/product_model', compact('size'));
+                   
     }
 
     public function aboutMe()

@@ -120,7 +120,7 @@
                            <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                            <div class="pricing-meta">
                               <ul>
-                                 <li class="old-price not-cut">Rs {{$featureproduct['price']}}</li>
+                                 <li class="old-price not-cut">रु {{$featureproduct['price']}}</li>
                               </ul>
                            </div>
                         </div>
@@ -142,7 +142,7 @@
                <div class="col-md-5 d-flex align-self-center">
                   <div class="static-countdown-content">
                      <h2>HOT DEALS PRODUCTS</h2>
-                     <p class="countdown-price">Rs 100 - Rs 2k</p>
+                     <p class="countdown-price">रु 100 - रु 2k</p>
                      <p>Available in Shopifynepal </p>
                      <div class="clockdiv">
                         <div data-countdown="2021/11/01"></div>
@@ -207,8 +207,8 @@
                            <div class="pricing-meta">
                               @if($hotproduct['product_on'] == 1) 
                               <ul>
-                                 <li class="old-price">Rs {{$hotproduct['price']}}</li>
-                                 <li class="current-price">Rs {{$hotproduct['sales_price']}}</li>
+                                 <li class="old-price">रु {{$hotproduct['price']}}</li>
+                                 <li class="current-price">रु {{$hotproduct['sales_price']}}</li>
                                  @php
                                  $discount_per = (($hotproduct['price'] - $hotproduct['sales_price']) * 100) / $hotproduct['price'];
                                  @endphp
@@ -416,12 +416,12 @@
                      <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                      <div class="pricing-meta">
                         <ul v-if="product.product_on == 1">
-                           <li class="old-price">Rs @{{product.price}}</li>
-                           <li class="current-price">Rs @{{product.sales_price}}</li>
+                           <li class="old-price">रु @{{product.price}}</li>
+                           <li class="current-price">रु @{{product.sales_price}}</li>
                            <li class="discount-price">-@{{ discountedPrice(product) }}%</li>
                         </ul>
                         <ul v-else>
-                           <li class="old-price not-cut">Rs @{{product.price}}</li>
+                           <li class="old-price not-cut">रु @{{product.price}}</li>
                         </ul>
                      </div>
                   </div>

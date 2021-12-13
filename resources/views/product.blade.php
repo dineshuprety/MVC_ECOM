@@ -52,7 +52,7 @@
                <p class="reference">Shopifynepal</p>
                <div class="pricing-meta">
                   <ul>
-                     <li class="old-price not-cut">Rs @{{ product.price }}</li>
+                     <li class="old-price not-cut">रु @{{ product.price }}</li>
                   </ul>
                </div>
                <p v-html="stringLimit(product.description, 500)"></p>
@@ -64,7 +64,7 @@
                </div>
                <div class="product-size">
                   <span>Size</span>
-                  <select id="size">
+                  <select class="working" id="size">
                      @foreach($productSize as $productSizes)
                      <option data-id="{{$productSizes->size_id}}">{{ $size = \App\Models\Size::where('id',$productSizes->size_id)->value('name')}}</option>
                      @endforeach
@@ -182,12 +182,12 @@
                   <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                   <div class="pricing-meta">
                      <ul v-if="similarProduct.product_on == 1">
-                        <li class="old-price">Rs @{{similarProduct.price}}</li>
-                        <li class="current-price">Rs @{{similarProduct.sales_price}}</li>
+                        <li class="old-price">रु @{{similarProduct.price}}</li>
+                        <li class="current-price">रु @{{similarProduct.sales_price}}</li>
                         <li class="discount-price">-@{{ discountedPrice(similarProduct) }}%</li>
                      </ul>
                      <ul v-else>
-                        <li class="old-price not-cut">Rs @{{similarProduct.price}}</li>
+                        <li class="old-price not-cut">रु @{{similarProduct.price}}</li>
                      </ul>
                   </div>
                </div>

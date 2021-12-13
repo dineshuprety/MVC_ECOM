@@ -76,8 +76,8 @@
                         <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                         <div class="pricing-meta">
                           <ul v-if="product.product_on == 1">
-                            <li class="old-price">Rs @{{product.price}}</li>
-                            <li class="current-price">Rs @{{product.sales_price}}</li>
+                            <li class="old-price">रु @{{product.price}}</li>
+                            <li class="current-price">रु @{{product.sales_price}}</li>
                             <li class="discount-price">-@{{ discountedPrice(product) }}%</li>
                           </ul>
                         </div>

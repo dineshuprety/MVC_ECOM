@@ -60,7 +60,7 @@
                                                         <span v-if="item.stock > 1" style="color: #00AA00;">In Stock</span>
                                                         <span v-else style="color: #ff0000;">Out of Stock</span>
                                                     </td>
-                                                    <td class="product-price-cart"><span class="amount">Rs @{{ item.price }}</span></td>
+                                                    <td class="product-price-cart"><span class="amount">रु @{{ item.price }}</span></td>
                                                     <td class="product-quantity">
                                                     @{{ item.quantity }}
                                                     <button v-if="item.stock > item.quantity" @click="updateQuantity(item.id, '+',item.size,item.quantity)" class="btn-success">
@@ -74,7 +74,7 @@
                                                     <td class="product-quantity">
                                                     @{{ item.size }}
                                                     </td>
-                                                    <td class="product-subtotal">Rs @{{ item.total }}</td>
+                                                    <td class="product-subtotal">रु @{{ item.total }}</td>
                                                     <td class="product-remove">
                                                         <button @click="removeItem(item.id,item.size)" class="btn btn-danger" title="Delete Cart"><i class="ionicons ion-android-delete"></i></button>
                                                     </td>
@@ -119,8 +119,8 @@
                                             <div class="title-wrap">
                                                 <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                                             </div>
-                                            <h5>Total products <span>Rs @{{ cartTotal }}</span></h5>
-                                            <h4 class="grand-totall-title">Grand Total <span>Rs @{{ cartTotal }}</span></h4>
+                                            <h5>Total products <span>रु @{{ cartTotal }}</span></h5>
+                                            <h4 class="grand-totall-title">Grand Total <span>रु @{{ cartTotal }}</span></h4>
                                             <a href="#">Proceed to Checkout</a>
                                         </div>
                                     </div>

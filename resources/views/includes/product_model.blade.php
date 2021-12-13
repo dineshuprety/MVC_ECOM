@@ -1,51 +1,53 @@
-<!-- Add to Cart Product Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><strong><span>@{{item.title}}</span> </strong></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModel">
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
          </div>
          <div class="modal-body">
             <div class="row">
-               <div class="col-md-4">
-                  <div class="card" style="width: 18rem;">
-                     <img :src="'/' + item.product_image_path" class="card-img-top" alt="..." style="height: 200px; width: 200px;">
+               <div class="col-md-5 col-sm-12 col-xs-12">
+                  <div class="tab-content quickview-big-img">
+                     <div id="pro-1" class="tab-pane fade show active">
+                        <img :src="'/' + item.product_image_path" alt="" />
+                     </div>
+                  </div>
+                  <!-- Thumbnail Large Image End -->
+               </div>
+               <div class="col-md-7 col-sm-12 col-xs-12">
+                  <div class="product-details-content quickview-content">
+                     <h2>@{{ item.title }}</h2>
+                     <p class="reference">Stock: <span>@{{stock}}</span></p>
+                     <div class="pricing-meta">
+                     <ul v-if="item.product_on == 1">
+                           <li class="old-price">रु @{{item.price}}</li>
+                           <li class="current-price">रु @{{item.sales_price}}</li>
+                           <li class="discount-price">-@{{ discountedPrice(item) }}%</li>
+                        </ul>
+                        <ul v-else>
+                           <li class="old-price not-cut">रु @{{item.price}}</li>
+                        </ul>
+                        
+                     </div>
+                     <p class="substring" v-html="item.description"></p>
+
+                     <span><a class="reviews":href="'/product/'+ item.id">Read More</a></span>
+                     <div class="pro-details-quality">
+                     <select class='size'>
+                     <!-- <div v-for="(sizes, indexs) in size" :key="indexs"> -->
+                     <option v-for="sizes in size" :value="sizes[0].id">@{{sizes[0].name}}</option>
+                     <!-- </div> -->
+                  </select>
+                        <div class="pro-details-cart btn-hover">
+                           <a style="cursor: context-menu;" @click.prevent="addToCart(item.id)"> + Add To Cart</a>
+                        </div>
+                     </div>
                   </div>
                </div>
-               <!-- // end col md -->
-               <div class="col-md-4">
-                  <ul class="list-group">
-                     <li v-if='item.product_on == 2' class="list-group-item">Product Price: <strong class="text-danger">Rs<span>@{{item.price}}</span></strong>
-                        <!-- <del v-if='item.product_on == 2'>Rs @{{item.sales_price}}</del> -->
-                     </li>
-                     <li v-if='item.product_on == 1' class="list-group-item">Product Price: <strong class="text-danger">Rs<span >@{{item.sales_price}}</span></strong>
-                     </li>
-                     <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: white;"></span> 
-                        <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white;"></span> 
-                     </li>
-                  </ul>
-               </div>
-               <!-- // end col md -->
-               <div class="col-md-4">
-                  
-                  <div class="form-group" id="sizeArea">
-                     <label for="size">Choose Size</label>
-                     <select class="form-control" id="size" name="size">
-                        <option>1</option>
-                     </select>
-                  </div>
-                  
-                  <input type="hidden" id="product_id">
-                  <button type="submit" class="btn btn-primary mb-2" @click.prevent="addToCart(products.id)" >Add to Cart</button>
-               </div>
-               <!-- // end col md -->
             </div>
-            <!-- // end row -->
          </div>
-         <!-- // end modal Body -->
       </div>
    </div>
 </div>
+<!-- Modal end -->
