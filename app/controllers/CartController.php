@@ -107,7 +107,11 @@ class CartController extends BaseController
             }
 
             $cartTotal = number_format($cartTotal, 2);
-            echo json_encode(['items' => $result, 'cartTotal' => $cartTotal]);
+            echo json_encode([
+                'items' => $result, 
+                'cartTotal' => $cartTotal,
+                'authenticated' => isAuthenticated(),
+            ]);
             exit;
         }catch (\Exception $ex){
             echo $ex->getMessage() .' '.$ex->getLine();
@@ -171,6 +175,13 @@ class CartController extends BaseController
             echo json_encode(['success' => "Product Removed From Cart!"]);
             exit;
         }
+    }
+
+    public function emptyCart()
+    {
+        $this->cart->destroy();
+        echo json_encode(['success' => 'Shopping Cart Emptied!']);
+        exit;
     }
 
     

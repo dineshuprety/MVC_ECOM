@@ -33,15 +33,20 @@
                      <p class="substring" v-html="item.description"></p>
 
                      <span><a class="reviews":href="'/product/'+ item.id">Read More</a></span>
-                     <div class="pro-details-quality">
-                     <select class='size'>
-                     <!-- <div v-for="(sizes, indexs) in size" :key="indexs"> -->
-                     <option v-for="sizes in size" :value="sizes[0].id">@{{sizes[0].name}}</option>
-                     <!-- </div> -->
-                  </select>
-                        <div class="pro-details-cart btn-hover">
-                           <a style="cursor: context-menu;" @click.prevent="addToCart(item.id)"> + Add To Cart</a>
-                        </div>
+                     <div v-if="stock > 0" class="pro-details-quality">
+                           <select class='size'>
+                           <!-- <div v-for="(sizes, indexs) in size" :key="indexs"> -->
+                           <option v-for="sizes in size" :value="sizes[0].id">@{{sizes[0].name}}</option>
+                           <!-- </div> -->
+                           </select>
+                              <div class="pro-details-cart btn-hover" >
+                                 <a style="cursor: context-menu;" @click.prevent="addToCart(item.id)"> + Add To Cart</a>
+                              </div>
+                     </div>
+                     <div v-else class="pro-details-quality">
+                              <div class="pro-details-cart btn-hover">
+                                 <button disabled> Out Of Stock </button>
+                              </div>
                      </div>
                   </div>
                </div>

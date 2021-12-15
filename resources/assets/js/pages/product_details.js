@@ -9,6 +9,7 @@
                 category: [],
                 subCategory: [],
                 similarProducts: [],
+                stock: [],
                 productId: $('#product').data('id'),
                 loading: false
             },
@@ -21,6 +22,7 @@
                             app.category = response.data.category;
                             app.subCategory = response.data.subCategory;
                             app.similarProducts = response.data.similarProducts;
+                            app.stock = response.data.stock;
                             app.loading = false;
                         });
                     }, 1000);

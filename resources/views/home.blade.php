@@ -115,7 +115,7 @@
                            <span>Shopify Nepal</span>
                            </a>
                            <h2>
-                              <a href="/product/{{$featureproduct['id']}}" class="product-link">{{$featureproduct['title']}}</a>
+                              <a href="/product/{{$featureproduct['id']}}" class="product-link">{{substr($featureproduct['title'], 0, 18)}}..</a>
                            </h2>
                            <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                            <div class="pricing-meta">
@@ -201,7 +201,7 @@
                            <span>Shopify Nepal</span>
                            </a>
                            <h2>
-                              <a href="/product/{{$hotproduct['id']}}" class="product-link">{{$hotproduct['title']}}</a>
+                              <a href="/product/{{$hotproduct['id']}}" class="product-link">{{substr($hotproduct['title'], 0, 18)}}..</a>
                            </h2>
                            <!-- <div class="rating-product"><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div> -->
                            <div class="pricing-meta">

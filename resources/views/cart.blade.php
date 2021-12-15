@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="cart-clear">
                                                     <a href="/products">Continue Shopping</a>
-                                                    <button>Clear Shopping Cart</button>
+                                                    <button @click.prevent="emptyCart">Clear Shopping Cart</button>
                                                     
                                                 </div>
                                             </div>
@@ -101,18 +101,18 @@
                                 <div class="row">
                                     
                                     <div class="col-lg-5 col-md-12">
-                                        <!-- <div class="discount-code-wrapper">
+                                        <div class="discount-code-wrapper">
                                             <div class="title-wrap">
                                                 <h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
                                             </div>
                                             <div class="discount-code">
                                                 <p>Enter your coupon code if you have one.</p>
                                                 <form>
-                                                    <input type="text" required="" name="name" />
-                                                    <button class="cart-btn-2" type="submit">Apply Coupon</button>
+                                                    <input type="text" required="" name="name" title=" comming soon " disabled />
+                                                    <button class="btn" type="button" disabled  title="comming soon" >Apply Coupon Comming Soon</button>
                                                 </form>
                                             </div>
-                                        </div> -->
+                                        </div>
                                     </div>
                                     <div class="col-lg-7 col-md-12">
                                         <div class="grand-totall">
@@ -121,7 +121,9 @@
                                             </div>
                                             <h5>Total products <span>रु @{{ cartTotal }}</span></h5>
                                             <h4 class="grand-totall-title">Grand Total <span>रु @{{ cartTotal }}</span></h4>
-                                            <a href="#">Proceed to Checkout</a>
+                                            <a v-if="authenticated" href="#">Proceed to Checkout</a>
+                                            <a v-else href="/login">Login</a>
+
                                         </div>
                                     </div>
                                 </div>

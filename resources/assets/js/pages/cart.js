@@ -9,7 +9,8 @@
                 cartTotal: [],
                 loading: false,
                 fail: false,
-                message: ''
+                message: '',
+                authenticated: false,
              },
              methods: {
                 displayItems: function () {
@@ -24,16 +25,17 @@
                                 app.items = response.data.items;
                                 app.cartTotal = response.data.cartTotal;
                                 app.loading = false;
+                                app.authenticated = response.data.authenticated;
                             }
                         });
-                    }, 2000);
+                    }, 1000);
                 },
 
                 updateQuantity: function (product_id,operator,size,qty) {
 
                     var postData = $.param({product_id:product_id, operator:operator, size:size, qty:qty});
                     axios.post('/cart/update-qty', postData).then(function (response) {
-                        app.displayItems(200);
+                        app.displayItems(1000);
                     })
                 },
                 removeItem: function (product_id, size) {
@@ -41,8 +43,17 @@
                     axios.post('/cart/remove-item', postData).then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300)
                             .html(response.data.success);
-                        app.displayItems(200);
+                        app.displayItems(1000);
                     })
+                },
+
+                emptyCart: function () {
+                    axios.post('/cart/empty').then(function (response) {
+                        $(".notify").css("display", 'block').delay(4000).slideUp(300)
+                            .html(response.data.success);
+                        app.displayItems(1000);
+                       
+                    });
                 }
             },
 

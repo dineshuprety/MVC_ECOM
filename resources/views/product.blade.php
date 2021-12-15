@@ -51,32 +51,59 @@
                <h2>@{{ product.title }}</h2>
                <p class="reference">Shopifynepal</p>
                <div class="pricing-meta">
-                  <ul>
-                     <li class="old-price not-cut">रु @{{ product.price }}</li>
-                  </ul>
+               <ul v-if="product.product_on == 1">
+                           <li class="old-price">रु @{{product.price}}</li>
+                           <li class="current-price">रु @{{product.sales_price}}</li>
+                           <li class="discount-price">-@{{ discountedPrice(product) }}%</li>
+                        </ul>
+                        <ul v-else>
+                           <li class="old-price not-cut">रु @{{product.price}}</li>
+                        </ul>
                </div>
                <p v-html="stringLimit(product.description, 500)"></p>
                <br>
             </div>
-            <div class="pro-details-size-color d-flex">
-               <div class="pro-details-color-wrap">
-               
+            <div v-if="stock > 0">
+               <div class="pro-details-size-color d-flex">
+                  <div class="pro-details-color-wrap">
+                  
+                  </div>
+                  <div class="product-size">
+                     <span>Size</span>
+                     <select class="working" id="size">
+                        @foreach($productSize as $productSizes)
+                        <option data-id="{{$productSizes->size_id}}">{{ $size = \App\Models\Size::where('id',$productSizes->size_id)->value('name')}}</option>
+                        @endforeach
+                     </select>
+                  </div>
                </div>
-               <div class="product-size">
-                  <span>Size</span>
-                  <select class="working" id="size">
-                     @foreach($productSize as $productSizes)
-                     <option data-id="{{$productSizes->size_id}}">{{ $size = \App\Models\Size::where('id',$productSizes->size_id)->value('name')}}</option>
-                     @endforeach
-                  </select>
+               <div  class="pro-details-quality">
+         
+                  <div class="pro-details-cart btn-hover">
+                     <a style="cursor: context-menu;" @click.prevent="addToCart(product.id)"> + Add To Cart</a>
+                  </div>
                </div>
             </div>
-            <div class="pro-details-quality">
-      
-               <div class="pro-details-cart btn-hover">
-                  <a style="cursor: context-menu;" @click.prevent="addToCart(product.id)"> + Add To Cart</a>
+            <div v-else>
+               <div class="pro-details-size-color d-flex">
+                  <div class="pro-details-color-wrap">
+                  
+                  </div>
+                  <div class="product-size">
+                     <span>Size</span>
+                     <select class="working" disabled id="size" title="Out of stock">
+                       <option>Xl</option>
+                     </select>
+                  </div>
+               </div>
+               <div  class="pro-details-quality">
+         
+                  <div class="pro-details-cart">
+                     <button class="btn" title="Out of Stock"> Out Of Stock</button>
+                  </div>
                </div>
             </div>
+
             <div class="pro-details-social-info">
                <span>Share</span>
                <div class="social-info">

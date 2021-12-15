@@ -21,6 +21,7 @@ class ProductController extends BaseController
     public function get($id)
     {
         $product = Product::where('id', $id)->with(['category', 'subCategory'])->first();
+        $stock = Productattribute::where('product_id', $id)->sum('quntity');
         
 
         if($product){
@@ -30,7 +31,10 @@ class ProductController extends BaseController
             
             echo json_encode([
                 'product' => $product, 'category' => $product->category,
-                'subCategory' => $product->subCategory, 'similarProducts' => $similar_products
+                'subCategory' => $product->subCategory,
+                'similarProducts' => $similar_products,
+                'stock' => $stock
+
             ]);
             exit;
         }
