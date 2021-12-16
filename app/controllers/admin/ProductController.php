@@ -177,7 +177,7 @@ class ProductController extends BaseController
     {
         if(Request::has('post')){
             if(CSRFToken::verifyCSRFToken($request->token)){
-            $request = Request :: get('post');
+            $request = Request::get('post');
             $file = Request::get('file');
             $id = $request->id;
             $rules = [

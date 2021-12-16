@@ -54,7 +54,9 @@
                         app.displayItems(1000);
                        
                     });
-                }
+                },
+
+               
             },
 
             created: function (){

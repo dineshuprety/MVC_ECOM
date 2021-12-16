@@ -6,6 +6,7 @@
       admin: {},
       homeslider: {},
       product: {},
-      products : {}
+      products : {},
+      validation:{},
     };
 })();

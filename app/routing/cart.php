@@ -8,3 +8,7 @@ $router->map('POST', '/cart/remove-item', 'App\Controllers\CartController@remove
 $router->map('POST', '/cart/empty', 'App\Controllers\CartController@emptyCart', 'empty_cart');
 
 
+// check out
+$router->map('GET', '/checkout', 'App\Controllers\CheckOutController@show', 'view_checkout');
+$router->map('GET', '/checkout/items', 'App\Controllers\CheckOutController@getCheckOutItems', 'get_checkout_items');
+$router->map('POST', '/checkout/store', 'App\Controllers\CheckOutController@CheckoutStore', 'checkout_store');

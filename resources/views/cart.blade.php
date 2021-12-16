@@ -121,8 +121,8 @@
                                             </div>
                                             <h5>Total products <span>रु @{{ cartTotal }}</span></h5>
                                             <h4 class="grand-totall-title">Grand Total <span>रु @{{ cartTotal }}</span></h4>
-                                            <a v-if="authenticated" href="#">Proceed to Checkout</a>
-                                            <a v-else href="/login">Login</a>
+                                            <a v-if="authenticated" href="/checkout">Proceed to Checkout</a>
+                                            <a v-else href="/login">Proceed to Checkout</a>
 
                                         </div>
                                     </div>

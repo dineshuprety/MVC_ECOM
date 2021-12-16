@@ -7135,12 +7135,12 @@ h3.cart-page-title {
 }
 .your-order-area .your-order-wrap .your-order-product-info .your-order-total ul li.order-total {
     font-weight: 700;
-    color: #212121;
+    color: #212529;
     font-size: 18px;
 }
 .your-order-area .your-order-wrap .your-order-product-info .your-order-total ul li {
     font-weight: 700;
-    color: #4fb68b;
+    color: #212529;
     font-size: 16px;
     list-style: outside none none;
 }
@@ -7169,7 +7169,7 @@ h3.cart-page-title {
     color: #666;
 }
 .your-order-area .Place-order > a {
-    background-color: #4fb68b;
+    background-color: #ef1e1e;
     color: #fff;
     display: block;
     font-weight: 700;

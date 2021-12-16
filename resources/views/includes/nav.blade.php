@@ -23,7 +23,7 @@
                                                 <a class="angle-icon" href="#">{{user()->username}}</a>
                                                 <ul class="dropdown-nav">
                                                     <li><a href="/cart">Cart</a><li>
-                                                    <li><a href="#">Checkout</a></li>
+                                                    <li><a href="/checkout">Checkout</a></li>
                                                     <li><a href="/logout">Logout</a></li>
                                                     <!-- <li><a href="my-account.html">My Account</a></li> -->
                                                     
@@ -131,8 +131,7 @@
                                     <div class="cart-info d-flex home-13">
                                         
                                         <div class="mini-cart-warp">
-                                            <a href="/cart" class="count-cart"><span>$20.00</span></a>
-                                           
+                                            <a href="/cart" class="count-cart"><span class="carttotal">रु </span></a>   
                                         </div>
                                     </div>
                                     <!--Cart info End -->

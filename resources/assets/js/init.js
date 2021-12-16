@@ -23,6 +23,7 @@
                 break;
             case 'auth':
                 SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.validation.valid();
                 break;
             case 'products':
             case 'categories':
@@ -33,6 +34,13 @@
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.product.cart();
                 break;
+            case 'checkout':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.product.checkout();
+                break; 
+            case 'cash':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                break;    
             case 'adminProduct':
                 SHOPIFYNEPAL.admin.changeEvent();
                 break;

@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Classes\CSRFToken;
 use App\Classes\Request;
+use App\Classes\Redirect;
 use App\Classes\Cart;
 use App\Classes\Session;
 use App\Models\Product;
@@ -107,6 +108,7 @@ class CartController extends BaseController
             }
 
             $cartTotal = number_format($cartTotal, 2);
+            Session::add('cartTotal', $cartTotal);
             echo json_encode([
                 'items' => $result, 
                 'cartTotal' => $cartTotal,

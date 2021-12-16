@@ -35,6 +35,7 @@
                                 </div>
                                 <div class="tab-content">
                                     <div  class="tab-pane active">
+                                    <!-- @include('includes.message') -->
                                         <div class="login-form-container">
                                             <div class="login-register-form">
                                                 <form action="/login" method="post">
