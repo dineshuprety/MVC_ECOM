@@ -157,7 +157,6 @@
       </div>
    </div>
 </div>
-
    <!-- checkout area end -->
 </div>
 @stop
