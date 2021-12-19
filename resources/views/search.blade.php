@@ -4,21 +4,22 @@
 @section('headerclass', '')
 @section('content')
 <!-- Breadcrumb Area start -->
-<section class="breadcrumb-area">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <div class="breadcrumb-content">
-               <h1 class="breadcrumb-hrading">Search Page</h1>
-               <ul class="breadcrumb-links">
-                  <li><a href="/">Home</a></li>
-                  <li>{{$searchTerm}}</li>
-               </ul>
+<div class="display-products" data-token="{{ $token }}" id="search">
+   <section class="breadcrumb-area">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="breadcrumb-content">
+                  <h1 class="breadcrumb-hrading">Search Page</h1>
+                  <ul class="breadcrumb-links">
+                     <li><a href="/">Home</a></li>
+                     <li>{{$searchTerm}}</li>
+                  </ul>
+               </div>
             </div>
          </div>
       </div>
-   </div>
-</section>
+   </section>
 <!-- Breadcrumb Area End -->
 <!-- Shop Category Area End -->
 <div class="shop-category-area">
@@ -54,16 +55,22 @@
                               <div class="add-to-link">
                                  <ul>
                                     <li>
-                                       <a @click.prevent="addToCart({{$searchResult['id']}})" title="Add to Cart">
-                                       <i class="ion-bag"></i>
-                                       </a>
+                                    <a @click="productView({{$searchResult['id']}})" data-toggle="modal" data-target="#exampleModal" title="Add to Cart">
+                                    <i class="ion-bag"></i>
+                                    </a>
                                     </li>
                                     <!-- <li><a href="#" data-link-action="quickview" title="Quick view" data-toggle="modal" data-target="#exampleModal"><i class="ion-ios-search-strong"></i></a></li> -->
                                  </ul>
                               </div>
                            </div>
                            <ul class="product-flag">
-                              <li class="new">Search</li>
+                           @if($searchResult['product_on'] == 1) 
+                              <li class="new">hot deal</li>
+                              @elseif($searchResult['product_on'] == 2)
+                              <li class="new">feature</li>
+                              @else
+                              <li class="new">new</li>
+                              @endif
                            </ul>
                            <div class="product-decs text-center">
                               <a class="inner-link" href="/product/{{$searchResult['id']}}">
@@ -83,6 +90,14 @@
                                     @endphp
                                     <li class="discount-price">-{{$discount_per}}%</li>
                                  </ul>
+                                 @elseif($searchResult['product_on'] == 2)
+                                 <ul>
+                                 <li class="old-price not-cut">रु {{$searchResult['price']}}</li>
+                                 </ul>
+                                 @else
+                                 <ul>
+                                 <li class="old-price not-cut">रु {{$searchResult['price']}}</li>
+                                 </ul>
                                  @endif 
                               </div>
                            </div>
@@ -100,6 +115,7 @@
       </div>
    </div>
 </div>
+@include('includes.product_model')
 </div>
 <!-- Shop Category Area End -->
 @stop

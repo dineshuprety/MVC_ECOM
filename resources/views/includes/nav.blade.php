@@ -131,7 +131,7 @@
                                     <div class="cart-info d-flex home-13">
                                         
                                         <div class="mini-cart-warp">
-                                            <a href="/cart" class="count-cart"><span class="carttotal">रु </span></a>   
+                                            <a href="/cart" class="count-cart"><span id="carttotal"></span></a>   
                                         </div>
                                     </div>
                                     <!--Cart info End -->

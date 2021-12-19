@@ -1,12 +1,13 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Slider;
-use App\Models\Product;
 use App\Classes\CSRFToken;
 use App\Classes\Session;
 use App\Classes\Request;
+use App\Models\Slider;
+use App\Models\Product;
 use App\Models\Size;
+use App\Models\Contact;
 use App\Classes\ValidateRequest;
 use App\Models\Productattribute;
 
@@ -79,6 +80,46 @@ class IndexController extends BaseController
         return view('contact');
         exit;
     }
+
+    public function addContact()
+    {
+        if(Request::has('post')){
+           
+            $request = Request::get('post');
+          
+            if(CSRFToken::verifyCSRFToken($request->token, false)){
+                $rules = [
+                    'name' => ['required' => true, 'minLength' => 4, 'maxLength'=> 100 , 'string' => true],
+                    'subject'=> ['required'=>true , 'minLength'=>3,'maxLength'=> 150],
+                    'email' =>['required' => true,'email'=>true], 
+                    'message' =>['required' => true,'string'=>true,'minLength'=>5,'maxlength'=>200]
+                  ];
+                  $validate = new ValidateRequest;
+                  $validate->abide($_POST, $rules);
+                  
+                  if($validate->hasError()){
+                      $errors = $validate->getErrorMessages();
+                      echo json_encode(['errors' =>  $errors]);
+                      exit;
+                  }
+
+                 
+                   //insert into database
+                Contact::create([
+                    'username' => $request->name,
+                    'email' => $request->email,      
+                    'subject' => $request->subject,
+                    'message' => $request->message
+                ]);
+                
+                Request::refresh();
+                echo json_encode(['success' => 'Contact details submited']);
+                exit;
+            }
+        }
+    }
+
+    
 
    
 

@@ -56,9 +56,9 @@
                      <div class="col-lg-6 col-md-6">
                         <div class="billing-info mb-20px">
                            <label>Province<span style="color:red;"> * </span></label>
-                           <select name="shipping_province" class="working" required>
+                           <select name="shipping_province" id="shipping" class="working" required>
                               <option>Select a Province</option>
-                              <option value="Province_1">Province No. 1</option>
+                              <option data-value="Province_1" value="Province_1">Province No. 1</option>
                               <option value="Province_2">Province No. 2</option>
                               <option value="Bagmati">Bagmati Province</option>
                               <option value="Gandaki">Gandaki Province</option>
@@ -158,5 +158,5 @@
    </div>
 </div>
    <!-- checkout area end -->
-</div>
+   
 @stop

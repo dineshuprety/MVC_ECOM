@@ -10,24 +10,43 @@
     <script src="https://unpkg.com/vue"></script>
 
     <link rel="stylesheet" href="/css/home.css">
-    <!-- <link rel="stylesheet" href="/assets/css/vendor/plugins.min.css">
-    <link rel="stylesheet" href="/assets/css/style.min.css">
-    <link rel="stylesheet" href="/assets/css/responsive.min.css"> -->
+   
 
 </head> 
 <body  class="home-furniture home-15" data-page-id="@yield('data-page-id')">
-    <!-- <div id="preloader">
-        <div class="preloader">
-        <img src="/images/icons/loading.gif" alt="frontloading.gif" width="100px" >
-        </div>
-    </div> -->
+    
     <div id="main"> 
 
 @yield('body')
 
 </div>
 
-<script async src="/js/all.js"></script>
+<script src="/js/all.js"></script>
+
+<script type="text/javascript">
+    // setInterval(function(){
+    //     miniCart();
+    // },3000);
+     function miniCart(){
+        $.ajax({
+            type: 'GET',
+            url: '/cart/items',
+            dataType:'json',
+            success:function(response){
+
+                if(response.fail){
+                    $('#carttotal').text('रु 0');
+                }else{
+                    $('#carttotal').text('रु ' + response.cartTotal);
+                }
+                
+               
+               
+            }
+        })
+     }
+     miniCart();
+</script>
 </body>
 </html>
 

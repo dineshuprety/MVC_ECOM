@@ -269,6 +269,87 @@ button{
     -webkit-box-orient: vertical;
   }
 
+  /*----------------------------------------*/
+/*  30. Static Countdown Area Style 
+/*----------------------------------------*/
+
+.static-countdown-area{
+    background-image: url(../images/section-bg/static-countdown-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+}
+.static-countdown-content h2{
+    color: #253237;
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.static-countdown-content p.countdown-price{
+    color: #ef1e1e;
+    font-size: 24px;
+}
+.static-countdown-content p{
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.static-countdown-content a{
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: #ef1e1e;
+    line-height: 45px;
+    height: 45px;
+    padding: 0 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.static-countdown-content a:hover{
+    background: #253237;
+    color: #fff;
+}
+
+.static-countdown-content .clockdiv {
+    justify-content: start;
+    margin: 0px 0px 20px 0px;
+}
+.static-countdown-content .clockdiv span{
+    font-size: 32px;
+}
+.static-countdown-content .clockdiv span p {
+    font-size: 12px;
+}
+.static-countdown-content .clockdiv span{
+    margin:0px 20px 0px 0px;
+    text-align: center;
+}
+.static-countdown-content .clockdiv span:after {
+    right: -10px;
+}
+
+
+.static-countdown-area:hover .static-countdown-content {
+    animation: fadeInRight 0.3s linear alternate;
+    -webkit-animation: fadeInRight 0.3s linear alternate;
+    -moz-animation: fadeInRight 0.3s linear alternate;
+}
+
+
+.banner-left {
+    float: left;
+    width: 20%;
+    position: relative;
+    z-index: 2;
+}
+.banner-right {
+    width: 80%;
+}
+
 /*----------------------------------------*/
 /*  2.1. Owl Dot Style
 /*----------------------------------------*/
@@ -7564,12 +7645,12 @@ h3.cart-page-title {
     color: #253237;
 }
 .contact-info-wrap .single-contact-info .contact-info-dec p a:hover{
-    color: #4fb68d;
+    color: #212529
 }
 .contact-info-wrap .single-contact-info:hover .contact-icon i {
-    background-color: #4fb68d;
+    background-color: #212529;
     color: #fff;
-    border-color: #4fb68d;
+    border-color: #212529;
 }
 .contact-social h3 {
     font-weight: 700;
@@ -7620,7 +7701,7 @@ h3.cart-page-title {
 }
 .contact-form .contact-form-style button {
     border: none;
-    background-color: #4fb68d;
+    background-color: #ef1e1e;
     color: #fff;
     font-size: 14px;
     font-weight: 700;
@@ -7640,574 +7721,7 @@ h3.cart-page-title {
 }
 
 
-/*----------------------------------------*/
-    /*  28. Compare page style  */
-/*----------------------------------------*/
 
-.compare-table .table tbody tr:first-child {
-    border-top: 1px solid #eeeeee;
-}
-.compare-table .table tbody tr td.first-column {
-    min-width: 180px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #253237;
-    margin: 0;
-    line-height: 1;
-}
-.compare-table .table tbody tr td.product-image-title {
-    min-width: 310px;
-    vertical-align: bottom;
-    padding-top: 70px;
-}
-.compare-table .table tbody tr td {
-    text-align: center;
-    border: none;
-    padding: 25px 30px;
-    vertical-align: middle;
-    border-bottom: 1px solid #eeeeee;
-    border-left: 1px solid #eeeeee;
-}
-.compare-table .table tbody tr td.product-image-title .image {
-    clear: both;
-    width: 100%;
-    margin-bottom: 40px;
-    display: block;
-}
-.compare-table .table tbody tr td.product-image-title .image img {
-    max-width: 100%;
-}
-.compare-table .table tbody tr td.product-image-title .category {
-    float: left;
-    clear: both;
-    font-size: 13px;
-    line-height: 15px;
-    color: #253237;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-}
-.compare-table .table tbody tr td.product-image-title .title {
-    float: left;
-    clear: both;
-    font-size: 16px;
-    font-weight: 700;
-    color: #253237;
-    line-height: 20px;
-    margin-bottom: 10px;
-}
-.compare-table .table tbody tr td.pro-desc p {
-    text-align: left;
-    margin: 0;
-}
-.compare-table .table tbody tr td.pro-price, .compare-table .table tbody tr td.pro-color, .compare-table .table tbody tr td.pro-stock {
-    font-size: 16px;
-    font-weight: 700;
-    color: #253237;
-}
-.compare-table .table tbody tr td:last-child {
-    border-right: 1px solid #eeeeee;
-}
-.compare-table .table tbody tr td.pro-addtocart .add-to-cart {
-    position: relative;
-    background-color: #4fb68d;
-    color: #fff;
-    border-radius: 30px;
-    display: inline-block;
-    width: 170px;
-    padding: 10px 25px 10px 25px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-    font-weight: 700;
-}
-.compare-table .table tbody tr td.pro-addtocart .add-to-cart:hover {
-    background-color: #253237;
-}
-.compare-table .table tbody tr td.pro-remove button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-}
-.compare-table .table tbody tr td.pro-remove button:hover {
-    color: #4fb68d;
-}
-.compare-table .table tbody tr td.pro-remove button i {
-    font-size: 22px;
-}
-.compare-table .table tbody tr td.pro-ratting i {
-    font-size: 20px;
-    color: #fdd835;
-}
-
-/*----------------------------------------*/
-/*  29. Static Banner Area Style 
-/*----------------------------------------*/
-
-.static-banner-area {
-    background: #f19596;
-    margin: 0;
-}
-.static-banner-area .banner-wrapper {
-    margin: 0;
-}
-
-.banner-box:after {
-    background: rgba(255,255,255,.3);
-    bottom: 50%;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    opacity: 1;
-    pointer-events: none;
-}
-.banner-box:before {
-    background: rgba(255,255,255,.3);
-    bottom: 0;
-    content: "";
-    left: 50%;
-    position: absolute;
-    right: 51%;
-    top: 0;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 1;
-}
-.banner-box img {
-    width: 100%;
-    -webkit-transition: all 300ms linear;
-    -moz-transition: all 300ms linear;
-    -ms-transition: all 300ms linear;
-    -o-transition: all 300ms linear;
-    transition: all 300ms linear;
-}
-
-.img-responsive {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-.banner-box:hover:before {
-    left: 0;
-    right: 0;
-    opacity: 0;
-    -webkit-transition: all 900ms linear;
-    -moz-transition: all 900ms linear;
-    -ms-transition: all 900ms linear;
-    -o-transition: all 900ms linear;
-    transition: all 900ms linear;
-}
-.banner-box:hover:after {
-    top: 0;
-    bottom: 0;
-    opacity: 0;
-    -webkit-transition: all 900ms linear;
-    -moz-transition: all 900ms linear;
-    -ms-transition: all 900ms linear;
-    -o-transition: all 900ms linear;
-    transition: all 900ms linear;
-}
-.static-banner-area .static-banner-content {
-    max-width: 450px;
-}
-.static-banner-area .static-banner-content h2 {
-    font-size: 48px;
-    line-height: 1;
-    color: #fff;
-    font-weight: 400;
-    margin: 0;
-    text-transform: uppercase;
-}
-.static-banner-area .static-banner-content h3 {
-    font-size: 48px;
-    line-height: 1;
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-.static-banner-area .static-banner-content p {
-    font-size: 18px;
-    line-height: 24px;
-    color: #fff;
-    font-weight: 400;
-    margin-bottom: 35px;
-}
-.static-banner-area .static-banner-content a {
-    position: relative;
-    font-size: 14px;
-    font-weight: 700;
-    color: #253237;
-    background: #fff;
-    line-height: 45px;
-    height: 45px;
-    padding: 0 30px;
-    border-radius: 30px;
-    text-transform: uppercase;
-    display: inline-block;
-}
-.static-banner-area .static-banner-content a:hover{
-    background: #ef1e1e;
-    color: #fff;
-}
-
-.static-banner-area:hover .static-banner-content {
-    animation: fadeInRight 0.3s linear alternate;
-    -webkit-animation: fadeInRight 0.3s linear alternate;
-    -moz-animation: fadeInRight 0.3s linear alternate;
-}
-
-@keyframes fadeInRight {
-        0% {
-        opacity: 0;
-        -webkit-transform: translate3d(10%,0,0);
-        transform: translate3d(10%,0,0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-    }
-}
-
-
-/*----------------------------------------*/
-/*  30. Static Countdown Area Style 
-/*----------------------------------------*/
-
-.static-countdown-area{
-    /* background-image: url(../images/section-bg/static-countdown-bg.jpg); */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 100px 0;
-}
-.static-countdown-content h2{
-    color: #253237;
-    font-size: 32px;
-    line-height: 1;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-.static-countdown-content p.countdown-price{
-    color: #ef1e1e;
-    font-size: 24px;
-}
-.static-countdown-content p{
-    color: #777;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-.static-countdown-content a{
-    position: relative;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    background: #ef1e1e;
-    line-height: 45px;
-    height: 45px;
-    padding: 0 30px;
-    border-radius: 30px;
-    text-transform: uppercase;
-    display: inline-block;
-}
-.static-countdown-content a:hover{
-    background: #253237;
-    color: #fff;
-}
-
-.static-countdown-content .clockdiv {
-    justify-content: start;
-    margin: 0px 0px 20px 0px;
-}
-.static-countdown-content .clockdiv span{
-    font-size: 32px;
-}
-.static-countdown-content .clockdiv span p {
-    font-size: 12px;
-}
-.static-countdown-content .clockdiv span{
-    margin:0px 20px 0px 0px;
-    text-align: center;
-}
-.static-countdown-content .clockdiv span:after {
-    right: -10px;
-}
-
-
-.static-countdown-area:hover .static-countdown-content {
-    animation: fadeInRight 0.3s linear alternate;
-    -webkit-animation: fadeInRight 0.3s linear alternate;
-    -moz-animation: fadeInRight 0.3s linear alternate;
-}
-
-
-.banner-left {
-    float: left;
-    width: 20%;
-    position: relative;
-    z-index: 2;
-}
-.banner-right {
-    width: 80%;
-}
-
-/*----------------------------------------*/
-/*  31. Blog Pages Style 
-/*----------------------------------------*/
-
-.blog-post-media {
-    overflow: hidden;
-}
-.blog-image img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-}
-.single-blog.blog-image img {
-    height: auto;
-}
-.blog-post-media iframe {
-   width: 100%;
-    position: relative;
-    height: 300px;
-}
-
-.blog-title a {
-    font-size: 24px;
-    font-weight: 600;
-    color: #253237;
-}
-.blog-title a:hover{
-    color: #4fb68d;
-}
-.blog-page-meta li a:hover{
-    color: #4fb68d;
-}
-.blog-page-meta li {
-    display: inline-block;
-}
-.blog-page-meta li a {
-    display: block;
-    color: #253237;
-}
-.blog-page-meta li:first-child:after {
-    position: absolute;
-    top: 50%;
-    right: -9px;
-    left: auto;
-    background: #555;
-    content: '';
-    width: 1px;
-    height: 12px;
-    margin-top: -6px;
-}
-.blog-page-meta li {
-    display: inline-block;
-    position: relative;
-}
-.blog-page-meta li:first-child{
-    margin-right: 15px;
-}
-.blog-page-meta {
-    margin: 10px 0;
-}
-.blog-post-content-inner p {
-    margin: 20px 0;
-    padding-top: 20px;
-    border-top: 1px solid#ebebeb;
-    color: #253237;
-}
-.blog-post-content-inner .read-more-btn:hover {
-    color: #4fb68d;
-    padding-left: 5px;
-}
-.blog-gallery .slick-arrow i {
-    font-size: 26px;
-    color: #333;
-}
-.blog-gallery .slick-arrow {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: all 0.3s linear;
-    -moz-transition: all 0.3s linear;
-    -ms-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-    cursor: pointer;
-}
-.blog-gallery .slick-arrow.next {
-    left: auto;
-    right: 0;
-}
-.blog-gallery:hover .slick-arrow {
-    visibility: visible;
-    opacity: 1;
-    left: 20px;
-}
-.blog-gallery:hover .slick-arrow.next {
-    left: auto;
-    right: 20px;
-}
-.blog-gallery .slick-slide img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-}
-.single-post-content p {
-    margin: 0 0 25px;
-    color: #253237;
-}
-.single-post-content p.quate-speech {
-    margin-left: 100px;
-    padding: 10px 15px;
-    font-size: 16px;
-    line-height: 26px;
-    font-style: italic;
-    border-left: 3px solid#4fb68d;
-}
-.tag-list li {
-    display: inline-block;
-    margin-left: 5px;
-    color: #253237;
-}
-
-.tag-list li a {
-    color: #253237;
-}
-.tag-list li a:hover {
-    color: #4fb68d;
-}
-
-.social li {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 16px;
-    color: #253237;
-}
-.social li a{
-    color: #253237;
-}
-.social li a:hover{
-    color: #4fb68d;
-}
-span.title {
-    font-weight: 700;
-    color: #253237;
-}
-.blog-related-post .blog-title a {
-    font-size: 20px;
-}
-.blog-related-post {
-    padding: 40px 0 30px 0;
-    border-top: 1px solid#ebebeb;
-    border-bottom: 1px solid#ebebeb;
-}
-.blog-single-tags-share {
-    margin-bottom: 35px;
-}
-.comment-area .review-content {
-    padding: 30px;
-    border: 1px solid #ebebeb;
-}
-.comment-area {
-    margin-top: 35px;
-}
-.comment-area .single-review.child-review {
-    margin-bottom: 70px;
-}
-.comment-heading {
-    font-family: "Open Sans",sans-serif;
-    font-size: 24px;
-    color: #253237;
-    text-transform: capitalize;
-    line-height: 16px;
-    font-weight: 600;
-    margin: 0 0 40px;
-}
-.blog-comment-form .comment-heading{
-    margin: 0 0 10px;
-}
-.blog-comment-form p{
-    margin: 0 0 30px;
-}
-.comment-area .single-review .review-top-wrap .review-left .review-name h4 {
-    font-weight: 600;
-    color: #253237;
-}
-
-.single-form input, .single-form textarea {
-    padding: 2px 10px 2px 20px;
-    background: transparent;
-    border: 1px solid #e6e6e6;
-    color: #333;
-}
-.single-form input {
-    height: 45px;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    padding-left: 10px;
-    font-size: 14px;
-    color: #253237;
-    width: 100%;
-    margin-bottom: 15px;
-    outline: none;
-}
-.single-form textarea {
-    height: 180px;
-    padding: 20px 10px 2px 20px;
-    margin-bottom: 20px;
-    width: 100%;
-    outline: none;
-}
-.single-form input[type=submit] {
-    padding: 0 55px !important;
-    line-height: 48px;
-    height: 48px;
-    font-size: 16px;
-    font-weight: 700;
-    border: none;
-    border-radius: 30px;
-    box-shadow: none;
-    text-transform: uppercase;
-    background: #4fb68d !important;
-    display: block;
-    color: #fff !important;
-    width: 200px;
-    -webkit-transition: all 300ms linear;
-    -moz-transition: all 300ms linear;
-    -ms-transition: all 300ms linear;
-    -o-transition: all 300ms linear;
-    transition: all 300ms linear;
-    margin: 20px 0 60px;
-}
-.single-form input[type=submit]:hover {
-    background: #253237!important;
-    color: #fff!important;
-}
-
-.single-blog .blog-post-content-inner {
-    padding: 30px 0 0;
-}
 
 /*----------------------------------------*/
 /*  32. About Page Style 

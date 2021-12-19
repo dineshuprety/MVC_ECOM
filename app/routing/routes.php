@@ -11,6 +11,7 @@ $router->map('GET', '/product-details/[i:id]', 'App\Controllers\ProductControlle
 
 $router->map('GET', '/about', 'App\Controllers\IndexController@aboutMe', 'about_me');
 $router->map('GET', '/contact', 'App\Controllers\IndexController@contactMe', 'contact_me');
+$router->map('POST', '/contact/store', 'App\Controllers\IndexController@addContact', 'add_contact');
 
 // hot products page
 $router->map('GET', '/hotsales', 'App\Controllers\HotsalesController@show', 'hot_products');

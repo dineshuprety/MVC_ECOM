@@ -20,6 +20,7 @@
                 break;
             case 'search':
                 SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.homeslider.search();
                 break;
             case 'auth':
                 SHOPIFYNEPAL.homeslider.mainjs();
@@ -40,7 +41,11 @@
                 break; 
             case 'cash':
                 SHOPIFYNEPAL.homeslider.mainjs();
-                break;    
+                break; 
+            case 'contact':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.validation.contact();
+                break; 
             case 'adminProduct':
                 SHOPIFYNEPAL.admin.changeEvent();
                 break;
