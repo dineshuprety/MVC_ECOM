@@ -269,6 +269,13 @@ button{
     -webkit-box-orient: vertical;
   }
 
+  .error {
+    color: red;
+    width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
   /*----------------------------------------*/
 /*  30. Static Countdown Area Style 
 /*----------------------------------------*/
@@ -7501,7 +7508,7 @@ h3.cart-page-title {
     width: 1px;
 }
 .login-register-wrapper .login-register-tab-list a.active h4 {
-    color: #4fb68d;
+    color: #212529;
 }
 .login-register-wrapper .login-register-tab-list a h4 {
     font-size: 25px;
@@ -7538,9 +7545,9 @@ h3.cart-page-title {
 }
 
 .login-register-wrapper .login-form-container .login-register-form form .button-box button {
-    background-color: #f2f2f2;
+    background-color: #ef1e1e;
     border: medium none;
-    color: #253237;
+    color: #fff;
     cursor: pointer;
     font-size: 14px;
     font-weight: 700;
@@ -7554,7 +7561,7 @@ h3.cart-page-title {
     border-radius: 30px;
 }
 .login-register-wrapper .login-form-container .login-register-form form .button-box button:hover{
-    background: #4fb68d;
+    background: #000;
     color: #fff;
 }
 .login-register-wrapper .login-form-container .login-register-form form input[type="checkbox"] {

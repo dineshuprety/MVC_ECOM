@@ -107,7 +107,7 @@
                                         </li>
                                         
                                         <li class="menu-dropdown">
-                                            <a href="about">About Me </a>
+                                            <a href="/about">About Me </a>
                                             
                                         </li>
                                         <li><a href="/contact">Contact Us</a></li>

@@ -85,12 +85,8 @@
                     </article>
                   </div>
                  </div>
-                 <div class="center">
-                    <img v-show="loading" src="/images/icons/frontloading.gif" alt="frontloading.gif" width="60px">
-                </div>
               </div>
             </div>
-            
           </div>
           <div class="center">
                <img v-show="loading" src="/images/icons/frontloading.gif" alt="frontloading.gif" width="60px">

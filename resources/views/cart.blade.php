@@ -118,7 +118,8 @@
                                         <div class="grand-totall">
                                             <div class="title-wrap">
                                                 <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
-                                            </div>
+                                            </div><hr>
+                                            <p>*Unconfirmed list item not priced.<br>** For devliveries outside Ring Road,<b> Rs 50 </b> is added as a delivery charge if the total value of the order is less than Rs 2,000.</p>
                                             <h5>Total products <span>रु @{{ cartTotal }}</span></h5>
                                             <h4 class="grand-totall-title">Grand Total <span>रु @{{ cartTotal }}</span></h4>
                                             <a v-if="authenticated" href="/checkout">Proceed to Checkout</a>

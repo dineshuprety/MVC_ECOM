@@ -47,7 +47,7 @@ SHOPIFYNEPAL.validation.contact = function (){
                
             }
             setTimeout(function(){
-              $("p").remove();
+              $(".form-messege").remove();
             }, 2000);
             
           } else {

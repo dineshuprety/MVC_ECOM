@@ -24,9 +24,9 @@
 <script src="/js/all.js"></script>
 
 <script type="text/javascript">
-    // setInterval(function(){
-    //     miniCart();
-    // },3000);
+    setInterval(function(){
+        // miniCart();
+    },3000);
      function miniCart(){
         $.ajax({
             type: 'GET',
@@ -35,18 +35,17 @@
             success:function(response){
 
                 if(response.fail){
-                    $('#carttotal').text('रु 0');
+                    $('#carttotal').text('रु 0.00');
                 }else{
                     $('#carttotal').text('रु ' + response.cartTotal);
                 }
-                
-               
-               
+
             }
         })
      }
      miniCart();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 </body>
 </html>
 

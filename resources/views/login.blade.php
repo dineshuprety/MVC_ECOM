@@ -35,13 +35,13 @@
                                 </div>
                                 <div class="tab-content">
                                     <div  class="tab-pane active">
-                                    <!-- @include('includes.message') -->
                                         <div class="login-form-container">
                                             <div class="login-register-form">
-                                                <form action="/login" method="post">
-                                                    <input type="text" name="username" value="{{ \App\Classes\Request::old('post', 'username') }}" placeholder="Your Username or Email" />
-                                                    <input type="password" name="password" placeholder="Password" />
-                                                    <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                                                <form id="login" action="/login" method="post">
+                                                <div class="notification-login alert alert-success" style="display: none;"></div>
+                                                    <input type="text" id="username" name="username" value="{{ \App\Classes\Request::old('post', 'username') }}" placeholder="Your Username or Email" />
+                                                    <input type="password" id="password" name="password" placeholder="Password" />
+                                                    <input type="hidden" id="token" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                                     <div class="button-box">
                                                         <div class="login-toggle-btn">
                                                             

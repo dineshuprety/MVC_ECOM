@@ -24,8 +24,14 @@
                 break;
             case 'auth':
                 SHOPIFYNEPAL.homeslider.mainjs();
-                SHOPIFYNEPAL.validation.valid();
+                SHOPIFYNEPAL.validation.register();
+                SHOPIFYNEPAL.validation.login();
                 break;
+            case 'user':
+                SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.validation.changeinformation();
+                SHOPIFYNEPAL.validation.changepassword();
+                break;    
             case 'products':
             case 'categories':
                 SHOPIFYNEPAL.homeslider.mainjs();

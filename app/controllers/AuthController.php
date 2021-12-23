@@ -39,14 +39,13 @@ class AuthController extends BaseController
     {
         if(Request::has('post')){
             $request = Request::get('post');
-            if(CSRFToken::verifyCSRFToken($request->token)){
+            if(CSRFToken::verifyCSRFToken($request->token, false)){
                 $rules = [
                   'username' => ['required' => true, 'maxLength' => 20, 'string' => true, 'unique' => 'users'],
                   'email' => ['required' => true, 'email' => true, 'unique' => 'users'],
                   'password' => ['required' => true, 'minLength' => 6],
                   'fullname' => ['required' => true, 'minLength' => 6, 'maxLength' => 50],
-                  'phone_number' => ['required' => true, 'minLength' => 10, 'maxLength' => 10],
-                  'address' => ['required' => true, 'minLength' => 4, 'maxLength' => 500, 'mixed' => true]
+                  'phonenumber' => ['required' => true, 'minLength' => 10, 'maxLength' => 10]
                 ];
                 
                 $validate = new ValidateRequest;
@@ -54,7 +53,9 @@ class AuthController extends BaseController
                 
                 if($validate->hasError()){
                     $errors = $validate->getErrorMessages();
-                    return view('register', ['errors' => $errors]);
+                    header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                    echo json_encode($errors);
+                    exit;
                 }
                 
                 //insert into database
@@ -65,16 +66,17 @@ class AuthController extends BaseController
                     'password' => password_hash($request->password , PASSWORD_BCRYPT),
                     'phone_number'=>$request->phonenumber,
                     'pan_number' => NULL,       
-                    'address' => $request->address,
+                    'address' => Null,
                     'pan_image' => NULL,
                     'role' => 'user'
                 ]);
                 
                 Request::refresh();
-                return view('register', ['success' => 'Account created, please login']);
+                echo json_encode(['success' => 'Account created, please login']);
+                exit;
             }
-            // throw new \Exception('Token Mismatch');
-            Redirect::to('/register');
+            throw new \Exception('Token Mismatch');
+            // Redirect::to('/register');
         }
         return null;
     }
@@ -134,12 +136,12 @@ class AuthController extends BaseController
         return null;
     }
         
-    
     public function login()
     {
         if(Request::has('post')){
             $request = Request::get('post');
-            if(CSRFToken::verifyCSRFToken($request->token)){
+            $extra_errors = []; 
+            if(CSRFToken::verifyCSRFToken($request->token, false)){
                 $rules = [
                     'username' => ['required' => true],
                     'password' => ['required' => true],
@@ -147,12 +149,15 @@ class AuthController extends BaseController
             
                 $validate = new ValidateRequest;
                 $validate->abide($_POST, $rules);
-            
+
                 if($validate->hasError()){
                     $errors = $validate->getErrorMessages();
-                    return view('login', ['errors' => $errors]);
+                    // count($extra_errors) ? $response = array_merge($errors, $extra_errors) : $response = $errors;
+                    header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                    echo json_encode($errors);
+                    exit;
                 }
-    
+            
                 /**
                  * Check if user exist in db
                  */
@@ -161,28 +166,31 @@ class AuthController extends BaseController
                 
                 if($user){
                     if(!password_verify($request->password, $user->password)){
-                        Session::add('error', 'Incorrect password');
-                        return view('login');
+                        header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                        echo json_encode(['username' => 'User Candidate Not Match']);
+                        exit;
                     }else{
                         Session::add('SESSION_USER_ID', $user->id);
                         Session::add('SESSION_USER_NAME', $user->username);
                         
                         if($user->role == 'admin'){
-                            Redirect::to('/admin');
+                            echo json_encode('admin');
                             die();
+                            
                         }else if($user->role == 'user' && Session::has('user_cart')){
-                            Redirect::to('/cart');
+                            echo json_encode('cart');
                             die();
                         }else{
-                            Redirect::to('/');
+                            echo json_encode('index');
                             die();
                         }
                     }
                 }else{
-                    Session::add('error', 'User not found, please try again');
-                    return view('login');
+                    header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                    echo json_encode(['username' => 'User not found, please try again']);
+                    exit;
                 }
-                exit;
+              
             }
             throw new \Exception('Token Mismatch');
         }
