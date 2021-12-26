@@ -35,6 +35,7 @@
 
                     var postData = $.param({product_id:product_id, operator:operator, size:size, qty:qty});
                     axios.post('/cart/update-qty', postData).then(function (response) {
+                        miniCart();
                         app.displayItems(1000);
                     })
                 },
@@ -43,6 +44,7 @@
                     axios.post('/cart/remove-item', postData).then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300)
                             .html(response.data.success);
+                            miniCart();
                         app.displayItems(1000);
                     })
                 },
@@ -51,6 +53,7 @@
                     axios.post('/cart/empty').then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300)
                             .html(response.data.success);
+                            miniCart();
                         app.displayItems(1000);
                        
                     });

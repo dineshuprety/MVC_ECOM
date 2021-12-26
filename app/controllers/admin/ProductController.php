@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Size;
 use App\Models\Productattribute;
+use App\Classes\Role;
 
 class ProductController extends BaseController
 {
@@ -24,6 +25,9 @@ class ProductController extends BaseController
 
     public function __construct()
     {
+        if(!Role::middleWare('admin')){
+            Redirect::to('/login');
+        }
         $this->categories = Category::all();
         $this->sizes = Size::all();
         $total = Product::all()->count();

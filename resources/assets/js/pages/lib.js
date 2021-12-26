@@ -27,6 +27,7 @@
                 var postData = $.param({product_id: id, token: token, size_id: size});
                 axios.post('/cart', postData).then(function (response) {
                     callback(response.data.success);
+                    miniCart();
                 })
         },
 

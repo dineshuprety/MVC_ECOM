@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Classes\CSRFToken;
+use App\Classes\Redirect;
 use App\Classes\Request;
 use App\Classes\ValidateRequest;
 use App\Models\User;
@@ -9,11 +10,17 @@ use App\Models\User;
 
 class UserController extends BaseController
 {
+
     public function show()
     {
-        $token = CSRFToken::_token();
-        return view('dashboard', compact('token'));
-        exit;
+        if(isAuthenticated()){
+            $token = CSRFToken::_token();
+            return view('dashboard', compact('token'));
+            exit;
+        }else{
+            Redirect::to('/login');
+        }
+       
     }
     
     public function changeUserInformation()
@@ -38,16 +45,22 @@ class UserController extends BaseController
                     exit;
                 }
 
-                User::where('id', user()->id )->update(
+                if(User::where('id', user()->id )->where(role , 'user')->update(
                     [
                     'fullname' => $request->fullname, 
                     'email' => $request->email,
                     'address' => $request->address,
                     'phone_number' => $request->phonenumber
                     ]
-                );
-                echo json_encode(['success' => 'User Information Updated Successfully']);
-                exit;
+                )){
+                    echo json_encode(['success' => 'User Information Updated Successfully']);
+                    exit;
+                }
+                // else{
+                //     header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                //     echo jason_encode(['error'=> 'User Information Can not be Updated']);
+                // }
+                
                    
                 
             }

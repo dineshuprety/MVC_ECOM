@@ -9,7 +9,7 @@ use App\Classes\ValidateRequest;
 use App\Controllers\BaseController;
 use App\Models\Category;
 use App\Models\SubCategory;
-
+use App\Classes\Role;
 class ProductCategoryController extends BaseController
 {
     public $table_name = 'categories';
@@ -20,6 +20,9 @@ class ProductCategoryController extends BaseController
     
     public function __construct()
     {
+        if(!Role::middleWare('admin')){
+            Redirect::to('/login');
+        }
         $total = Category::all()->count();
         $subTotal = SubCategory::all()->count();
         $object = new Category;

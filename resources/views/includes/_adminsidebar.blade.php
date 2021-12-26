@@ -16,10 +16,11 @@
 
                 <div class="user-details">
                     <div class="text-center">
-                        <img src="/images/avatars/avatar1.jpg" alt="" class="rounded-circle">
+                        <img src="/images/logo/logo.jpg" alt="" class="rounded-circle">
                     </div>
                     <div class="user-info">
-                            <h4 class="font-16 text-white">Elena Retson</h4>
+                    
+                            <h4 class="font-16 text-white">{{ucfirst(user()->username)}}</h4>
                             <span class="text-white"><i class="fa fa-dot-circle-o text-success"></i> Online</span>
                     </div>
                 </div>
@@ -65,6 +66,7 @@
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Order </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li></i><a href="#"><i class="ti-eye"></i>View Orders </a></li>
+
                                 <li><a href="#"><i class="ti-plus"></i>Add Order</a></li>
                             </ul>
                         </li>
@@ -72,7 +74,8 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i> <span> Users </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="#"><i class="ti-eye"></i>View Users </a></li>
+                                <li></i><a href="/admin/users/retailers"><i class="ti-eye"></i>View Users </a></li>
+                                <li></i><a href="/admin/users/wholesalers"><i class="ti-eye"></i>View Wholesalers </a></li>
                                 <li><a href="#"><i class="ti-plus"></i>Add Users</a></li>
                             </ul>
                         </li>
@@ -106,7 +109,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/admin" class="waves-effect">
+                            <a href="/logout" class="waves-effect">
                                 <i class="mdi mdi-logout"></i>
                                 <span> logout </span>
                             </a>

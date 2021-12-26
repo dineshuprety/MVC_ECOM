@@ -2,9 +2,15 @@
 namespace App\Controllers\Admin;
 use App\Classes\Session;
 use App\Controllers\BaseController;
-
+use App\Classes\Role;
+use App\Classes\Redirect;
 class DashboardController extends BaseController
 {
+    function __construct(){
+        if(!Role::middleWare('admin')){
+            Redirect::to('/login');
+        }
+    }
     public function show()
     {
         // Session::add('Admin', 'Hey hero wellcome to dashboard');

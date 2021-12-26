@@ -60,9 +60,9 @@ Categories
                                     <div class="add-to-link">
                                        <ul>
                                           <li>
-                                             <a @click.prevent="addToCart(product.id)" title="Add to Cart">
-                                             <i class="ion-bag"></i>
-                                             </a>
+                                          <a @click="productView(product.id)" data-toggle="modal" data-target="#exampleModal" title="Add to Cart">
+                                <i class="ion-bag"></i>
+                              </a>
                                           </li>
                                           <!-- <li><a href="#" data-link-action="quickview" title="Quick view" data-toggle="modal" data-target="#exampleModal"><i class="ion-ios-search-strong"></i></a></li> -->
                                        </ul>
@@ -106,6 +106,7 @@ Categories
          </div>
       </div>
       <!-- Shop Category Area End -->
+      @include('includes.product_model')
    </section>
 </div>
 @stop

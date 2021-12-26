@@ -24,9 +24,6 @@
 <script src="/js/all.js"></script>
 
 <script type="text/javascript">
-    setInterval(function(){
-        // miniCart();
-    },3000);
      function miniCart(){
         $.ajax({
             type: 'GET',
@@ -45,7 +42,7 @@
      }
      miniCart();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
 </body>
 </html>
 

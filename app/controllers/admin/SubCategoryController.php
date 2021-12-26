@@ -12,6 +12,11 @@ use App\Models\SubCategory;
 
 class SubCategoryController extends BaseController
 {
+    function __construct(){
+    if(!Role::middleWare('admin')){
+        Redirect::to('/login');
+    } 
+    }
     public function store()
     {
         if(Request::has('post')){

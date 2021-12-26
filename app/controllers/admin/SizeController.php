@@ -3,6 +3,7 @@ namespace App\Controllers\Admin;
 
 use App\Classes\CSRFToken;
 use App\Classes\Redirect;
+use App\Classes\Role;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
@@ -17,6 +18,9 @@ class SizeController extends BaseController
     
     public function __construct()
     {
+        if(!Role::middleWare('admin')){
+            Redirect::to('/login');
+        }
         $total = Size::all()->count();
         $object = new Size;
     

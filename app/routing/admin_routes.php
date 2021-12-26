@@ -79,5 +79,14 @@ $router->map('POST', '/admin/slider/edit',
 
 $router->map('POST', '/admin/slider/[i:id]/delete',
 'App\Controllers\Admin\SliderController@delete', 'delete_slider');
-    
+//get users 
+$router->map('GET', '/admin/users/retailers',
+'App\Controllers\Admin\ViewUserController@getRetailers', 'get_retailers');
+
+$router->map('GET', '/admin/users/wholesalers',
+'App\Controllers\Admin\WholesalerController@getWholesalers', 'get_wholesalers');
+//get admins
+
+$router->map('GET', '/admin/users/admins',
+'App\Controllers\Admin\AdminController@getAdmin', 'get_admins');
 ?>
