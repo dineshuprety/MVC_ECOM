@@ -36,6 +36,7 @@
                                                 <a class="angle-icon" href="/login">login</a>
                                                 <ul class="dropdown-nav">
                                                     <li><a href="/register">Register</a><li>
+                                                    <li><a href="/inquery/wholeser">Wholeser</a><li>
                                                     <li><a href="/cart">Cart</a><li>
                                                    
                                                 </ul>

@@ -70,6 +70,7 @@
                         <label for="exampleFormControlInput1">Product On:</label>
                         <select class="form-control" name="product_on" id="exampleFormControlSelect1" >
                            <option value="selected" selected disabled>Choose a Product On</option>
+                           <option value="0">new</option>
                            <option value="1">hot sales</option>
                            <option value="2">feacher</option>
                         </select>
@@ -82,14 +83,16 @@
                   <div class="col">
                      <div class="form-group">
                         <label for="exampleFormControlFile1">Main Image</label>
-                        <input type="file" name="product_image_path" class="form-control-file" id="exampleFormControlFile1" >
+                        <input type="file" name="product_image_path" onChange="mainThamUrl(this)" class="form-control-file" id="exampleFormControlFile1" >
                      </div>
+                     <img src="" id="mainThmb">
                   </div>
                   <div class="col">
                      <div class="form-group">
                         <label for="exampleFormControlFile1">Hover Image</label>
-                        <input type="file" name="hover_image_path" class="form-control-file" id="exampleFormControlFile1" >
+                        <input type="file" name="hover_image_path" onChange="hoverThamUrl(this)" class="form-control-file" id="exampleFormControlFile1" >
                      </div>
+                     <img src="" id="hoverThmb">
                   </div>
                </div>
                <!-- form image row end -->
@@ -175,5 +178,25 @@
    function remove_more(loop_count){
         jQuery('#product_attr_'+loop_count).remove();
    }
+</script>
+<script type="text/javascript">
+	function mainThamUrl(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb').attr('src',e.target.result).width(150).height(100);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}	
+   function hoverThamUrl(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#hoverThmb').attr('src',e.target.result).width(150).height(100);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}	
 </script>
 @endsection

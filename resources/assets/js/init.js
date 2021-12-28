@@ -25,6 +25,7 @@
             case 'auth':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.validation.register();
+                SHOPIFYNEPAL.validation.wholeser();
                 SHOPIFYNEPAL.validation.login();
                 break;
             case 'user':
@@ -61,11 +62,8 @@
                 SHOPIFYNEPAL.admin.create();
                 break;
             case 'adminSizes':
-                SHOPIFYNEPAL.admin.delete();
-                break;
             case 'adminSliderManage':
-                SHOPIFYNEPAL.admin.delete();
-                break;
+            case 'wholesalerusers':
             case 'inventory':
                 SHOPIFYNEPAL.admin.delete();
                 break;

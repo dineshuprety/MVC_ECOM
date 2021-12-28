@@ -9,6 +9,7 @@ use App\Classes\Request;
 use App\Classes\ValidateRequest;
 
 
+
 class SearchController extends BaseController
 {
    

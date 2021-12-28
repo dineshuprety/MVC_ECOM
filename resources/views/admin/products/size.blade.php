@@ -42,22 +42,22 @@
                      </tr>
                   </thead>
                   <tbody>
-                  @foreach($sizes as $size)
+                     @foreach($sizes as $size)
                      <tr>
                         <td class="c-table__cell">{{ $size['name'] }}</td>
                         <td class="c-table__cell">{{ $size['added'] }}</td>
                         <td class="c-table__cell">
                            <!-- deleted size button -->
-                           <span data-toggle="tooltip" data-placement="top" title="Delete size"style="display:inline-block">
-                              <form  action="/admin/product/size/{{$size['id']}}/delete" method="POST" class="delete-item">
-                                 <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
-                                 <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
-                                 <i class="fa fa-trash"></i></button>
+                           <span data-toggle="tooltip" data-placement="top" title="Delete size"style="display:inline-block"  class="delete-item">
+                              <form  action="/admin/product/size/{{$size['id']}}/delete" method="POST">
+                              <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                              <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
+                              <i class="fa fa-trash"></i></button>
                               </from>
                            </span>
                         </td>
                      </tr>
-                  @endforeach
+                     @endforeach
                   </tbody>
                </table>
                <!-- table end -->
@@ -75,7 +75,6 @@
    </div>
    <!-- Page content Wrapper -->
 </div>
-
 <!-- container -->
 @include('includes.delete-model')
 @endsection

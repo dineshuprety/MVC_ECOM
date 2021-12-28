@@ -31,31 +31,30 @@
                            <td class="col-sm-1">{{ substr($slider['description'],0,20 )}}</td>
                            <td class="col-sm-1">{{ $slider['added'] }}</td>
                            <td class="col-sm-1">
-                           <!-- Edit Slider button -->
-                           <span data-toggle="tooltip" data-placement="top" title="Edit Sliders">
-                           <a href="/admin/slider/{{$slider['id']}}/edit" class="btn-sm btn-success">
-                           <i class="fa fa-edit"></i></a>
-                           </span>
-                           <span data-toggle="tooltip" data-placement="top" title="Delete slider"style="display:inline-block">
-                              <form method="POST" action="/admin/slider/{{$slider['id']}}/delete" class="delete-item">
+                              <!-- Edit Slider button -->
+                              <span data-toggle="tooltip" data-placement="top" title="Edit Sliders">
+                              <a href="/admin/slider/{{$slider['id']}}/edit" class="btn-sm btn-success">
+                              <i class="fa fa-edit"></i></a>
+                              </span>
+                              <span data-toggle="tooltip" data-placement="top" title="Delete slider"  class="delete-item" style="display:inline-block">
+                                 <form method="POST" action="/admin/slider/{{$slider['id']}}/delete">
                                  <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                  <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                                  <i class="fa fa-trash"></i></button>
                                  </from>
-                           </span>
+                              </span>
                            </td>
                         </tr>
                         @endforeach
                      </tbody>
                   </table>
                   <ul class="pagination justify-content-end">
-                  {!! $links !!}
+                     {!! $links !!}
                   </ul>
                   @else
-                     <h3> You have not created any Slider</h3>
+                  <h3> You have not created any Slider</h3>
                   @endif
                   <hr>
-                  
                </div>
             </div>
          </div>

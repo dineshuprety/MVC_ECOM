@@ -24,7 +24,7 @@
    <!-- checkout area start -->
    <div class="checkout-area mt-60px mb-40px">
       <div class="container">
-         <form method="post" action="/checkout/store" >
+         <form method="post" action="/cash/order" >
             <div class="row">
                <div class="col-lg-12">
                   <div class="your-order-area">
@@ -63,6 +63,7 @@
                                  <input type="hidden" name="shipping_town_city" value="{{ $data['shipping_town_city'] }}">
                                  <input type="hidden" name="shipping_address" value="{{ $data['shipping_address'] }}">
                                  <input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+                                 
                                  </label>
                                  <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                                  <button class="btn btn-danger" type="submit" class="btn-hover">Submit Order</button>

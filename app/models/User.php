@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 class User extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
     
     public $timestamps = true;
     protected $fillable = ['username' ,'fullname','email','password','phone_number','pan_number','pan_image','address','role'];
@@ -18,8 +18,8 @@ class User extends Model
             $added = new Carbon($item->created_at);
             array_push($users , [
                 'id'=>$item->id,
-                'username'=>$item->username,
-                'fullname' => $item->fullname,
+                'username'=>ucfirst($item->username),
+                'fullname' => ucfirst($item->fullname),
                 'email'=> $item->email,
                 'password'=>$item->password,
                 'phone_number'=> $item->phone_number,
@@ -27,7 +27,7 @@ class User extends Model
                 'pan_image'=>$item->pan_image,
                 'address'=>$item->address,
                 'role'=>$item->role,
-
+                'status'=>$item->status,
                 'added' => $added->toFormattedDateString()
             ]);
         }

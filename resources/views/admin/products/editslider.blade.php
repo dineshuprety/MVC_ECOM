@@ -46,5 +46,4 @@
 </div>
 
 <!-- container -->
-@include('includes.delete-model')
 @endsection

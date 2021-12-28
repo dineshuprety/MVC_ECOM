@@ -172,9 +172,9 @@
                            <!-- deleted subcategory button -->
                            <span data-toggle="tooltip" data-placement="top" title="Delete SubCategory"style="display:inline-block">
                               <form method="POST" action="/admin/product/subcategory/{{$subcategory['id']}}/delete" class="delete-item">
-                                    <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
-                                    <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
-                                    <i class="fa fa-trash"></i></button>
+                                 <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                                 <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
+                                 <i class="fa fa-trash"></i></button>
                                  </from>
                            </span>
                         </td>
@@ -195,19 +195,18 @@
                      <div class="form-group">
                      <input type="text" id="item-subcategory-name-{{$subcategory['id']}}"
                         value="{{ $subcategory['name'] }}"class="form-control">
-                     
                      <div class="form-group">
                      <small id="emailHelp" class="form-text text-muted">Here edit category for your product.</small>
                      <select class="form-control"id="item-category-{{ $subcategory['category_id']}}">
                      @foreach(\App\Models\Category::all() as $category)
-                        @if($category->id == $subcategory['category_id'])
-                        <option selected="selected" value="{{$category->id}}">
-                         {{$category->name}}
-                        </option>
-                        @endif
-                        <option  value="{{$category->id}}">
-                         {{$category->name}}
-                        </option>
+                     @if($category->id == $subcategory['category_id'])
+                     <option selected="selected" value="{{$category->id}}">
+                     {{$category->name}}
+                     </option>
+                     @endif
+                     <option  value="{{$category->id}}">
+                     {{$category->name}}
+                     </option>
                      @endforeach
                      </select>
                      </div>

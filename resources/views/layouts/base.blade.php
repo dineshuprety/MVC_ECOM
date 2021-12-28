@@ -42,7 +42,6 @@
      }
      miniCart();
 </script>
-
 </body>
 </html>
 

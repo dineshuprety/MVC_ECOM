@@ -22,17 +22,17 @@ class AuthController extends BaseController
     
     public function showRegisterForm()
     {
-        return view('register');
+        return view('auth/register');
     }
     
     public function showLoginForm()
     {
-        return view('login');
+        return view('auth/login');
     }
 
     public function showWholesalerForm()
     {
-        return view('wholesaler');
+        return view('auth/wholesaler');
     }
     
     public function register()
@@ -68,7 +68,8 @@ class AuthController extends BaseController
                     'pan_number' => NULL,       
                     'address' => Null,
                     'pan_image' => NULL,
-                    'role' => 'user'
+                    'role' => 'user',
+                    'status' => 1
                 ]);
                 
                 Request::refresh();
@@ -84,56 +85,67 @@ class AuthController extends BaseController
     public function registerWholeSaler(){
         if(Request::has('post')){
             $request= Request::get('post');
-          if(CSRFToken::verifyCSRFToken($request->token)){
+            $file_error = [];
+          if(CSRFToken::verifyCSRFToken($request->token, false)){
             $file = Request::get('file');
+            // dd($file);
               $rules=[
                   'username' => ['required'=>true , 'maxLength'=>20 , 'string'=>true, 'unique'=>'users'],
                   'email' => ['required'=>true,'email'=>true, 'unique'=>'users'],
                   'password' => ['required'=>true,'minLength'=>5],
                   'fullname' => ['required'=>true,'minLength'=>3,'maxLength'=>40],
                   'address' => ['required'=>true,'minLength'=>4,'maxLength'=>500 , 'mixed'=>true],
-                  'phone_number'=>['required'=>true,'minLength'=>10,'maxlength'=>15],
-                  'pan_number'=>['required'=>true]
+                  'phone_number'=>['required'=>true,'minLength'=>10,'maxlength'=>10],
+                  'pan_number'=>['required'=>true,'minLength'=>10,'maxlength'=>10]
               ];
         
-              $validate= new ValidateRequest;
-              $validate->abide($_POST , $rules);
+              $validate = new ValidateRequest;
+              $validate->abide($_POST, $rules);
         
-              $filename = $file->image_path->name;
+              isset($file->image_path->name)?  $filename = $file->image_path->name : $filename = '';
+
               if(empty($file->image_path->name)){
                 $file_error['image_path'] = ['The pan  image is required'];
               }
               else if(!UploadFile::isImage($filename)){
                 $file_error['image_path'] =['image is invaldid, Please try again'];
               }
-              if($validate -> hasError()){
-                $response= $validate->getErrorMessage();
-               count($file_error) ? $errors = array_merge($response,$file_error)
-               : $errors = $response;
-              return view('register/Wholesaler',['errors'=> $errors ]);
+
+              if($request->password != $request->confirmpassword){
+                $file_error['password'] = array('Password is not match.');
+                }
+              if($validate->hasError()){
+                $response = $validate->getErrorMessages();
+                count($file_error) ? $errors = array_merge($response, $file_error) : $errors = $response;
+                header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                echo json_encode($errors);
+                exit;
               }
-            $ds = DIRECTORY_SEPARATOR;
-            $temp_file = $file->image_path->tmp_name;
-            $pan_image_path =UploadFile::move($temp_file,"images{$ds}uploads{$ds}pans"
-                            ,$filename)->path();
-              user::create([
-                  'username' => $request->name,
+                
+                $ds = DIRECTORY_SEPARATOR;
+                $temp_file = $file->image_path->tmp_name;
+                $pan_image_path = UploadFile::move($temp_file, "images{$ds}uploads{$ds}pans", $filename)->path();
+
+              User::create([
+                  'username' => $request->username,
                   'fullname' => $request->fullname,
                   'email' => $request->email,
                   'password' => password_hash($request->password , PASSWORD_BCRYPT),
-                  'phone_number'=>$request->phoneNumber,
-                  'pan_number' => $request->panNumber,       
+                  'phone_number'=>$request->phonenumber,
+                  'pan_number' => $request->pannumner,       
                   'address' => $request->address,
                   'pan_image' =>$pan_image_path,
-                  'role' => 'Wholesaler'
+                  'role' => 'wholesaler',
+                  'status' => 0
               ]);
               Request::refresh();
-              return view('register/Wholesaler' , ['success' => 'WholeSaler Account created , Please login']);
-              die();
+              echo json_encode(['success' => 'Account created, We will call you']);
+              exit;
            }
            throw new \Exception('Token mismatch');     
         }
         return null;
+
     }
         
     public function login()

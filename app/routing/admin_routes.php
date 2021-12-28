@@ -83,10 +83,17 @@ $router->map('POST', '/admin/slider/[i:id]/delete',
 $router->map('GET', '/admin/users/retailers',
 'App\Controllers\Admin\ViewUserController@getRetailers', 'get_retailers');
 
+// wholesalers
 $router->map('GET', '/admin/users/wholesalers',
 'App\Controllers\Admin\WholesalerController@getWholesalers', 'get_wholesalers');
-//get admins
 
+$router->map('GET', '/admin/users/wholesalers/[i:id]/updateStatus',
+'App\Controllers\Admin\WholesalerController@changeStatus', 'update_status');
+
+$router->map('POST', '/admin/users/wholesalers/[i:id]/delete',
+'App\Controllers\Admin\WholesalerController@delete', 'delete_wholesalers');
+
+//get admins
 $router->map('GET', '/admin/users/admins',
 'App\Controllers\Admin\AdminController@getAdmin', 'get_admins');
 ?>

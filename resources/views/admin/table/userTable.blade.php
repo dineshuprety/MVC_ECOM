@@ -23,10 +23,10 @@
                   <tbody>
                      @foreach($retailerUsers as $user)
                      <tr>
-                           <td class="c-table__cell">{{$user['fullname']}}</td>
-                           <td class="c-table__cell">{{$user['phone_number']}}</td>
-                           <td class="c-table__cell">{{$user['email']}}</td>
-                           <td class="c-table__cell">{{$user['added']}}</td>
+                        <td class="c-table__cell">{{$user['fullname']}}</td>
+                        <td class="c-table__cell">{{$user['phone_number']}}</td>
+                        <td class="c-table__cell">{{$user['email']}}</td>
+                        <td class="c-table__cell">{{$user['added']}}</td>
                      </tr>
                      @endforeach
                   </tbody>
@@ -46,7 +46,6 @@
    </div>
    <!-- Page content Wrapper -->
 </div>
-
 <!-- container -->
 @include('includes.delete-model')
 @endsection

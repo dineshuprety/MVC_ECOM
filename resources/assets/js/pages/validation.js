@@ -20,10 +20,13 @@
 				data: formData,
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
-					$("#register")[0].reset();
-					$(".notification-register").css("display", 'block').addClass('alert-success').removeClass('alert-danger').delay(4000).slideUp(300)
-						.html(response.success);
-						
+					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						setTimeout(function(){
+							$("#register")[0].reset();
+							$(".notify").css("display", 'block').delay(4000).slideUp(300)
+                        .html(response.success);
+								$("button").html("Register");
+						},2000);	
 				},
 				error: function (request, error) {
 					var errors = jQuery.parseJSON(request.responseText);
@@ -34,6 +37,50 @@
 						ul.appendChild(li);
 					});
 					$(".notification-register").css("display", 'block').removeClass('alert-success')
+						.addClass('alert-danger').delay(6000).slideUp(300)
+						.html(ul);
+				}
+			});
+
+			e.preventDefault();
+		})
+
+	}
+
+	SHOPIFYNEPAL.validation.wholeser = function () {
+
+		$("#wholeser").submit(function (e) {
+
+
+			$.ajax({
+				type: 'POST',
+				url: '/wholeser/details',
+				data: new FormData(this),
+				contentType: false,
+    	    	cache: false,
+				processData:false,	
+				success: function (data) {
+
+					var response = jQuery.parseJSON(data);
+					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						setTimeout(function(){
+							$("#wholeser")[0].reset();
+							$("#mainThmb").hide();
+							$(".notify").css("display", 'block').delay(4000).slideUp(300)
+                        .html(response.success);
+								$("button").html("Inquery");
+						},2000);	
+						
+				},
+				error: function (request, error) {
+					var errors = jQuery.parseJSON(request.responseText);
+					var ul = document.createElement('ul');
+					$.each(errors, function (key, value) {
+						var li = document.createElement('li');
+						li.appendChild(document.createTextNode(value));
+						ul.appendChild(li);
+					});
+					$(".notification-wregister").css("display", 'block').removeClass('alert-success')
 						.addClass('alert-danger').delay(6000).slideUp(300)
 						.html(ul);
 				}
@@ -59,7 +106,7 @@
 				url: '/login',
 				data: formData,
 				success: function (data) {
-					var response = jQuery.parseJSON(data);
+					const response = jQuery.parseJSON(data);
 
 					if(response ==='admin'){
 						$("button").html("<i class='icon ion-loading-c'></i> Loading");
@@ -113,8 +160,13 @@
 				data: formData,
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
-					$(".notification").css("display", 'block').addClass('alert-success').removeClass('alert-danger').delay(4000).slideUp(300)
-						.html(response.success);
+					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						setTimeout(function(){
+							
+							$(".notify").css("display", 'block').delay(4000).slideUp(300)
+                        .html(response.success);
+								$("button").html("Update Information");
+						},2000);
 				},
 				error: function (request, error) {
 					var errors = jQuery.parseJSON(request.responseText);
@@ -150,8 +202,13 @@
 				data: formData,
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
-					$(".notification-password").css("display", 'block').addClass('alert-success').removeClass('alert-danger').delay(4000).slideUp(300)
-						.html(response.success);
+					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						setTimeout(function(){
+							$("#changepassword")[0].reset();
+							$(".notify").css("display", 'block').delay(4000).slideUp(300)
+                        .html(response.success);
+								$("button").html("Change Password");
+						},2000);
 				},
 				error: function (request, error) {
 					var errors = jQuery.parseJSON(request.responseText);

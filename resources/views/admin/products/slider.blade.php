@@ -24,26 +24,25 @@
                   <textarea class="form-control" max="100" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                </div>
                <div class="form-group">
-               <label for="exampleFormControlFile1">Slider Image</label>
-               <input type="file" name="sliderImage" class="form-control-file" id="exampleFormControlFile1">
+                  <label for="exampleFormControlFile1">Slider Image</label>
+                  <input type="file" name="sliderImage" class="form-control-file" id="exampleFormControlFile1">
                </div>
                <!-- button row -->
-                <div class="form-row">
-                <div class="col">
-                <button type="reset" class="btn btn-danger">Reset</button>
-                </div>
-                <div class="float-right">
-                <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
-                <button class="btn btn-primary" type="submit">Upload</button>
-                </div>
-                </div>
-                <!-- button row end -->
+               <div class="form-row">
+                  <div class="col">
+                     <button type="reset" class="btn btn-danger">Reset</button>
+                  </div>
+                  <div class="float-right">
+                     <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
+                     <button class="btn btn-primary" type="submit">Upload</button>
+                  </div>
+               </div>
+               <!-- button row end -->
             </form>
          </div>
       </div>
    </div>
 </div>
-
 <!-- container -->
 @include('includes.delete-model')
 @endsection
