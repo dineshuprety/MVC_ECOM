@@ -32,3 +32,5 @@ require_once __DIR__ . '/search.php';
 require_once __DIR__ . '/category.php';
 
 require_once __DIR__ . '/user.php';
+
+require_once __DIR__ . '/order.php';

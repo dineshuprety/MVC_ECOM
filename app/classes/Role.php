@@ -13,7 +13,7 @@ public static function middleWare($role){
         $message = "You are not Autthorized to view admin Pannel";
         break;
     case 'user':
-        $message = "You are not Autthorized to view this Page";
+        $message = "You are not Autthorized to view this Page. Login First";
         break;
        
     case 'Wholesaler':

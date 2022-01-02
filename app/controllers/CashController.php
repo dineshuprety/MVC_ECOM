@@ -114,18 +114,15 @@ class CashController extends BaseController
                 $result['invoice_no'] = $invoice->invoice_no;
                 $result['total'] = Session::get('cartTotal');
                 $data = [
-                    'to' => user()->email,
+                    'to' => $request->shipping_email,
                     'subject' => 'Order Confirmation',
                     'view' => 'purchase',
-                    'name' => user()->fullname,
+                    'name' => ucfirst($request->shipping_name),
                     'body' => $result
                 ];
                 (new Mail())->send($data);
 
                 // End Send Email 
-
-               
-
 
             }catch (\Exception $ex){
                   echo $ex->getMessage();

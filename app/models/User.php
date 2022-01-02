@@ -9,7 +9,7 @@ class User extends Model
     // use SoftDeletes;
     
     public $timestamps = true;
-    protected $fillable = ['username' ,'fullname','email','password','phone_number','pan_number','pan_image','address','role'];
+    protected $fillable = ['username' ,'fullname','email','password','phone_number','pan_number','pan_image','address','role','status'];
     protected $dates = ['deleted_at'];
 
     public function transform($data){

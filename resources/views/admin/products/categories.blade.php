@@ -32,7 +32,7 @@
             <div class="table-responsive">
                <h4 class="mt-0 header-title">Category Tables</h4>
                @if(count($categories))
-               <table class="table table-hover" data-form="deleteForm">
+               <table class="table table-striped table-bordered" cellspacing="0" width="100%" data-form="deleteForm">
                   <thead>
                      <tr class="titles">
                         <!-- <th>Id</th> -->
@@ -147,7 +147,7 @@
             <div class="table-responsive">
                <h4 class="mt-0 header-title">Sub Category Tables</h4>
                @if(count($subcategories))
-               <table class="table table-hover" data-form="deleteForm">
+               <table class="table table-striped table-bordered" cellspacing="0" width="100%" data-form="deleteForm">
                   <thead>
                      <tr class="titles">
                         <!-- <th>Id</th> -->

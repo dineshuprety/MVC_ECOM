@@ -1,3 +1,4 @@
+<?php use \App\Classes\Session; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,16 @@
 </div>
 
 <script src="/js/all.js"></script>
+
+<script>
+ @if(Session::has('error'))
+ var type = "{{ Session::get('error') }}";
+ setTimeout(function () {
+    $(".notifyerror").css("display", 'block').delay(4000).slideUp(200).html(type);
+    }, 500);
+    {{Session::remove('error')}}
+ @endif 
+</script>
 
 <script type="text/javascript">
      function miniCart(){

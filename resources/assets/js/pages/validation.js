@@ -4,7 +4,7 @@
 	SHOPIFYNEPAL.validation.register = function () {
 
 		$("#register").submit(function (e) {
-
+			
 			var formData = {
 				fullname: $("#fullname").val(),
 				email: $("#email").val(),
@@ -13,20 +13,21 @@
 				password: $("#password").val(),
 				token: $("#token").val(),
 			};
-
+			$("button").html("<i class='icon ion-loading-c'></i> Loading");
 			$.ajax({
 				type: 'POST',
 				url: '/register',
 				data: formData,
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
+					
 					$("button").html("<i class='icon ion-loading-c'></i> Loading");
 						setTimeout(function(){
 							$("#register")[0].reset();
-							$(".notify").css("display", 'block').delay(4000).slideUp(300)
+							$(".notify").css("display", 'block').delay(6000).slideUp(300)
                         .html(response.success);
 								$("button").html("Register");
-						},2000);	
+						},1000);	
 				},
 				error: function (request, error) {
 					var errors = jQuery.parseJSON(request.responseText);
@@ -36,9 +37,10 @@
 						li.appendChild(document.createTextNode(value));
 						ul.appendChild(li);
 					});
-					$(".notification-register").css("display", 'block').removeClass('alert-success')
-						.addClass('alert-danger').delay(6000).slideUp(300)
-						.html(ul);
+					$("button").html("Register");
+						$(".notification-register").css("display", 'block').removeClass('alert-success')
+							.addClass('alert-danger').delay(6000).slideUp(300)
+							.html(ul);
 				}
 			});
 
@@ -51,7 +53,7 @@
 
 		$("#wholeser").submit(function (e) {
 
-
+			$("button").html("<i class='icon ion-loading-c'></i> Loading");
 			$.ajax({
 				type: 'POST',
 				url: '/wholeser/details',
@@ -62,7 +64,7 @@
 				success: function (data) {
 
 					var response = jQuery.parseJSON(data);
-					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+					
 						setTimeout(function(){
 							$("#wholeser")[0].reset();
 							$("#mainThmb").hide();
@@ -80,6 +82,7 @@
 						li.appendChild(document.createTextNode(value));
 						ul.appendChild(li);
 					});
+					$("button").html("Inquery");
 					$(".notification-wregister").css("display", 'block').removeClass('alert-success')
 						.addClass('alert-danger').delay(6000).slideUp(300)
 						.html(ul);

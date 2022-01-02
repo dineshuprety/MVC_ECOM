@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Classes\CSRFToken;
 use App\Classes\Redirect;
 use App\Classes\Request;
+use App\Classes\Session;
 use App\Classes\ValidateRequest;
 use App\Models\User;
 
@@ -18,7 +19,9 @@ class UserController extends BaseController
             return view('dashboard', compact('token'));
             exit;
         }else{
+            Session::add('error','You are not Autthorized to view this Page. Login First');
             Redirect::to('/login');
+            exit;
         }
        
     }

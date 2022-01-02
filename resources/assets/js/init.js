@@ -48,6 +48,7 @@
                 break; 
             case 'cash':
                 SHOPIFYNEPAL.homeslider.mainjs();
+                SHOPIFYNEPAL.order.cash();
                 break; 
             case 'contact':
                 SHOPIFYNEPAL.homeslider.mainjs();
@@ -65,7 +66,11 @@
             case 'adminSliderManage':
             case 'wholesalerusers':
             case 'inventory':
+                SHOPIFYNEPAL.admin.PendingOrders();
                 SHOPIFYNEPAL.admin.delete();
+                break;
+            case 'PendingOrders':
+                SHOPIFYNEPAL.admin.PendingOrders();
                 break;
             default:
                 //do nothing

@@ -2,6 +2,7 @@
 <html>
    <head>
       <title>ShopifyNepal</title>
+      <meta charset="UTF-8">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600" rel="stylesheet">
@@ -27,7 +28,7 @@
                      <td align="center" valign="top" style="padding-bottom:20px"><a href="#" target="_blank" style="text-decoration:none;"><img class="img-fluid" src="../assets/images/start-up.png" alt="" border="0" style=" display:block; width:240px; height:auto ;margin-top:50px"></a></td>
                   </tr>
                   <tr>
-                     <td align="center" valign="top" style="padding-bottom:5px;padding-left:20px;padding-right:20px;"> <h2 style="color:#000000; font-family:"Poppins", Helvetica, Arial, sans-serif; font-size:28px; font-weight:500; font-style:normal; letter-spacing:normal; line-height:36px; text-transform:none; text-align:center; padding:0; margin:0">Welcome</h2> </td>
+                     <td align="center" valign="top" style="padding-bottom:5px;padding-left:20px;padding-right:20px;"> <h2 style="color:#000000; font-family:"Poppins", Helvetica, Arial, sans-serif; font-size:28px; font-weight:500; font-style:normal; letter-spacing:normal; line-height:36px; text-transform:none; text-align:center; padding:0; margin:0">Welcome <?php echo $data; ?></h2> </td>
                   </tr>
                   <tr>
                      <td align="center" valign="top" style="padding-bottom:30px;padding-left:20px;padding-right:20px;"> <h4 class="text" style="color:#999999; font-family:"Poppins", Helvetica, Arial, sans-serif; font-size:16px; font-weight:500; font-style:normal; letter-spacing:normal; line-height:24px; text-transform:none; text-align:center; padding:0; margin:0">Getting Started ShopifyNepal Online Shop</h4> </td>

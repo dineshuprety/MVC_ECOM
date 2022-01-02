@@ -10,6 +10,12 @@
       <link href="/css/plugins.css" rel="stylesheet" type="text/css">
       <link href="/css/admin.css" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" integrity="sha512-pDpLmYKym2pnF0DNYDKxRnOk1wkM9fISpSOjt8kWFKQeDmBTjSnBZhTd41tXwh8+bRMoSaFsRnznZUiH9i3pxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- DataTables -->
+      <link href="/js/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+      <link href="/js/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+      <!-- Responsive datatable examples -->
+      <link href="/js/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
    </head>
    <body data-page-id="@yield('data-page-id')" class="fixed-left">
       <!-- Loader --> 
@@ -64,5 +70,17 @@
             $('#image-viewer').hide();
          });
       </script>
+
+       <!-- Required datatable js -->
+       <script src="/js/datatables/jquery.dataTables.min.js"></script>
+        <script src="/js/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="/js/datatables/dataTables.buttons.min.js"></script>
+        <script src="/js/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="/js/datatables/jszip.min.js"></script>
+        <script src="/js/datatables/buttons.html5.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="/js/datatables/dataTables.responsive.min.js"></script>
+        <script src="/js/datatables/responsive.bootstrap4.min.js"></script>
    </body>
 </html>

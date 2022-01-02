@@ -252,6 +252,20 @@ button{
     
   }
 
+  .notifyerror{
+    display: none;
+    position: fixed;
+    padding: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: 300px;
+    border-radius: 0.5rem;
+    background-color: #bb2409;
+    color: #ffffff;
+    z-index: 999999;
+    
+  }
+
   .product-center{
     position: fixed;
     top: 50%;

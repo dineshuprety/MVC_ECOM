@@ -12,7 +12,7 @@
             <div class="table-responsive">
                <h4 class="mt-0 header-title">Inventory Items Table</h4>
                @if(count($products))
-               <table class="table table-hover" data-form="deleteForm">
+               <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%" data-form="deleteForm">
                   <thead>
                      <tr class="titles">
                         <!-- <th>Id</th> -->

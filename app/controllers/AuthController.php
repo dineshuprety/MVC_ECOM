@@ -8,6 +8,7 @@ use App\Classes\UploadFile;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
+use App\Classes\Mail;
 use App\Models\User;
 
 
@@ -37,49 +38,67 @@ class AuthController extends BaseController
     
     public function register()
     {
-        if(Request::has('post')){
-            $request = Request::get('post');
-            if(CSRFToken::verifyCSRFToken($request->token, false)){
-                $rules = [
-                  'username' => ['required' => true, 'maxLength' => 20, 'string' => true, 'unique' => 'users'],
-                  'email' => ['required' => true, 'email' => true, 'unique' => 'users'],
-                  'password' => ['required' => true, 'minLength' => 6],
-                  'fullname' => ['required' => true, 'minLength' => 6, 'maxLength' => 50],
-                  'phonenumber' => ['required' => true, 'minLength' => 10, 'maxLength' => 10]
-                ];
-                
-                $validate = new ValidateRequest;
-                $validate->abide($_POST, $rules);
-                
-                if($validate->hasError()){
-                    $errors = $validate->getErrorMessages();
-                    header('HTTP/1.1 422 Unprocessable Entity', true, 422);
-                    echo json_encode($errors);
-                    exit;
+            if(Request::has('post')){
+            try{
+                    $request = Request::get('post');
+                    if(CSRFToken::verifyCSRFToken($request->token, false)){
+                        $rules = [
+                        'username' => ['required' => true, 'maxLength' => 20, 'string' => true, 'unique' => 'users'],
+                        'email' => ['required' => true, 'email' => true, 'unique' => 'users'],
+                        'password' => ['required' => true, 'minLength' => 6],
+                        'fullname' => ['required' => true, 'minLength' => 6, 'maxLength' => 50],
+                        'phonenumber' => ['required' => true, 'minLength' => 10, 'maxLength' => 10]
+                        ];
+                        
+                        $validate = new ValidateRequest;
+                        $validate->abide($_POST, $rules);
+                        
+                        if($validate->hasError()){
+                            $errors = $validate->getErrorMessages();
+                            header('HTTP/1.1 422 Unprocessable Entity', true, 422);
+                            echo json_encode($errors);
+                            exit;
+                        }
+        
+                        // Start Send Email 
+                    
+                        $data = [
+                            'to' => $request->email,
+                            'subject' => 'Welcome TO ShopifyNepal',
+                            'view' => 'welcome',
+                            'name' => ucfirst($request->fullname),
+                            'body' => ucfirst($request->fullname)
+                        ];
+                        (new Mail())->send($data);
+
+                        //insert into database
+                        User::create([
+                            'username' => $request->username,
+                            'fullname' => $request->fullname,
+                            'email' => $request->email,
+                            'password' => password_hash($request->password , PASSWORD_BCRYPT),
+                            'phone_number'=>$request->phonenumber,
+                            'pan_number' => NULL,       
+                            'address' => Null,
+                            'pan_image' => NULL,
+                            'role' => 'user',
+                            'status' => 1,
+                        ]);
+                        Request::refresh();
+                        echo json_encode(['success' => 'Account created']);
+                        exit;
+                    
+                    }
+                    throw new \Exception('Token Mismatch');
+                    // Redirect::to('/register');
+                }catch (\Exception $ex){
+                    //    log or sent mail
+                        
                 }
-                
-                //insert into database
-                user::create([
-                    'username' => $request->username,
-                    'fullname' => $request->fullname,
-                    'email' => $request->email,
-                    'password' => password_hash($request->password , PASSWORD_BCRYPT),
-                    'phone_number'=>$request->phonenumber,
-                    'pan_number' => NULL,       
-                    'address' => Null,
-                    'pan_image' => NULL,
-                    'role' => 'user',
-                    'status' => 1
-                ]);
-                
-                Request::refresh();
-                echo json_encode(['success' => 'Account created, please login']);
-                exit;
+               
+               
             }
-            throw new \Exception('Token Mismatch');
-            // Redirect::to('/register');
-        }
-        return null;
+            return null;
     }
 
     public function registerWholeSaler(){
@@ -125,6 +144,17 @@ class AuthController extends BaseController
                 $ds = DIRECTORY_SEPARATOR;
                 $temp_file = $file->image_path->tmp_name;
                 $pan_image_path = UploadFile::move($temp_file, "images{$ds}uploads{$ds}pans", $filename)->path();
+
+                // send mail
+                $data = [
+                    'to' => $request->email,
+                    'subject' => 'Wellcome TO ShopifyNepal',
+                    'view' => 'welcome',
+                    'name' => ucfirst($request->fullname),
+                    'body' => ucfirst($request->fullname)
+                    ];
+                (new Mail())->send($data);
+                //end mail
 
               User::create([
                   'username' => $request->username,

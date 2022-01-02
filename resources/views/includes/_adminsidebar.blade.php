@@ -65,7 +65,7 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Order </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="#"><i class="ti-eye"></i>View Orders </a></li>
+                                <li></i><a href="/admin/pending/orders"><i class="fa fa-clock-o"></i>Pending Orders </a></li>
 
                                 <li><a href="#"><i class="ti-plus"></i>Add Order</a></li>
                             </ul>

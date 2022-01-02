@@ -8,5 +8,6 @@
       product: {},
       products : {},
       validation:{},
+      order:{},
     };
 })();

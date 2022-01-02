@@ -24,6 +24,7 @@ class CheckOutController extends BaseController
                 return view('checkout'); 
 
             }else{
+                Session::add('error', 'First Add Product To Cart');
                 Redirect::to('/products');
                 die();
             }
@@ -31,7 +32,7 @@ class CheckOutController extends BaseController
         }else
         {
             // echo json_encode(['fail' => 'First need to login']);
-            Session::add('success', 'First need to login');
+            Session::add('error', 'First need to login');
             Redirect::to('/login');
             die();
         }

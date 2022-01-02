@@ -24,7 +24,7 @@
    <!-- checkout area start -->
    <div class="checkout-area mt-60px mb-40px">
       <div class="container">
-         <form method="post" action="/cash/order" >
+         <form id="cashOrder" method="post" action="/cash/order" >
             <div class="row">
                <div class="col-lg-12">
                   <div class="your-order-area">
