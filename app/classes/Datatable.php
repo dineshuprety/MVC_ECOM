@@ -59,7 +59,9 @@ trait Datatable
 					$rawData['amount'] = $order->amount;
 					$rawData['payment_method'] = $order->payment_method;
 					$rawData['status'] = $order->status;
-					$rawData['action'] = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>';
+					$rawData['action'] = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>
+					<span data-toggle="tooltip" data-placement="top" title="Cancel Order"><a href="/admin/cancel/orders/'.$order->id.'"><button  type="button" class="btn-sm btn-danger"><i class="fa fa-times"></i></button></a></span>
+					';
 
 					$data[] = $rawData;
 

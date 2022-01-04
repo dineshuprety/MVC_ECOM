@@ -65,9 +65,15 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Order </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="/admin/pending/orders"><i class="fa fa-clock-o"></i>Pending Orders </a></li>
+                                <li></i><a href="/admin/pending/orders"><i class="fa fa-clock-o"></i>Pending Orders <span class="badge badge-primary">{{\App\Models\Order::where('status','pending')->count()}}</span></a></li>
+                                <li></i><a href="/admin/confirm/orders"><i class="fa fa-telegram"></i>Confirm Orders  <span class="badge badge-primary">{{\App\Models\Order::where('status','confirm')->count()}}</span></a></li>
+                                <li></i><a href="/admin/processing/orders"><i class="fa fa-cogs"></i>Processing Orders  <span class="badge badge-primary">{{\App\Models\Order::where('status','processing')->count()}}</span></a></li>
+                                <li></i><a href="/admin/picked/orders"><i class="fa fa-suitcase"></i>Picked Orders <span class="badge badge-primary">{{\App\Models\Order::where('status','picked')->count()}}</span></a></li>
+                                <li></i><a href="/admin/shipped/orders"><i class="fa fa-truck"></i>Shipped Orders <span class="badge badge-primary">{{\App\Models\Order::where('status','shipped')->count()}}</span> </a></li>
+                                <li></i><a href="/admin/delivered/orders"><i class="fa fa-handshake-o"></i>Delivered Orders <span class="badge badge-primary">{{\App\Models\Order::where('status','delivered')->count()}}</span></a></li>
+                                <li></i><a href="/admin/cancel/orders"><i class="fa fa-ban"></i>Cancel Orders <span class="badge badge-primary">{{\App\Models\Order::where('status','cancel')->count()}}</span></a></li>
 
-                                <li><a href="#"><i class="ti-plus"></i>Add Order</a></li>
+                                <!-- <li><a href="#"><i class="ti-plus"></i>Add Order</a></li> -->
                             </ul>
                         </li>
 

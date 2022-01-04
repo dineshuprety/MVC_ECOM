@@ -7,7 +7,7 @@
 
 		$("#cashOrder").submit(function (e) {
 
-			$("button").html("<i class='icon ion-loading-c'></i> Placing Order");
+			$("button").html("<i class='icon ion-loading-c'></i> Placing Order").attr("disabled", true);
 			$.ajax({
 				type: 'POST',
 				url: '/cash/order',
@@ -22,7 +22,7 @@
 						$("#cashOrder")[0].reset();
 						$(".notify").css("display", 'block').delay(5000).slideUp(300)
                         .html(response.success);
-						$("button").html("Submit Order");
+						$("button").html("Submit Order").attr("disabled", true);
 						setTimeout(function(){
 							window.location.href = "/";
 						},4000);	

@@ -11,6 +11,10 @@ class OrderItem extends Model
     public $timestamps = true;
     protected $fillable = ['order_id','product_id','size','qty','price'];
     protected $dates = ['deleted_at'];
+
+    public function product(){
+    	return $this->belongsTo(Product::class,'product_id','id');
+    }
     
     
    

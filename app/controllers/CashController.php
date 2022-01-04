@@ -45,6 +45,7 @@ class CashController extends BaseController
                     'notes' => $request->notes,
                     'address' => $request->shipping_address,
                     'city' => $request->shipping_town_city,
+                    'province' => $request->shipping_province,
                     'payment_type' => 'Cash On Delivery',
                     'payment_method' => 'Cash On Delivery',
                      

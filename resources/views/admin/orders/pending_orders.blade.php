@@ -10,7 +10,6 @@
             <div class="card-body">
                <h4 class="mt-0 header-title">Pending Orders</h4>
                <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                   <div id="datatable" ></div>
                   <thead>
                      <tr>
                         <th>Name </th>
@@ -20,7 +19,6 @@
 								<th>Payment </th>
 								<th>Status </th>
                         <th>Action </th>
-								
                      </tr>
                   </thead>
                   

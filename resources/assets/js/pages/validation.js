@@ -13,7 +13,7 @@
 				password: $("#password").val(),
 				token: $("#token").val(),
 			};
-			$("button").html("<i class='icon ion-loading-c'></i> Loading");
+			$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 			$.ajax({
 				type: 'POST',
 				url: '/register',
@@ -21,7 +21,7 @@
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
 					
-					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+					// $("button").html("<i class='icon ion-loading-c'></i> Loading");
 						setTimeout(function(){
 							$("#register")[0].reset();
 							$(".notify").css("display", 'block').delay(6000).slideUp(300)
@@ -53,7 +53,7 @@
 
 		$("#wholeser").submit(function (e) {
 
-			$("button").html("<i class='icon ion-loading-c'></i> Loading");
+			$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 			$.ajax({
 				type: 'POST',
 				url: '/wholeser/details',
@@ -112,15 +112,15 @@
 					const response = jQuery.parseJSON(data);
 
 					if(response ==='admin'){
-						$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(' window.location.href = "/admin"; ',2000);
 	  					//redirect url in this page
      				}else if(response ==='cart'){
-						$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(' window.location.href = "/cart"; ',2000);
 	  					//redirect url in this page
      				}else{
-						$("button").html("<i class='icon ion-loading-c'></i> Loading");
+						$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(' window.location.href = "/"; ',2000);
 					 }
 
@@ -163,7 +163,7 @@
 				data: formData,
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
-					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+					$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(function(){
 							
 							$(".notify").css("display", 'block').delay(4000).slideUp(300)
@@ -205,7 +205,7 @@
 				data: formData,
 				success: function (data) {
 					var response = jQuery.parseJSON(data);
-					$("button").html("<i class='icon ion-loading-c'></i> Loading");
+					$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(function(){
 							$("#changepassword")[0].reset();
 							$(".notify").css("display", 'block').delay(4000).slideUp(300)

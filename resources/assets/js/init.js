@@ -72,6 +72,24 @@
             case 'PendingOrders':
                 SHOPIFYNEPAL.admin.PendingOrders();
                 break;
+            case 'ConfirmOrders':
+                SHOPIFYNEPAL.admin.ConfirmOrders();
+                break;
+            case 'ProcessingOrders':
+                SHOPIFYNEPAL.admin.ProcessingOrders();
+                break;
+            case 'PickedOrders':
+                SHOPIFYNEPAL.admin.PickedOrders();
+                break;
+            case 'ShippedOrders':
+                SHOPIFYNEPAL.admin.ShippedOrders();
+                break;
+            case 'DeliveredOrders':
+                SHOPIFYNEPAL.admin.DeliveredOrders();
+                break;
+            case 'CancelOrders':
+                SHOPIFYNEPAL.admin.CancelOrders();
+                break;         
             default:
                 //do nothing
         }
