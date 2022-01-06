@@ -66,11 +66,16 @@
             case 'adminSliderManage':
             case 'wholesalerusers':
             case 'inventory':
-                SHOPIFYNEPAL.admin.PendingOrders();
+            case 'contactTable':
+                // SHOPIFYNEPAL.admin.PendingOrders();
                 SHOPIFYNEPAL.admin.delete();
                 break;
             case 'PendingOrders':
                 SHOPIFYNEPAL.admin.PendingOrders();
+                SHOPIFYNEPAL.admin.cancel();
+                break;
+            case 'PendingOrdersDetails':
+                SHOPIFYNEPAL.admin.confirmButtonsOrders();
                 break;
             case 'ConfirmOrders':
                 SHOPIFYNEPAL.admin.ConfirmOrders();
@@ -89,6 +94,7 @@
                 break;
             case 'CancelOrders':
                 SHOPIFYNEPAL.admin.CancelOrders();
+                SHOPIFYNEPAL.admin.delete();
                 break;         
             default:
                 //do nothing

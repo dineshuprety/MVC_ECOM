@@ -10,7 +10,8 @@
         "philo/laravel-blade": "^3.1",
         "phpmailer/phpmailer": "^6.4",
         "nesbot/carbon": "^1.20",
-        "voku/pagination": "^4.0"
+        "voku/pagination": "^4.0",
+        "dompdf/dompdf": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "^2.1"

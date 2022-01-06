@@ -42,6 +42,8 @@ $router->map('POST', '/delivered/orders/list', 'App\Controllers\Admin\OrderContr
  */
 $router->map('GET', '/admin/cancel/orders', 'App\Controllers\Admin\OrderController@ShowCancelOrders', 'show_cancel_Orders');
 $router->map('POST', '/cancel/orders/list', 'App\Controllers\Admin\OrderController@CancelOrders', 'cancel_Orders');
+$router->map('POST', '/admin/cancel/orders/[i:id]', 'App\Controllers\Admin\OrderController@Cancel', 'cancel');
+
 
 /**
  * Changing orders
@@ -56,9 +58,15 @@ $router->map('GET', '/picked/shipped/[i:id]', 'App\Controllers\Admin\OrderContro
 
 $router->map('GET', '/shipped/delivered/[i:id]', 'App\Controllers\Admin\OrderController@ShippedToDelivered', 'Shipped_To_Delivered');
 
+/**
+ * Deleted orders
+ */
 
+$router->map('POST', '/admin/delete/orders/[i:id]', 'App\Controllers\Admin\OrderController@DeleteCancelOrder', 'Delete_Cancel_Order');
 
-
-
+/**
+ * Downlaod PDF
+ */
+$router->map('GET', '/admin/pdf/downlaod/[i:id]', 'App\Controllers\Admin\OrderController@InvoiceDownload', 'Invoice_Download');
 
 ?>

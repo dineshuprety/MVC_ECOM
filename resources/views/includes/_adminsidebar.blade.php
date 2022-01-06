@@ -104,15 +104,15 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-settings"></i> <span> Setting </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li></i><a href="#"><i class="mdi mdi-account-circle"></i>Profile</a></li>
-                                <li><a href="#"><i class="ti-settings"> Settings</i></a></li>
+                                <li><a href="#"><i class="ti-settings">Seo</i></a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="/admin" class="waves-effect">
-                                <i class="ti-star"></i>
-                                <span> Reviews </span>
-                            </a>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-star"></i> <span> Reviews </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="/admin/contact/details"><i class="ti-comments"> Contact</i></a></li>
+                                <li><a href="/admin/product/review"><i class="ti-announcement"> Product Reviews</i></a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="/logout" class="waves-effect">

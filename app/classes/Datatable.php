@@ -52,16 +52,24 @@ trait Datatable
 				
 				foreach($orders as $order)
 				{
-					// $data[] = $order;
+					if($order->status == 'cancel'){
+						$button = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>
+						<span data-toggle="tooltip" data-placement="top" title="Delete orders"style="display:inline-block"> <form method="POST" action="/admin/delete/orders/'.$order->id.'" class="delete-item"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"> <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-trash"></i> </button> </form> </span>
+						';
+					}else if($order->status == 'pending'){
+						$button = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>
+						<span data-toggle="tooltip" data-placement="top" title="cancel orders"style="display:inline-block"> <form method="POST" action="/admin/cancel/orders/'.$order->id.'" class="cancel-item"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"> <button type="submit" class="btn-sm btn-danger cancel" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-window-close"></i> </button> </form> </span>';
+					}else{
+						$button = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>';
+					}
+					
 					$rawData['name'] = $order->name;
 					$rawData['order_date'] = $order->order_date;
 					$rawData['invoice_no'] = $order->invoice_no;
 					$rawData['amount'] = $order->amount;
 					$rawData['payment_method'] = $order->payment_method;
 					$rawData['status'] = $order->status;
-					$rawData['action'] = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>
-					<span data-toggle="tooltip" data-placement="top" title="Cancel Order"><a href="/admin/cancel/orders/'.$order->id.'"><button  type="button" class="btn-sm btn-danger"><i class="fa fa-times"></i></button></a></span>
-					';
+					$rawData['action'] = $button;
 
 					$data[] = $rawData;
 

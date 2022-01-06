@@ -13,11 +13,12 @@ use App\Models\Order;
 use App\Models\OrderItem;
 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 
 class OrderController extends BaseController
 {
     use Datatable;
-
+	
 	public function __construct()
     {
         if(!Role::middleware('admin')){
@@ -74,7 +75,7 @@ class OrderController extends BaseController
 	// Pending Order Details 
 	public function PendingOrdersDetails($id){
 
-		$order = Order::where('id',$id)->get()->first();
+		$order = Order::with('user')->where('id',$id)->get()->first();
     	$orderItem = OrderItem::with('product')->where('order_id',$id)->orderBy('id','DESC')->get();
     	return view('admin.orders.pending_orders_details',compact('order','orderItem'));
 		die();
@@ -163,6 +164,7 @@ class OrderController extends BaseController
 			(new Mail())->send($data);
 			Session::add('success', 'Order change to confirm');
 			return Redirect::to('/admin/pending/orders');
+			die();
 		}
 		
 	} // end method
@@ -188,6 +190,7 @@ class OrderController extends BaseController
 			(new Mail())->send($data);
 			Session::add('success', 'Order change to Processing');
 			return Redirect::to('/admin/confirm/orders');
+			die();
 		}
 		
 
@@ -215,6 +218,7 @@ class OrderController extends BaseController
 				(new Mail())->send($data);
 				Session::add('success', 'Order change to Picked');
 				return Redirect::to('/admin/processing/orders');
+				die();
 
 			}
 
@@ -241,6 +245,7 @@ class OrderController extends BaseController
 				(new Mail())->send($data);
 				Session::add('success', 'Order change to Shipped');
 				return Redirect::to('/admin/picked/orders');
+				die();
 		}
 		
 
@@ -267,7 +272,73 @@ class OrderController extends BaseController
 
 	} // end method
 
-	
+	public function Cancel($id){
+		if(Request::has('post')){
+            $request = Request::get('post');
+            
+            if(CSRFToken::verifyCSRFToken($request->token)){
+				$result = array();
+				$orders = Order::where('id', $id)->first();
+		
+				if(Order::where('id', $id)->first()->update([
+					'status' => 'cancel',
+					'cancel_date' => Carbon::now()
+				]))
+					{
+						$result['name'] = ucfirst($orders->name);
+						$result['message'] = ucfirst('We are unable to deliver your item <br>Your item has been cancel');
+						$data = [
+							'to' => $orders->email,
+							'subject' => 'Your Order Has been Cancel',
+							'view' => 'orderTrack',
+							'name' => ucfirst($orders->name),
+							'body' => $result
+						];
+						(new Mail())->send($data);
+						Session::add('success', 'Order change to cancel');
+						Redirect::to('/admin/cancel/orders');
+						die();
+					}
+			}
+			Redirect::to('/admin/cancel/orders');
+		}
+		return null;
+
+	} // end method
+
+	public function DeleteCancelOrder($id)
+	{
+		if(Request::has('post')){
+            $request = Request::get('post');
+            
+            if(CSRFToken::verifyCSRFToken($request->token)){
+				Order::destroy($id);
+						
+				$product = OrderItem::where('order_id',$id)->get();
+				if(count($product)){
+					foreach ($product as $item) {
+						$item->delete();
+					}
+				}
+				Session::add('success', 'Order Deleted');
+				Redirect::to('/admin/cancel/orders');
+				die();
+			}
+			Redirect::to('/admin/cancel/orders');
+		}
+		return null;
+	}
+
+	public function InvoiceDownload($id){
+		$order = Order::with('user')->where('id',$id)->get()->first();
+    	$orderItem = OrderItem::with('product')->where('order_id',$id)->orderBy('id','DESC')->get();
+
+		$pdf = new Dompdf();
+		$rander = render();
+		exit();
+
+ 
+	 } // end mehtod 
 	
 }
 

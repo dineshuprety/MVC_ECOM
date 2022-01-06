@@ -96,4 +96,9 @@ $router->map('POST', '/admin/users/wholesalers/[i:id]/delete',
 //get admins
 $router->map('GET', '/admin/users/admins',
 'App\Controllers\Admin\AdminController@getAdmin', 'get_admins');
+
+//get contact
+$router->map('GET', '/admin/contact/details',
+'App\Controllers\Admin\ContactController@show', 'get_contacts');
+
 ?>

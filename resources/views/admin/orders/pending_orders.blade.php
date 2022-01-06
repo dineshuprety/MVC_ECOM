@@ -9,7 +9,7 @@
          <div class="card m-b-30">
             <div class="card-body">
                <h4 class="mt-0 header-title">Pending Orders</h4>
-               <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
+               <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" data-form="cancelForm">
                   <thead>
                      <tr>
                         <th>Name </th>
@@ -33,6 +33,7 @@
    </div>
    <!-- end row -->
 </div>
+@include('includes.delete-model')
 <!-- container -->
 <!-- container -->
 @endsection

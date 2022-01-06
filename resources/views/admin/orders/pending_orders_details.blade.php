@@ -1,6 +1,6 @@
 @extends('admin.layout.base')
 @section('title', 'Pending Orders')
-@section('data-page-id', 'PendingOrders')
+@section('data-page-id', 'PendingOrdersDetails')
 @section('content')
 <div class="container-fluid">
 @include('includes.message')
@@ -24,13 +24,14 @@
                      <th> {{ $order->email }} </th>
                   </tr>
                   <tr>
-                     <th>Shipping City/Town : </th>
+                     <th>Shipping City : </th>
                      <th> {{ $order->city }} </th>
                   </tr>
                   <tr>
                      <th>Shipping Address : </th>
                      <th> {{ $order->address }} </th>
                   </tr>
+                  
                   <tr>
                      <th> State : </th>
                      <th>{{ $order->province}} </th>
@@ -57,11 +58,11 @@
                <thead>
                   <tr>
                      <th>  Name : </th>
-                     <th> {{ $order->name }} </th>
+                     <th> {{ ucfirst($order->user->fullname) }} </th>
                   </tr>
                   <tr>
                      <th>  Phone : </th>
-                     <th> {{ $order->phone }} </th>
+                     <th> {{ $order->user->phone_number }} </th>
                   </tr>
                   <tr>
                      <th> Payment Type : </th>
@@ -89,15 +90,17 @@
                      <th>  </th>
                      <th> 
                         @if($order->status == 'pending')
-                        <a href="/pending/confirm/{{$order->id}}" class="btn btn-block btn-success" id="confirm">Confirm Order</a>
+                        
+                        <a href="/pending/confirm/{{$order->id}}" class="confirm"><button class="btn btn-block btn-success">Confirm Order</button></a>
+                       
                         @elseif($order->status == 'confirm')
-                        <a href="/confirm/processing/{{$order->id}}" class="btn btn-block btn-success" id="processing">Processing Order</a>
+                        <a href="/confirm/processing/{{$order->id}}" id="processing"><button class="btn btn-block btn-success">Processing Order</button></a>
                         @elseif($order->status == 'processing')
-                        <a href="/processing/picked/{{$order->id}}" class="btn btn-block btn-success" id="picked">Picked Order</a>
+                        <a href="/processing/picked/{{$order->id}}" id="picked"><button class="btn btn-block btn-success">Picked Order</button></a>
                         @elseif($order->status == 'picked')
-                        <a href="/picked/shipped/{{$order->id}}" class="btn btn-block btn-success" id="shipped">Shipped Order</a>
+                        <a href="/picked/shipped/{{$order->id}}" id="shipped"><button class="btn btn-block btn-success">Shipped Order</button></a>
                         @elseif($order->status == 'shipped')
-                        <a href="/shipped/delivered/{{$order->id}}" class="btn btn-block btn-success" id="delivered">Delivered Order</a>
+                        <a href="/shipped/delivered/{{$order->id}}" id="delivered"><button class="btn btn-block btn-success">Delivered Order</button></a>
                         @endif
                      </th>
                   </tr>
@@ -160,4 +163,5 @@
 </div>
 <!-- container -->
 <!-- container -->
+@include('includes.confirm-model')
 @endsection

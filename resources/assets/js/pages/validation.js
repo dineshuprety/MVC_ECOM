@@ -37,7 +37,7 @@
 						li.appendChild(document.createTextNode(value));
 						ul.appendChild(li);
 					});
-					$("button").html("Register");
+					$("button").html("Register").attr("disabled", false);
 						$(".notification-register").css("display", 'block').removeClass('alert-success')
 							.addClass('alert-danger').delay(6000).slideUp(300)
 							.html(ul);
@@ -82,7 +82,7 @@
 						li.appendChild(document.createTextNode(value));
 						ul.appendChild(li);
 					});
-					$("button").html("Inquery");
+					$("button").html("Inquery").attr("disabled", false);
 					$(".notification-wregister").css("display", 'block').removeClass('alert-success')
 						.addClass('alert-danger').delay(6000).slideUp(300)
 						.html(ul);
@@ -111,11 +111,11 @@
 				success: function (data) {
 					const response = jQuery.parseJSON(data);
 
-					if(response ==='admin'){
+					if(response.success === 'admin'){
 						$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(' window.location.href = "/admin"; ',2000);
 	  					//redirect url in this page
-     				}else if(response ==='cart'){
+     				}else if(response.success === 'cart'){
 						$("button").html("<i class='icon ion-loading-c'></i> Loading").attr("disabled", true);
 						setTimeout(' window.location.href = "/cart"; ',2000);
 	  					//redirect url in this page

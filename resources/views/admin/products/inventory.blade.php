@@ -48,7 +48,7 @@
                            </span>
                            <!-- deleted subcategory button -->
                            <span data-toggle="tooltip" data-placement="top" title style="display:inline-block" class="delete-item">
-                              <form method="POST" action="{{$product['id']}}">
+                              <form method="POST" action="">
                               <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                               <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
                               <i class="fa fa-trash"></i></button>

@@ -14,12 +14,12 @@ class Contact extends Model
 
     public function transform($data)
     {
-        $size = [];
+        $contact = [];
         foreach ($data as $item){
             $added = new Carbon($item->created_at);
-            array_push($size, [
+            array_push($contact, [
                 'id' => $item->id,
-                'name' => $item->username,
+                'username' => ucfirst($item->username),
                 'email' => $item->email,
                 'subject' => $item->subject,
                 'message' => $item->message,
@@ -27,7 +27,7 @@ class Contact extends Model
             ]);
         }
         
-        return $size;
+        return $contact;
     }
     
 }

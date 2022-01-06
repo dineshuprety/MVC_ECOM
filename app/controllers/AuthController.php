@@ -9,6 +9,7 @@ use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
 use App\Classes\Mail;
+use App\Classes\Role;
 use App\Models\User;
 
 
@@ -16,7 +17,9 @@ class AuthController extends BaseController
 {
     public function __construct()
     {
+
         if(isAuthenticated()){
+            Session::add('error','You are not Autthorized to view this Page.');
             Redirect::to('/');
         }
     }
@@ -216,14 +219,14 @@ class AuthController extends BaseController
                         Session::add('SESSION_USER_NAME', $user->username);
                         
                         if($user->role == 'admin'){
-                            echo json_encode('admin');
+                            echo json_encode(['success' => 'admin']);
                             die();
                             
                         }else if($user->role == 'user' && Session::has('user_cart')){
-                            echo json_encode('cart');
+                            echo json_encode(['success' => 'cart']);
                             die();
                         }else{
-                            echo json_encode('index');
+                            echo json_encode(['success' => 'index']);
                             die();
                         }
                     }

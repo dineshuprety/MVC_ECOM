@@ -161,8 +161,7 @@
          </div>
 </form>
 </div>
-<!-- container -->
-@include('includes.delete-model')
+
 <script>
    var loop_count = 1;
    function add_more(){

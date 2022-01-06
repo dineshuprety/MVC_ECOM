@@ -6,6 +6,7 @@ use App\Classes\Redirect;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
+use App\Classes\Role;
 use App\Controllers\BaseController;
 use App\Models\Category;
 use App\Models\SubCategory;

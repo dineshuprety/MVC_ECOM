@@ -32,7 +32,7 @@
             <div class="table-responsive">
                <h4 class="mt-0 header-title">Size Tables</h4>
                @if(count($sizes))
-               <table class="table table-striped table-bordered" cellspacing="0" width="100%" data-form="deleteForm">
+               <table class="table table-striped table-bordered" cellspacing="0" width="100%" data-form='deleteForm'>
                   <thead>
                      <tr class="titles">
                         <!-- <th>Id</th> -->
@@ -48,12 +48,13 @@
                         <td class="c-table__cell">{{ $size['added'] }}</td>
                         <td class="c-table__cell">
                            <!-- deleted size button -->
-                           <span data-toggle="tooltip" data-placement="top" title="Delete size"style="display:inline-block"  class="delete-item">
-                              <form  action="/admin/product/size/{{$size['id']}}/delete" method="POST">
+                           <span data-toggle="tooltip" data-placement="top" title="Delete size"style="display:inline-block">
+                              <form  method="POST" action="/admin/product/size/{{$size['id']}}/delete" class="delete-item">
                               <input type="hidden" name="token" value="{{ \App\Classes\CSRFToken::_token() }}">
                               <button type="submit" class="btn-sm btn-danger delete" data-toggle="modal" data-target="#exampleModal">
-                              <i class="fa fa-trash"></i></button>
-                              </from>
+                                    <i class="fa fa-trash"></i>
+                                 </button>
+                              </form>
                            </span>
                         </td>
                      </tr>

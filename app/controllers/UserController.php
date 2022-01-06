@@ -6,6 +6,7 @@ use App\Classes\Redirect;
 use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
+use App\Classes\Role;
 use App\Models\User;
 
 
@@ -15,10 +16,18 @@ class UserController extends BaseController
     public function show()
     {
         if(isAuthenticated()){
-            $token = CSRFToken::_token();
-            return view('dashboard', compact('token'));
-            exit;
-        }else{
+            if(user()->role == 'admin')
+            {
+                Session::add('error','You are not Autthorized to view this Page.');
+                Redirect::to('/');
+            }else{
+                $token = CSRFToken::_token();
+                return view('dashboard', compact('token'));
+                exit;
+            }
+            
+        }
+        else{
             Session::add('error','You are not Autthorized to view this Page. Login First');
             Redirect::to('/login');
             exit;
