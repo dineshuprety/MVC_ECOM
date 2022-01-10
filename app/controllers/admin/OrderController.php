@@ -370,6 +370,32 @@ class OrderController extends BaseController
 			ob_end_clean();
 			$pdf->stream("billing_invoice.pdf", array("Attachment" => 1));
 	} // end mehtod 
+
+	public function OrderTraking()
+    {
+        if(Request::has('post')){
+           
+            $request = Request::get('post');
+          
+            if(CSRFToken::verifyCSRFToken($request->token, false)){
+
+                $track = Order::where('invoice_no',$request->invoice)->first();
+
+                if ($track) {
+                   
+                return view('traking.track_order',compact('track'));
+        
+                }else
+                {
+                    
+                Session::add('error','Invoice Code Is Invalid.');
+                Redirect::to('/');
+               
+                }
+                  
+            }
+        }
+    }
 	
 }
 
