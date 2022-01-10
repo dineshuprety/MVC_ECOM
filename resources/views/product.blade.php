@@ -145,9 +145,7 @@
          </div>
          <div class="tab-content description-review-bottom">
             <div id="des-details1" class="tab-pane active">
-               <div class="product-description-wrapper">
-                  <p v-html="stringLimit(product.description,2000)"></p>
-               </div>
+               <div class="text-center" v-html="product.description"></div>
             </div>
             <div id="des-details3" class="tab-pane">
                <div class="row">

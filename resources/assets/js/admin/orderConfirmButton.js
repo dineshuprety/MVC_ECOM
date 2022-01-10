@@ -14,37 +14,51 @@
             });
         });
 
-        $(document).on('click','#processing',function(e){
-            $("button").html("<i class='icon ion-loading-c'></i> sending").attr("disabled", true);
+        $(document).on('click','.processing',function(e){
             e.preventDefault();
             var link = $(this).attr("href");
-            setTimeout(function(){
-                window.location.href = link
-            },500);
+            $('#processing').modal('show').on('click', '#processing-btn', function () {
+                $("#processing-btn").html("<i class='icon ion-loading-c'></i>").attr("disabled", true);
+                setTimeout(function(){
+                    window.location.href = link;
+                },100);
+               
+            });
         });
-        $(document).on('click','#picked',function(e){
-            $("button").html("<i class='icon ion-loading-c'></i> sending").attr("disabled", true);
+
+        $(document).on('click','.picked',function(e){
             e.preventDefault();
             var link = $(this).attr("href");
-            setTimeout(function(){
-                window.location.href = link
-            },500);
+            $('#picked').modal('show').on('click', '#picked-btn', function () {
+                $("#picked-btn").html("<i class='icon ion-loading-c'></i>").attr("disabled", true);
+                setTimeout(function(){
+                    window.location.href = link;
+                },100);
+               
+            });
         });
-        $(document).on('click','#shipped',function(e){
-            $("button").html("<i class='icon ion-loading-c'></i> sending").attr("disabled", true);
+
+        $(document).on('click','.shipped',function(e){
             e.preventDefault();
             var link = $(this).attr("href");
-            setTimeout(function(){
-                window.location.href = link
-            },500);
+            $('#shipped').modal('show').on('click', '#shipped-btn', function () {
+                $("#shipped-btn").html("<i class='icon ion-loading-c'></i>").attr("disabled", true);
+                setTimeout(function(){
+                    window.location.href = link;
+                },100);
+               
+            });
         });
-        $(document).on('click','#delivered',function(e){
-            $("button").html("<i class='icon ion-loading-c'></i> sending").attr("disabled", true);
+        $(document).on('click','.delivered',function(e){
             e.preventDefault();
             var link = $(this).attr("href");
-            setTimeout(function(){
-                window.location.href = link
-            },500);
+            $('#delivered').modal('show').on('click', '#delivered-btn', function () {
+                $("#delivered-btn").html("<i class='icon ion-loading-c'></i>").attr("disabled", true);
+                setTimeout(function(){
+                    window.location.href = link;
+                },100);
+               
+            });
         });
         
     };

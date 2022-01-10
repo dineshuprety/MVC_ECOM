@@ -94,13 +94,16 @@
                         <a href="/pending/confirm/{{$order->id}}" class="confirm"><button class="btn btn-block btn-success">Confirm Order</button></a>
                        
                         @elseif($order->status == 'confirm')
-                        <a href="/confirm/processing/{{$order->id}}" id="processing"><button class="btn btn-block btn-success">Processing Order</button></a>
+                        <a href="/confirm/processing/{{$order->id}}" class="processing"><button class="btn btn-block btn-success">Processing Order</button></a>
+
                         @elseif($order->status == 'processing')
-                        <a href="/processing/picked/{{$order->id}}" id="picked"><button class="btn btn-block btn-success">Picked Order</button></a>
+                        <a href="/processing/picked/{{$order->id}}" class="picked"><button class="btn btn-block btn-success">Picked Order</button></a>
+
                         @elseif($order->status == 'picked')
-                        <a href="/picked/shipped/{{$order->id}}" id="shipped"><button class="btn btn-block btn-success">Shipped Order</button></a>
+                        <a href="/picked/shipped/{{$order->id}}" class="shipped"><button class="btn btn-block btn-success">Shipped Order</button></a>
+
                         @elseif($order->status == 'shipped')
-                        <a href="/shipped/delivered/{{$order->id}}" id="delivered"><button class="btn btn-block btn-success">Delivered Order</button></a>
+                        <a href="/shipped/delivered/{{$order->id}}" class="delivered"><button class="btn btn-block btn-success">Delivered Order</button></a>
                         @endif
                      </th>
                   </tr>

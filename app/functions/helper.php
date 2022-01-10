@@ -16,6 +16,16 @@ function view($path, array $data = [])
     echo $blade->view()->make($path, $data)->render();
 }
 
+function pdf($path, array $data = [])
+{
+    //includeing requriment file to active blade template
+    $view = __DIR__ .'/../../resources/views';
+    $cache = __DIR__ .'/../../bootstrap/cache';
+    
+    $blade = new Blade($view, $cache);
+    return $blade->view()->make($path, $data)->render();
+}
+
 function make($filename, $data)
 {
     extract($data);

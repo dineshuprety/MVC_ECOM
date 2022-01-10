@@ -11,9 +11,12 @@ use App\Classes\Role;
 use App\Classes\Mail;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Productattribute;
+use App\Models\Size;
 
 use Carbon\Carbon;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class OrderController extends BaseController
 {
@@ -224,7 +227,8 @@ class OrderController extends BaseController
 
 	} // end method
 
-	 public function PickedToShipped($id){
+	public function PickedToShipped($id){
+
 		$result = array();
 		$orders = Order::where('id', $id)->first();
    
@@ -234,7 +238,7 @@ class OrderController extends BaseController
 		]))
 		{
 				$result['name'] = ucfirst($orders->name);
-				$result['message'] = ucfirst('Your Order Has been in Picked, Thank you ShopifyNepal');
+				$result['message'] = ucfirst('Your Order Has been  Shipped, Thank you ShopifyNepal');
 				$data = [
 					'to' => $orders->email,
 					'subject' => 'Your Order Has been Picked',
@@ -252,24 +256,38 @@ class OrderController extends BaseController
 
 	} // end method
 
-	public function ShippedToDelivered($order_id){
-
-	 $product = OrderItem::where('order_id',$order_id)->get();
-	 foreach ($product as $item) {
-	 	Product::where('id',$item->product_id)
-	 			->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
-	 } 
- 
-      Order::findOrFail($order_id)->update(['status' => 'delivered']);
-
-      $notification = array(
-			'message' => 'Order Delivered Successfully',
-			'alert-type' => 'success'
-		);
-
-		return redirect()->route('shipped-orders')->with($notification);
-
-
+	public function ShippedToDelivered($id){
+		$result = array();
+		$orders = Order::where('id', $id)->first();
+		$products  = OrderItem::where('order_id',$id)->get();
+			foreach($products as $product)
+			{
+				$size= Size::select('id')->where('name',$product->size)->first(); 
+				Productattribute::where([
+						'product_id' => $product->product_id ,
+						'size_id' =>  $size->id
+					])->decrement('quntity' , $product->qty);
+			}
+					if(Order::where('id',$id)->update([
+						'status'=>'delivered',
+						'delivered_date' => Carbon::now()
+					]))
+					{
+						$result['name'] = ucfirst($orders->name);
+						$result['message'] = ucfirst('Your Order Has been Delivered, Thank you ShopifyNepal');
+						$data = [
+							'to' => $orders->email,
+							'subject' => 'Your Order Has been Delivered',
+							'view' => 'orderTrack',
+							'name' => ucfirst($orders->name),
+							'body' => $result
+						];
+						(new Mail())->send($data);
+						Session::add('success',"order change to deliverd");
+						Redirect::to('/admin/shipped/orders');
+					}
+				
+		
 	} // end method
 
 	public function Cancel($id){
@@ -329,16 +347,29 @@ class OrderController extends BaseController
 		return null;
 	}
 
-	public function InvoiceDownload($id){
+	public function InvoiceDownload($id)
+	{
+		
 		$order = Order::with('user')->where('id',$id)->get()->first();
     	$orderItem = OrderItem::with('product')->where('order_id',$id)->orderBy('id','DESC')->get();
+		
 
-		$pdf = new Dompdf();
-		$rander = render();
-		exit();
-
- 
-	 } // end mehtod 
+		$options = new Options();
+		$options->set(array(
+			'tempDir' => BASE_PATH,
+			'chroot' => BASE_PATH,
+		));
+		$pdf = new Dompdf($options);
+		// load pdf from view
+		$pdf->loadHtml(pdf('admin/orders/order_invoice',compact('order','orderItem')));
+		// (Optional) Setup the paper size and orientation 
+		$pdf->setPaper('A4', 'portrait');
+		// Render the HTML as PDF 
+	    $pdf->render(); 
+		// Output the generated PDF (1 = download and 0 = preview) 
+			ob_end_clean();
+			$pdf->stream("billing_invoice.pdf", array("Attachment" => 1));
+	} // end mehtod 
 	
 }
 

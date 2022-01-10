@@ -23,13 +23,13 @@
       font-size: 15px;
     }
     .authority {
-        /*text-align: center;*/
+       
         float: right
     }
     .authority h5 {
         margin-top: -10px;
         color: green;
-        /*text-align: center;*/
+       
         margin-left: 35px;
     }
     .thanks p {
@@ -47,15 +47,15 @@
   <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
     <tr>
         <td valign="top">
-          <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+          <h2 style="color: green; font-size: 26px;"><strong>ShopifyNepal</strong></h2>
+         
         </td>
         <td align="right">
             <pre class="font" >
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
+               ShopifyNepal Head Office
+               Email:info@shopifynepal.com.np <br>
+               Mob: +977 9844407569 <br>
+               Kathmandu | Mahabauddha <br>
               
             </pre>
         </td>
@@ -75,12 +75,12 @@
            <strong>Phone:</strong> {{ $order->phone }} <br>
 
            @php
-            $div = $order->division->division_name;
-            $dis = $order->district->district_name;
-            $state = $order->state->state_name;
+            $div = $order->address;
+            $dis = $order->city;
+            $state = $order->province;
            @endphp
             
-           <strong>Address:</strong> {{ $div }},{{ $dis }}.{{ $state }} <br>
+           <strong>Address:</strong> {{ $div }},{{ $dis }},{{ $state }} <br>
            <strong>Post Code:</strong> {{ $order->post_code }}
          </p>
         </td>
@@ -104,8 +104,6 @@
         <th>Image</th>
         <th>Product Name</th>
         <th>Size</th>
-        <th>Color</th>
-        <th>Code</th>
         <th>Quantity</th>
         <th>Unit Price </th>
         <th>Total </th>
@@ -116,9 +114,9 @@
      @foreach($orderItem as $item)
       <tr class="font">
         <td align="center">
-            <img src="{{ public_path($item->product->product_thambnail)  }}" height="60px;" width="60px;" alt="">
+            <img src="{{$item->product->product_image_path}}" height="60px;" width="60px;" alt="">
         </td>
-        <td align="center"> {{ $item->product->product_name_en }}</td>
+        <td align="center"> {{ $item->product->title }}</td>
         <td align="center">
 
           @if($item->size == NULL)
@@ -128,11 +126,9 @@
           @endif
             
         </td>
-        <td align="center">{{ $item->color }}</td>
-        <td align="center">{{ $item->product->product_code }}</td>
         <td align="center">{{ $item->qty }}</td>
-        <td align="center">${{ $item->price }}</td>
-        <td align="center">${{ $item->price * $item->qty }} </td>
+        <td align="center">Rs {{ $item->price }}</td>
+        <td align="center">Rs {{ $item->price * $item->qty }} </td>
       </tr>
       @endforeach
       
@@ -142,9 +138,9 @@
   <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
         <td align="right" >
-            <h2><span style="color: green;">Subtotal:</span>${{ $order->amount }}</h2>
-            <h2><span style="color: green;">Total:</span> ${{ $order->amount }}</h2>
-            {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
+            <h2><span style="color: green;">Subtotal:</span>Rs {{ $order->amount }}</h2>
+            <h2><span style="color: green;">Total:</span> Rs {{ $order->amount }}</h2>
+           
         </td>
     </tr>
   </table>

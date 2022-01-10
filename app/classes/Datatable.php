@@ -60,7 +60,9 @@ trait Datatable
 						$button = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>
 						<span data-toggle="tooltip" data-placement="top" title="cancel orders"style="display:inline-block"> <form method="POST" action="/admin/cancel/orders/'.$order->id.'" class="cancel-item"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"> <button type="submit" class="btn-sm btn-danger cancel" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-window-close"></i> </button> </form> </span>';
 					}else{
-						$button = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>';
+						$button = '<span data-toggle="tooltip" data-placement="top" title="View Order Details"><a href="/admin/pending/details/'.$order->id.'"><button  type="button" class="btn-sm btn-success"><i class="fa fa-eye"></i></button></a></span>
+						<span data-toggle="tooltip" data-placement="top" title="Download Pdf"><a href="/admin/pdf/downlaod/'.$order->id.'" target="_blank"><button  type="button" class="btn-sm btn-danger"><i class="fa fa-cloud-download"></i></button></a></span>
+						';
 					}
 					
 					$rawData['name'] = $order->name;

@@ -22,6 +22,7 @@
                                             <li class="dropdown after-n">
                                                 <a class="angle-icon" href="#">{{user()->username}}</a>
                                                 <ul class="dropdown-nav">
+                                                    <li><a href="/user/dashboard">User Dashboard</a><li>
                                                     <li><a href="/cart">Cart</a><li>
                                                     <li><a href="/checkout">Checkout</a></li>
                                                     <li><a href="/logout">Logout</a></li>
@@ -55,6 +56,12 @@
                                             <!-- Language End -->
                                         </ul>
                                     </div>
+                                    <ul class="res-xs-flex">
+                                        <li class="after-n">
+                                            <a href="/track/order"><i class="ion-ios-shuffle-strong"></i>Track Order</a>
+                                        </li>
+                                       
+                                    </ul>
                                 </div>
                             </div>
                             <!--Right end-->
@@ -128,6 +135,7 @@
                                         </div>
                                     </div>
                                     <!-- Search  End -->
+                                   
                                     <!--Cart info Start -->
                                     <div class="cart-info d-flex home-13">
                                         
