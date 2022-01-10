@@ -58,7 +58,7 @@
                                     </div>
                                     <ul class="res-xs-flex">
                                         <li class="after-n">
-                                            <a href="/track/order"><i class="ion-ios-shuffle-strong"></i>Track Order</a>
+                                            <a href="/track/order" data-toggle="modal" data-target="#ordertraking" ><i class="ionicons ion-ios-location"></i>Order Tracking</a>
                                         </li>
                                        
                                     </ul>
@@ -69,6 +69,7 @@
                     </div>
                 </div>
                 <!-- Header top Area end  -->
+                
                 <!-- Header Navigation Area Start  -->
                 <div class="header-navigation sticky-nav">
                     <div class="container-fluid">
@@ -156,4 +157,5 @@
                 
             </header>
             <!--  Main Header End -->
+            
            
