@@ -69,4 +69,10 @@ $router->map('POST', '/admin/delete/orders/[i:id]', 'App\Controllers\Admin\Order
  */
 $router->map('GET', '/admin/pdf/downlaod/[i:id]', 'App\Controllers\Admin\OrderController@InvoiceDownload', 'Invoice_Download');
 
+
+/**
+ * order track
+ */
+$router->map('POST', '/order/tracking', 'App\Controllers\IndexController@OrderTraking', 'Order_Traking');
+
 ?>
