@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <!-- Header top Area end  -->
-                
+                @include('includes.order_tracking')
                 <!-- Header Navigation Area Start  -->
                 <div class="header-navigation sticky-nav">
                     <div class="container-fluid">
@@ -157,5 +157,6 @@
                 
             </header>
             <!--  Main Header End -->
+          
             
            
