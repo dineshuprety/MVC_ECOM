@@ -104,7 +104,7 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti-settings"></i> <span> Setting </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="#"><i class="ti-settings">Seo</i></a></li>
+                                <li><a href="#"><i class="ti-settings"> Seo</i></a></li>
                             </ul>
                         </li>
                         <li class="has_sub">

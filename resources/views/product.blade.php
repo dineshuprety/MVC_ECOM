@@ -109,13 +109,13 @@
                <div class="social-info">
                   <ul>
                      <li>
-                        <a href="#"><i class="ion-social-facebook"></i></a>
+                        <a target="_blank" href="https://facebook.com/share.php?u="><i class="ion-social-facebook"></i></a>
                      </li>
                      <li>
                         <a href="#"><i class="ion-social-twitter"></i></a>
                      </li>
                      <li>
-                        <a href="#"><i class="ion-social-google"></i></a>
+                        <a href="#"><i class="ion-social-whatsapp"></i></a>
                      </li>
                      <li>
                         <a href="#"><i class="ion-social-instagram"></i></a>

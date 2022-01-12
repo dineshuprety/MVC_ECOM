@@ -32,6 +32,8 @@
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.validation.changeinformation();
                 SHOPIFYNEPAL.validation.changepassword();
+                SHOPIFYNEPAL.order.myorder();
+                
                 break;    
             case 'products':
             case 'categories':
@@ -53,7 +55,9 @@
             case 'contact':
                 SHOPIFYNEPAL.homeslider.mainjs();
                 SHOPIFYNEPAL.validation.contact();
-                break; 
+                break;
+            case 'trackOrder':
+                SHOPIFYNEPAL.homeslider.mainjs();
             case 'adminProduct':
                 SHOPIFYNEPAL.admin.changeEvent();
                 break;

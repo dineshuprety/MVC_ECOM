@@ -7,32 +7,45 @@ use App\Classes\Request;
 use App\Classes\Session;
 use App\Classes\ValidateRequest;
 use App\Classes\Role;
+use App\Classes\Datatable;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\OrderItem;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 
 
 class UserController extends BaseController
 {
+    use Datatable;
+   
 
-    public function show()
+    public function __construct()
     {
-        if(isAuthenticated()){
-            if(user()->role == 'admin')
-            {
-                Session::add('error','You are not Autthorized to view this Page.');
-                Redirect::to('/');
-            }else{
-                $token = CSRFToken::_token();
-                return view('dashboard', compact('token'));
-                exit;
-            }
+        if(isAuthenticated())
+        {
+
+            // if(user()->role == 'admin')
+            // {
+            //     Session::add('error','You are not Autthorized to view this Page.');
+            //     Redirect::to('/');
+            // }
             
         }
-        else{
+        else
+        {
             Session::add('error','You are not Autthorized to view this Page. Login First');
             Redirect::to('/login');
             exit;
         }
-       
+        
+    }
+
+    public function show()
+    {
+       $token = CSRFToken::_token();
+       return view('dashboard', compact('token'));
     }
     
     public function changeUserInformation()
@@ -126,6 +139,42 @@ class UserController extends BaseController
         }
         return null;
     }
+
+    public function MyOrders(){
+
+		if(Request::has('post')){
+            $request = Request::get('post');
+			$this->UserDataTableInOrders($request);
+			exit;
+		}
+
+    } // end mehtod 
+
+    public function InvoiceDownload($id)
+	{
+		
+		$order = Order::with('user')->where('id',$id)->get()->first();
+    	$orderItem = OrderItem::with('product')->where('order_id',$id)->orderBy('id','DESC')->get();
+		
+
+		$options = new Options();
+		$options->set(array(
+			'tempDir' => BASE_PATH,
+			'chroot' => BASE_PATH,
+		));
+		$pdf = new Dompdf($options);
+		// load pdf from view
+		$pdf->loadHtml(pdf('admin/orders/order_invoice',compact('order','orderItem')));
+		// (Optional) Setup the paper size and orientation 
+		$pdf->setPaper('A4', 'portrait');
+		// Render the HTML as PDF 
+	    $pdf->render(); 
+		// Output the generated PDF (1 = download and 0 = preview) 
+			ob_end_clean();
+			$pdf->stream("billing_invoice.pdf", array("Attachment" => 0));
+	} // end mehtod
+
+
 
     
 }

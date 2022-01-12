@@ -128,7 +128,7 @@
         </td>
         <td align="center">{{ $item->qty }}</td>
         <td align="center">Rs {{ $item->price }}</td>
-        <td align="center">Rs {{ $item->price * $item->qty }} </td>
+        <td align="center">Rs {{ $item->price * 1000 }} </td>
       </tr>
       @endforeach
       

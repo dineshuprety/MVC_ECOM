@@ -73,6 +73,6 @@ $router->map('GET', '/admin/pdf/downlaod/[i:id]', 'App\Controllers\Admin\OrderCo
 /**
  * order track
  */
-$router->map('POST', '/order/tracking', 'App\Controllers\Admin\OrderController@OrderTraking', 'Order_Traking');
+$router->map('POST', '/order/tracking', 'App\Controllers\IndexController@OrderTraking', 'Order_Traking');
 
 ?>

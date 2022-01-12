@@ -7,6 +7,7 @@ var minify = require('gulp-minify-css');
 
 gulp.task('js', function(){
     gulp.src([
+      
        'resources/assets/js/plugins/*.js',
          'resources/assets/js/shopify.js', 
          'resources/assets/js/admin/*.js',

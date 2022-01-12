@@ -1,4 +1,6 @@
-@extends('admin.layout.base') @section('title', 'Dashboard') @section('content')
+@extends('admin.layout.base')
+ @section('title', 'Dashboard') 
+ @section('content')
 <div class="container-fluid">
     <div class="page-content-wrapper">
         <div class="container-fluid">

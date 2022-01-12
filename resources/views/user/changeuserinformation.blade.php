@@ -2,7 +2,7 @@
     <div class="panel-heading my-account-title">
         <h3 class="panel-title"><span>1 .</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Edit your account information </a></h3>
     </div>
-    <div id="my-account-1" class="panel-collapse collapse show">
+    <div id="my-account-1" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="myaccount-info-wrapper">
                 <div class="account-info-wrapper">

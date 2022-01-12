@@ -231,5 +231,34 @@
 		})
 	}
 
+	SHOPIFYNEPAL.order.myorder = function () {
+
+       
+        $('#myorder').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                   "url": "/user/pending/orders/list",
+                   "type": "POST",
+                   "datatype": "json",
+                   error: function(){
+                    $("#myorder_processing").css("display","none");
+                  }
+                },
+                "columns": [
+                    {data: 'name'},
+                    {data: 'order_date'},
+                    {data: 'invoice_no'},
+                    {data: 'amount'},
+                    {data: 'payment_method'},
+                    {data: 'status'},
+                    {data: 'action'},
+                ],
+                    
+            });
+        
+    }
+
+
 
 })();

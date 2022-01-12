@@ -37,6 +37,10 @@
                         <!-- include change password  -->
                         @include('user.chnagepassword')
                         <!-- end password -->
+
+                         <!-- include order details  -->
+                         @include('user.orderinformation')
+                        <!-- end order details -->
                      </div>
                   </div>
                </div>

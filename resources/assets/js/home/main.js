@@ -145,15 +145,15 @@
     /*--------------------------
             Product Zoom
     ---------------------------- */
-    $(".zoompro").elevateZoom({
-        gallery: "gallery",
-        galleryActiveClass: "active",
-        zoomWindowWidth: 300,
-        zoomWindowHeight: 100,
-        scrollZoom: false,
-        zoomType: "inner",
-        cursor: "crosshair"
-    });
+    // $(".zoompro").elevateZoom({
+    //     gallery: "gallery",
+    //     galleryActiveClass: "active",
+    //     zoomWindowWidth: 300,
+    //     zoomWindowHeight: 100,
+    //     scrollZoom: false,
+    //     zoomType: "inner",
+    //     cursor: "crosshair"
+    // });
         /*---------------------
         Countdown
     --------------------- */

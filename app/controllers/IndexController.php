@@ -4,12 +4,13 @@ namespace App\Controllers;
 use App\Classes\CSRFToken;
 use App\Classes\Session;
 use App\Classes\Request;
+use App\Classes\ValidateRequest;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\Contact;
-use App\Classes\ValidateRequest;
 use App\Models\Productattribute;
+use App\Models\Order;
 
 
 class IndexController extends BaseController
@@ -117,6 +118,35 @@ class IndexController extends BaseController
                 exit;
             }
         }
+    }
+
+    public function OrderTraking()
+    {
+        if(Request::has('post')){
+           
+            $request = Request::get('post');
+          
+            if(CSRFToken::verifyCSRFToken($request->token,false)){
+
+                $track = Order::where('invoice_no',$request->code)->first();
+
+                if ($track) {
+                   
+                return view('tracking.track_order',compact('track'));
+        
+                }
+				else
+                {
+                    
+					Session::add('error','Invoice Code Is Invalid.');
+					Redirect::to('/');
+               
+                }
+                  
+            }
+			Redirect::to('/');
+        }
+		return null;
     }
 
     
