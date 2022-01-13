@@ -24,7 +24,7 @@
                         .html(response.success);
 						$("button").html("Submit Order").attr("disabled", true);
 						setTimeout(function(){
-							window.location.href = "/";
+							window.location.href = "/user/dashboard";
 						},4000);	
 						
 				},
