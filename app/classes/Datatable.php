@@ -30,7 +30,7 @@ trait Datatable
 				->orWhere('amount','LIKE', "%{$search}%")
 				->orWhere('payment_method','LIKE', "%{$search}%")
 				->orWhere('status','LIKE', "%{$search}%")
-				->where('status',$status)
+				->orwhere('status',$status)
 				->offset($start)
 				->limit($limit)
 				->orderBy('id','DESC')
@@ -126,6 +126,17 @@ trait Datatable
 				
 				foreach($orders as $order)
 				{
+					if($order->status == 'cancel')
+					{
+						$button = '
+						<span data-toggle="tooltip" data-placement="top" title="Download Invoice"style="display:inline-block"> <form method="POST" action="/user/pdf/downlaod/'.$order->id.'" target="_blank"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"><button type="submit" class="btn-sm btn-info"><i class="ionicons ion-ios-download"></i> </button> </form> </span>
+						';
+					}else{
+						$button ='<span data-toggle="tooltip" data-placement="top" title="cancel orders"style="display:inline-block"> <form method="POST" action="/user/cancel/orders/'.$order->id.'" class="cancel-item"> <input type="hidden" name="tokens" value="'. \App\Classes\CSRFToken::_token().'"> <button type="submit" onClick="return confirm(\'Are you sure you want to cancel order?\')" class="btn-sm btn-danger"><i class="ionicons ion-android-cancel"></i> </button> </form> </span>
+
+						<span data-toggle="tooltip" data-placement="top" title="Track Orders"style="display:inline-block"> <form method="POST" action="/order/tracking"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"> <input type="hidden" name="code" value="'. $order->invoice_no.'"> <button type="submit" class="btn-sm btn-success"><i class="ionicons ion-location"></i> </button> </form> </span>
+						<span data-toggle="tooltip" data-placement="top" title="Download Invoice"style="display:inline-block"> <form method="POST" action="/user/pdf/downlaod/'.$order->id.'" target="_blank"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"><button type="submit" class="btn-sm btn-info"><i class="ionicons ion-ios-download"></i> </button> </form> </span>';
+					}
 					
 					$rawData['name'] = $order->name;
 					$rawData['order_date'] = $order->order_date;
@@ -133,10 +144,7 @@ trait Datatable
 					$rawData['amount'] = $order->amount;
 					$rawData['payment_method'] = $order->payment_method;
 					$rawData['status'] = $order->status;
-					$rawData['action'] = '<span data-toggle="tooltip" data-placement="top" title="cancel orders"style="display:inline-block"> <form method="POST" action="/user/cancel/orders/'.$order->id.'" class="cancel-item"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"> <button type="submit" class="btn-sm btn-danger cancel" data-toggle="modal" data-target="#exampleModal"><i class="ionicons ion-android-cancel"></i> </button> </form> </span>
-					<span data-toggle="tooltip" data-placement="top" title="Track Orders"style="display:inline-block"> <form method="POST" action="/order/tracking" class="cancel-item"> <input type="hidden" name="token" value="'. \App\Classes\CSRFToken::_token().'"> <input type="hidden" name="code" value="'. $order->invoice_no.'"> <button type="submit" class="btn-sm btn-success"><i class="ionicons ion-location"></i> </button> </form> </span>
-					<span data-toggle="tooltip" data-placement="top" title="Download Pdf"><a href="/user/pdf/downlaod/'.$order->id.'" target="_blank"><button  type="button" class="btn-sm btn-info"><i class="ionicons ion-ios-download"></i></button></a></span>
-					';
+					$rawData['action'] = $button;
 
 					$data[] = $rawData;
 

@@ -15,7 +15,7 @@
                      <div class="about-footer">
                         <p class="text-info">We are a team of online shopping Shopifynepal</p>
                         <div class="need-help">
-                           <p class="phone-info"> NEED HELP? <span> (+977) 9807393225 <br /> (+977) 980732598 </span>
+                           <p class="phone-info"> NEED HELP? <span> (+977) 9823004203 <br /> (+977) 9844407569 </span>
                            </p>
                         </div>
                         <div class="social-info">
@@ -132,7 +132,7 @@
                      <p class="copy-text">Copyright © <a href="https://dineshuprety.com.np"> FORTANCODER</a>. All Rights Reserved </p>
                   </div>
                   <div class="col-md-6 col-lg-8">
-                     <img class="payment-img" src="assets/images/icons/payment.png" alt="" />
+                     <img class="payment-img" src="" alt="" />
                   </div>
                </div>
             </div>

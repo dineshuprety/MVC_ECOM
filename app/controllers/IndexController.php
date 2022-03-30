@@ -5,6 +5,7 @@ use App\Classes\CSRFToken;
 use App\Classes\Session;
 use App\Classes\Request;
 use App\Classes\ValidateRequest;
+use App\Classes\Redirect;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Size;
@@ -130,10 +131,15 @@ class IndexController extends BaseController
 
                 $track = Order::where('invoice_no',$request->code)->first();
 
-                if ($track) {
+                if ($track->status === 'cancel') {
                    
-                return view('tracking.track_order',compact('track'));
+                    Session::add('error', 'You have cancel your Order');
+                    Redirect::to('/user/dashboard');
+                    die();
         
+                }elseif($track)
+                {
+                    return view('tracking.track_order',compact('track'));
                 }
 				else
                 {

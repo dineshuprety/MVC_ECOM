@@ -152,7 +152,7 @@ class OrderController extends BaseController
 		$orders = Order::where('id', $id)->first();
 		if(Order::where('id', $id)->first()->update([
 			'status' => 'confirm',
-			'confirmed_date' => Carbon::now()
+			'confirmed_date' => Carbon::now()->format('d F Y')
 		]))
 		{
 			$result['name'] = ucfirst($orders->name);
@@ -178,7 +178,7 @@ class OrderController extends BaseController
 
 		if(Order::where('id', $id)->first()->update([
 			'status' => 'processing',
-			'processing_date' => Carbon::now()
+			'processing_date' => Carbon::now()->format('d F Y')
 		])){
 
 			$result['name'] = ucfirst($orders->name);
@@ -206,7 +206,7 @@ class OrderController extends BaseController
    
 			if(Order::where('id', $id)->first()->update([
 				'status' => 'picked',
-				'picked_date' => Carbon::now()
+				'picked_date' => Carbon::now()->format('d F Y')
 			]))
 			{
 				$result['name'] = ucfirst($orders->name);
@@ -234,7 +234,7 @@ class OrderController extends BaseController
    
 		if(Order::where('id', $id)->first()->update([
 			'status' => 'shipped',
-			'shipped_date' => Carbon::now()
+			'shipped_date' => Carbon::now()->format('d F Y')
 		]))
 		{
 				$result['name'] = ucfirst($orders->name);
@@ -270,7 +270,7 @@ class OrderController extends BaseController
 			}
 					if(Order::where('id',$id)->update([
 						'status'=>'delivered',
-						'delivered_date' => Carbon::now()
+						'delivered_date' => Carbon::now()->format('d F Y')
 					]))
 					{
 						$result['name'] = ucfirst($orders->name);
@@ -300,7 +300,7 @@ class OrderController extends BaseController
 		
 				if(Order::where('id', $id)->first()->update([
 					'status' => 'cancel',
-					'cancel_date' => Carbon::now()
+					'cancel_date' => Carbon::now()->format('d F Y')
 				]))
 					{
 						$result['name'] = ucfirst($orders->name);

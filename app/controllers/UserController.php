@@ -11,6 +11,8 @@ use App\Classes\Datatable;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
+
+use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -20,18 +22,15 @@ class UserController extends BaseController
 {
     use Datatable;
    
-
     public function __construct()
     {
         if(isAuthenticated())
         {
-
-            // if(user()->role == 'admin')
-            // {
-            //     Session::add('error','You are not Autthorized to view this Page.');
-            //     Redirect::to('/');
-            // }
-            
+            if(user()->role == 'admin')
+            {
+                Session::add('error','You are not Autthorized to view this Page.');
+                Redirect::to('/');
+            }  
         }
         else
         {
@@ -152,29 +151,54 @@ class UserController extends BaseController
 
     public function InvoiceDownload($id)
 	{
-		
-		$order = Order::with('user')->where('id',$id)->get()->first();
-    	$orderItem = OrderItem::with('product')->where('order_id',$id)->orderBy('id','DESC')->get();
-		
+        if(Request::has('post')){
+            $request = Request::get('post');
+            
+            if(CSRFToken::verifyCSRFToken($request->token)){
+                $order = Order::with('user')->where('id',$id)->get()->first();
+                $orderItem = OrderItem::with('product')->where('order_id',$id)->orderBy('id','DESC')->get();
+                
 
-		$options = new Options();
-		$options->set(array(
-			'tempDir' => BASE_PATH,
-			'chroot' => BASE_PATH,
-		));
-		$pdf = new Dompdf($options);
-		// load pdf from view
-		$pdf->loadHtml(pdf('admin/orders/order_invoice',compact('order','orderItem')));
-		// (Optional) Setup the paper size and orientation 
-		$pdf->setPaper('A4', 'portrait');
-		// Render the HTML as PDF 
-	    $pdf->render(); 
-		// Output the generated PDF (1 = download and 0 = preview) 
-			ob_end_clean();
-			$pdf->stream("billing_invoice.pdf", array("Attachment" => 0));
+                $options = new Options();
+                $options->set(array(
+                    'tempDir' => BASE_PATH,
+                    'chroot' => BASE_PATH,
+                ));
+                $pdf = new Dompdf($options);
+                // load pdf from view
+                $pdf->loadHtml(pdf('admin/orders/order_invoice',compact('order','orderItem')));
+                // (Optional) Setup the paper size and orientation 
+                $pdf->setPaper('A4', 'portrait');
+                // Render the HTML as PDF 
+                $pdf->render(); 
+                // Output the generated PDF (1 = download and 0 = preview) 
+                    ob_end_clean();
+                    $pdf->stream("billing_invoice.pdf", array("Attachment" => 1));
+            }
+           
+        }
+        return null;
 	} // end mehtod
 
+    public function OrderCancel($id){
+		if(Request::has('post')){
+            $request = Request::get('post');
+            
+            if(CSRFToken::verifyCSRFToken($request->tokens)){
+				
+				Order::where('id', $id)->first()->update([
+					'status' => 'cancel',
+					'cancel_date' => Carbon::now()->format('d F Y')
+                ]);
+				Session::add('success', 'You have cancel your Order');
+				Redirect::to('/user/dashboard');
+				die();
+			}
+			Redirect::to('/user/dashboard');
+            Session::add('error', 'Token mismatch');
+		}
+		return null;
 
-
+	} // end method
     
 }

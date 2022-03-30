@@ -19,7 +19,7 @@ class AuthController extends BaseController
     {
 
         if(isAuthenticated()){
-            Session::add('error','You are not Autthorized to view this Page.');
+            // Session::add('error','You are not Autthorized to view this Page.');
             Redirect::to('/');
         }
     }
