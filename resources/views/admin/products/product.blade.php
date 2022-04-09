@@ -72,7 +72,7 @@
                            <option value="selected" selected disabled>Choose a Product On</option>
                            <option value="0">new</option>
                            <option value="1">hot sales</option>
-                           <option value="2">feacher</option>
+                           <option value="2">feature</option>
                         </select>
                      </div>
                   </div>

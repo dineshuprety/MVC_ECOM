@@ -80,7 +80,7 @@ trait Datatable
 			}
 			
 			$results = array(
-				"draw" => intval($resquest->draw),
+				"draw" => intval($request->draw),
 				"recordsTotal" => intval($totalData),
 				"recordsFiltered" => intval($TotalFiltered),
 				"data" => $data
@@ -153,7 +153,7 @@ trait Datatable
 			}
 			
 			$results = array(
-				"draw" => intval($resquest->draw),
+				"draw" => intval($request->draw),
 				"recordsTotal" => intval($totalData),
 				"recordsFiltered" => intval($TotalFiltered),
 				"data" => $data

@@ -25,12 +25,12 @@ class DashboardController extends BaseController
     
         $orders = Order::all()->count();
         $products = Product::all()->count();
-        $users = User::where(role,'user')->count();
-        $wholseler = User::where(role,'wholesaler')->count();
-        $wholselerPending = User::where(role,'wholesaler')->where(status,'0')->count();
-        $paymentsPending = Order::where(status,'pending')->sum('amount');
-        $orderPending = Order::where(status,'pending')->count();
-        $payments = Order::where(status,'paid')->sum('amount');
+        $users = User::where('role','user')->count();
+        $wholseler = User::where('role','wholesaler')->count();
+        $wholselerPending = User::where('role','wholesaler')->where('status','0')->count();
+        $paymentsPending = Order::where('status','pending')->sum('amount');
+        $orderPending = Order::where('status','pending')->count();
+        $payments = Order::where('status','paid')->sum('amount');
         return view('admin/dashboard', compact('orders', 'products', 'payments', 'users', 'wholseler', 'wholselerPending', 'paymentsPending', 'orderPending'));
     }
     

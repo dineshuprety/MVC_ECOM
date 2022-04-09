@@ -17,6 +17,9 @@
         "filp/whoops": "^2.1"
     },
     "config":{
-        "optimize-autoloader":true
+        "optimize-autoloader":true,
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
     }
    }
